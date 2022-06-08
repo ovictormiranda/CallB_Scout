@@ -1,0 +1,12 @@
+{
+  "name": "CallBScout",
+  "displayName": "CallB_Scout",
+  "expo": {
+    "name": "CallB_Scout",
+    "slug": "CallB_Scout",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
