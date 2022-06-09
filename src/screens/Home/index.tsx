@@ -24,6 +24,10 @@ export function Home(){
     navigation.navigate('NewGame')
   }
 
+  function handleNewGame2() {
+    navigation.navigate('NewGame2')
+  }
+
   return (
     <Container>
       <ImageBackground source={homebg} width={100} resizeMode="cover" style={styles.image}>
@@ -57,6 +61,7 @@ export function Home(){
             />
             <Button
               title='EDIT'
+              onPress={handleNewGame2}
             />
           </Footer>
         </Content>

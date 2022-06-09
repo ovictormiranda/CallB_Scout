@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { Home } from '../screens/Home';
 import { NewGame } from '../screens/NewGame';
+import { NewGame2 } from '../screens/NewGame2';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -19,6 +20,10 @@ export function AppStackRoutes() {
       <Screen 
         name="NewGame"
         component={NewGame}
+      />
+      <Screen 
+        name="NewGame2"
+        component={NewGame2}
       />
     </Navigator>
   )
