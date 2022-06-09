@@ -1,26 +1,18 @@
 export default {
   colors: {
-    success_opacity95:'RGBA(217, 250, 84, 95)',
-    success_opacity50:'RGBA(217, 250, 84, 50)',
-    success_linear: 'linear-gradient(to bottom, RGBA(217, 250, 84), RGBA(217, 250, 84, 44))',
-
+    success: '#D9FA54',
+    
     alert: '#FF5464',
 
-    zone_lines: 'RGBA(124, 200, 195, 70)',
+    zone_lines: '#7CC8C3',
 
     light_text: '#FFFFFF',
-    light_background_header: 'RGBA(234, 234, 234, 70)',
-    light_background_main: 'RGBA(245, 245, 245, 75)',
-    light_background_player: 'RGBA(245, 245, 245, 90)',
+    light_background_header: '#EAEAEA',
+    light_background_main: '#F5F5F5',
     light_background: '#C4C4C4',
 
-    
-    field_background: 'RGBA(31, 33, 44, 80)',
-    linear_dark_button: 'linear-gradient(to bottom, RGBA(31, 33, 44), RGBA(31, 33, 44, 42))', 
-    linear_dark_background: 'linear-gradient(to bottom, RGBA(31, 33, 44), RGBA(31, 33, 44, 0))',
-    action_button_background: '#1F212C',
+    dark_background: '#1F212C',
     dark_text: '#000000',
-    unselect_team: 'RGBA(0, 0, 0, 40)',
   },
 
   fonts: {
