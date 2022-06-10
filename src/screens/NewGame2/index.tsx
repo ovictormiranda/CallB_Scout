@@ -93,7 +93,7 @@ export function NewGame2(){
             <View style={[ styles.pointStyle, { top: 83.98, left: 27 } ]}/>
             <View style={[ styles.pointStyle, { top: 158, left: 62.98 } ]}/> */}
 
-            <FlatList 
+{/*             <FlatList 
               data={DATA}
               keyExtractor={item => String(item.id)}
               renderItem={({ item }) => {
@@ -104,10 +104,10 @@ export function NewGame2(){
                   </>
                 )
               }}
-            />
-{/*             <View style={[ styles.pointStyle, { top: locationY, left: locationX } ]}/>
+            /> */}
+            <View style={[ styles.pointStyle, { top: locationY, left: locationX } ]}/>
             <View style={{ flex: 1, backgroundColor: 'transparent'}} {...panResponder.panHandlers}/>
-           */}
+       
 
           </LeftSide>
 
