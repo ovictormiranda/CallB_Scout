@@ -1,5 +1,11 @@
+import { FlatList, FlatListProps } from 'react-native';
 import styled from 'styled-components/native';
 
+interface Action {
+  id: number;
+  xPosition: string;
+  yPosition: string;
+}
 
 export const Container = styled.View`
  flex: 1;
@@ -11,7 +17,6 @@ export const Wrapper = styled.View`
   height: 100%;
   flex-direction: row;
 `;
-
 
 export const LeftSide = styled.View`
   width: 283px;
