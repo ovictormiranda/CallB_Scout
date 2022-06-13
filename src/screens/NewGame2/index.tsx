@@ -38,6 +38,11 @@ const DATA = [
     xP: 158,
     yP: 62.98
   },
+  {
+    id: 5,
+    xP: 99,
+    yP: 273
+  },
 ];
 
 export function NewGame2(){
@@ -60,7 +65,9 @@ export function NewGame2(){
 
     setActions(oldActions => [...oldActions, newAction]);
     console.log(actions);
+
   }
+
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: (event, gestureState) => true,
@@ -87,7 +94,7 @@ export function NewGame2(){
       >
         <Wrapper>
           <LeftSide>
-            <Text style={[{ top: (locationY - 15), left: (locationX)}]}> X: {locationX}, Y: {locationY}  </Text>
+            {/* <Text style={[{ top: (locationY - 15), left: (locationX)}]}> X: {locationX}, Y: {locationY}  </Text> */}
             {/* <View style={[ styles.pointStyle, { top: 115.98, left: 259.98 } ]}/>
             <View style={[ styles.pointStyle, { top: 228.98, left: 67.99 } ]}/>
             <View style={[ styles.pointStyle, { top: 83.98, left: 27 } ]}/>
@@ -105,10 +112,20 @@ export function NewGame2(){
                 )
               }}
             /> */}
-            <View style={[ styles.pointStyle, { top: locationY, left: locationX } ]}/>
+            { 
+               DATA.map(( item ) => {
+                return (
+                  <>
+                   {/*  <Text style={[{ top: (locationY - 15), left: (locationX)}]}> X: {locationX}, Y: {locationY} {item.id} </Text> */}
+                    <View key={item.id} style={[ styles.pointStyle, { top: item.xP, left: item.yP } ]}/>
+                  </>
+                );
+         
+              })
+            }
+           {/*  <View style={[ styles.pointStyle, { top: locationY, left: locationX } ]}/> */}
             <View style={{ flex: 1, backgroundColor: 'transparent'}} {...panResponder.panHandlers}/>
-       
-
+      
           </LeftSide>
 
           <Middle>
