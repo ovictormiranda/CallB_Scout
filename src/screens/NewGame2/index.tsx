@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ImageBackground, StyleSheet, PanResponder, Text, View, FlatList } from 'react-native';
+import { ImageBackground, StyleSheet, PanResponder, Text, View, FlatList, } from 'react-native';
 import bg from '../../assets/game_bg.png';
+import { ActionButton } from '../../components/ActionButton';
 import { BulletPoint } from '../../components/BulletPoint';
 
 import {
@@ -43,7 +44,13 @@ const DATA = [
     xP: 99,
     yP: 273
   },
+  {
+    id: 6,
+    xP: 69.96,
+    yP: 437.96
+  },
 ];
+
 
 export function NewGame2(){
   const [locationX, setLocationX] = useState(0);
@@ -51,21 +58,30 @@ export function NewGame2(){
 
   const [actions, setActions] = useState<Action[]>([]);
 
-  useEffect(() => {
-
-  }, []);
+  const columns = 5;
+  const dataPositive = [
+    { id: '00', name: 'SHORT PASS' },
+    { id: '01', name: 'KICK', color: '#D9FA54', textColor:'#1F212C' },
+    { id: '02', name: 'CORNER KICK' },
+    { id: '03', name: 'CROSS' },
+    { id: '04', name: 'FOUL' },
+    { id: '06', name: 'TACKLE' },
+    { id: '07', name: 'STEAL THE BALL' },
+    { id: '08', name: 'PASS BETWEEN LINES' },
+    { id: '09', name: '1st BALL' },
+    { id: '10', name: '2nd BALL' },
+  ]
 
   function handleNewAction(locationX: any, locationY: any) {
     
     const newAction = {
       id: new Date().getTime(),
       xPosition: locationX,
-      yPosition: locationY
+      yPosition: locationY,
     }
 
     setActions(oldActions => [...oldActions, newAction]);
     console.log(actions);
-
   }
 
 
@@ -85,6 +101,12 @@ export function NewGame2(){
     },
   });
 
+  useEffect(() => {
+    const allAction = actions.map(( item ) => {
+      <View key={item.id} style={[ styles.pointStyle, { top: item.xPosition, left: item.yPosition } ]}/>
+    });
+
+  },[setActions]);
 
   return (
     <Container>
@@ -94,38 +116,43 @@ export function NewGame2(){
       >
         <Wrapper>
           <LeftSide>
-            {/* <Text style={[{ top: (locationY - 15), left: (locationX)}]}> X: {locationX}, Y: {locationY}  </Text> */}
-            {/* <View style={[ styles.pointStyle, { top: 115.98, left: 259.98 } ]}/>
-            <View style={[ styles.pointStyle, { top: 228.98, left: 67.99 } ]}/>
-            <View style={[ styles.pointStyle, { top: 83.98, left: 27 } ]}/>
-            <View style={[ styles.pointStyle, { top: 158, left: 62.98 } ]}/> */}
+          <FlatList 
+                data={dataPositive} 
+                keyExtractor={item => item.id}
+                numColumns={columns}
+                renderItem={({ item }) => {
+                  return (
+                    <ActionButton 
+                      title={item.name} 
+                      color={item.color} 
+                      textColor={item.textColor}
+                      onPress={() => {}}  
+                    />
+                  );
+                }
+                }
+              />
 
-{/*             <FlatList 
-              data={DATA}
-              keyExtractor={item => String(item.id)}
-              renderItem={({ item }) => {
-                return(
-                  <>
-                    <View style={[ styles.pointStyle, { top: item.xP, left: item.yP } ]}/>
-                    <View style={{ flex: 1, backgroundColor: 'transparent'}} {...panResponder.panHandlers}/>
-                  </>
-                )
-              }}
-            /> */}
+
+            {/* <Text style={[{ top: (locationY - 15), left: (locationX)}]}> X: {locationX}, Y: {locationY}  </Text> */}
+            {/* <View style={[ styles.pointStyle, { top: 115.98, left: 259.98 } ]}/> */}
+
             { 
-               DATA.map(( item ) => {
+               actions.map(( item ) => {
                 return (
-                  <>
-                   {/*  <Text style={[{ top: (locationY - 15), left: (locationX)}]}> X: {locationX}, Y: {locationY} {item.id} </Text> */}
-                    <View key={item.id} style={[ styles.pointStyle, { top: item.xP, left: item.yP } ]}/>
-                  </>
+                  <View key={item.id}>
+                    <Text  style={[{ top: (item.yPosition - 15), left: (item.xPosition)}]}> X: {item.xPosition}, Y: {item.yPosition}  </Text>
+                    <View style={[ styles.pointStyle, { top: item.yPosition, left: item.xPosition } ]}/>
+                  </View>
                 );
-         
               })
             }
+
            {/*  <View style={[ styles.pointStyle, { top: locationY, left: locationX } ]}/> */}
+            
+            
             <View style={{ flex: 1, backgroundColor: 'transparent'}} {...panResponder.panHandlers}/>
-      
+            
           </LeftSide>
 
           <Middle>

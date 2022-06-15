@@ -12,12 +12,14 @@ interface Props extends RectButtonProps {
   title: string;
   color?: string;
   textColor?: string;
+  isSelected?: boolean;
 }
 
 export function Button({
   title,
   color,
   textColor,
+  isSelected,
   onPress,
   enabled = true,
 }: Props){

@@ -1,5 +1,5 @@
-import React from 'react';
-import { ImageBackground, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { ImageBackground, PanResponder, StyleSheet, View, Text } from 'react-native';
 import bg from '../../assets/game_bg.png';
 import field from '../../assets/FIELD.png';
 import { ButtonMenu } from '../../components/ButtonMenu';
@@ -61,8 +61,32 @@ import { PlayerOnGame } from '../../components/PlayerOnGame';
 import { ActionButton } from '../../components/ActionButton';
 import { FlatList } from 'react-native-gesture-handler';
 
-export function NewGame()
-{
+interface Action {
+  id: number;
+  xPosition: number;
+  yPosition: number;
+}
+
+export function NewGame() {
+
+  const [locationX, setLocationX] = useState(0);
+  const [locationY, setLocationY] = useState(0);
+
+  const [actions, setActions] = useState<Action[]>([]);
+
+  function handleNewAction(locationX: any, locationY: any) {
+    
+    const newAction = {
+      id: new Date().getTime(),
+      xPosition: locationX,
+      yPosition: locationY
+    }
+
+    setActions(oldActions => [...oldActions, newAction]);
+    console.log(actions);
+  }
+
+
   const columns = 5;
   const dataPositive = [
     { id: '00', name: 'SHORT PASS' },
@@ -90,7 +114,21 @@ export function NewGame()
     { id: '10', name: '2nd BALL' },
   ]
 
-  
+  const panResponder = PanResponder.create({
+    onStartShouldSetPanResponder: (event, gestureState) => true,
+    onStartShouldSetPanResponderCapture: (event, gestureState) => true,
+
+    onMoveShouldSetPanResponder: (event, gestureState) => false,
+    onMoveShouldSetPanResponderCapture: (event, gestureState) => false,
+
+    onPanResponderGrant: (event, gestureState) => false,
+    onPanResponderMove: (event, gestureState) => false,
+    onPanResponderRelease: (event, gestureState) => {
+      setLocationX(parseFloat(event.nativeEvent.locationX.toFixed(2)));
+      setLocationY(parseFloat(event.nativeEvent.locationY.toFixed(2)));
+      handleNewAction(locationX, locationY)
+    },
+  });
   
   return (
     <Container>
@@ -182,7 +220,19 @@ export function NewGame()
               >
                 <Field>
                   <FourthZone>
-                    <FourA></FourA>
+                    <FourA>
+                      { 
+                        actions.map(( item ) => {
+                          return (
+                            <View key={item.id}>
+                              <Text style={[{ top: (item.yPosition - 15), left: (item.xPosition)}]}> X: {item.xPosition}, Y: {item.yPosition}  </Text>
+                              <View style={[ styles.pointStyle, { top: item.yPosition, left: item.xPosition } ]}/>
+                            </View>
+                          );
+                        })
+                      }
+                      <View style={{ flex: 1, backgroundColor: 'transparent'}} {...panResponder.panHandlers}/>
+                    </FourA>
                     <FourB></FourB>
                     <FourC></FourC>
                   </FourthZone>
@@ -233,5 +283,13 @@ export function NewGame()
 const styles = StyleSheet.create({
   image: {
     flex: 1,
+  },
+  pointStyle: {
+    height: 10,
+    width: 10,
+    marginTop: 5,
+    //position: 'absolute',
+    borderRadius: 5,
+    backgroundColor: '#00FF30'
   }
 })
