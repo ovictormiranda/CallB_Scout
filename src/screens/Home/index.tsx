@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Button } from '../../components/Button';
 import { useNavigation } from '@react-navigation/native';
 
-import { FlatList, ImageBackground, SectionListRenderItemInfo, StyleSheet } from 'react-native';
+import { FlatList, ImageBackground, StyleSheet } from 'react-native';
 import homebg from '../../assets/home_background.png'
+
+import { homeOptions } from '../../Utils/homeOptions';
 
 import {
   Container,
@@ -17,89 +19,30 @@ import {
 
 
 interface Option {
-  title: string,
-  description: string,
-  goTo: string,
-  isSelected: boolean,
-  color?: string,
-  textColor?: string,
+ key: string;
+ title: string;
+ description: string;
+ goTo: string;
 }
 
-export function Home(){
+interface Props {
+  option: string;
+}
+
+export function Home({ option }: Props ){
+  const [optionSelected, setOptionSelected] = useState(homeOptions[1]);
 
   const navigation = useNavigation<any>();
 
-  const [option, setOption] = useState<Option>(
-    {
-      title: "NEW GAME",
-      description: "Select teams and lineups,\nadd details to the match and...\n \n\ngo to the game!",
-      goTo: "handleNewGame2",
-      isSelected: true,
-      color: 'rgba(217, 250, 84, 95)',
-      textColor:'rgba(31, 33, 44, 80)',
-    }
-  );
-
-  const options = [
-    { 
-      id: 1,
-      title: "HISTORY",
-      description: "Select teams and lineups,{'\n'} add details to the match and...{'\n'}{'\n'}{'\n'}go to the game!",
-      goTo: "handleNewGame",
-      isSelected: false,
-    },
-    { 
-      id: 2,
-      title: "NEW GAME",
-      description: "Select teams and lineups,{'\n'} add details to the match and...{'\n'}{'\n'}{'\n'}go to the game! 2",
-      goTo: "handleNewGame2",
-      isSelected: false,
-      color: 'rgba(217, 250, 84, 95)',
-      textColor:'rgba(31, 33, 44, 80)',
-    },
-    { 
-      id: 3,
-      title: "ANALYTICS",
-      description: "Select teams and lineups,{'\n'} add details to the match and...{'\n'}{'\n'}{'\n'}go to the game!",
-      goTo: "handleNewGame",
-      isSelected: false,
-    },
-    { 
-      id: 4,
-      title: "EDIT",
-      description: "Select teams and lineups,{'\n'} add details to the match and...{'\n'}{'\n'}{'\n'}go to the game! 2",
-      goTo: "handleNewGame2",
-      isSelected: false,
-    }
-  ]
-
-/*   function handleOptionSelected() {
-    if (title === "EDIT2") {
-      setOption({ 
-        title: "NEW GAME 2",
-        description: "Select teams and lineups,\nadd details to the match and...\n \n \ngo to the game! 2222",
-        goTo: "handleNewGame2"
-      })
-      console.log("no edit 2");
-    } else if ( title === "EDIT") {
-      setOption({
-        title: "NEW GAME",
-        description: "Select teams and lineups,\nadd details to the match and... \n \n \ngo to the game!",
-        goTo: "handleNewGame"
-      });
-      console.log("no edit");
-    } else {
-      console.log("deu ruim");
-    }
-  }  */
-
-  function handleNewGame() {
-    navigation.navigate('NewGame')
+  function handleOptionSelected(option: Option) {
+    console.log(option);
+    setOptionSelected(option);
   }
 
-  function handleNewGame2() {
-    navigation.navigate('NewGame2')
+  function handleNextScreen(option: Option) {
+    navigation.navigate(option.goTo)
   }
+
 
   return (
     <Container>
@@ -109,29 +52,27 @@ export function Home(){
 
           </Header>
 
-          <MainCard onPress={option?.goTo}>
-            <Title>{option?.title}</Title>
+          <MainCard onPress={() => handleNextScreen(optionSelected) }>
+            <Title>{optionSelected.title}</Title>
             <Description>
-              {option?.description}
+              {optionSelected.description}
             </Description>
           </MainCard>
           
           <Footer>
-          <FlatList 
-                data={options} 
-                keyExtractor={item => String(item.id)}
+          <FlatList
+                data={homeOptions} 
+                keyExtractor={(item) => item.key}
                 horizontal
-                renderItem={({ item }) => {
-                  return (
+                renderItem={({ item }) => (
                     <Button
                       title={item.title}
-                      onPress={() => {}}
+                      onPress={() => handleOptionSelected(item)}
+                      isActive={optionSelected.key === item.key} 
+                   /*    isActive={true} */
                     />
-                  );
-                }
-                }
+                  )}
               />
-
           </Footer>
         </Content>
       </ImageBackground>
