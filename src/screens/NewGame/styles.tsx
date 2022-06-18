@@ -11,9 +11,6 @@ export const Wrapper = styled.View`
   flex-direction: row;
 `;
 
-
-
-
 export const LeftSide = styled.View`
   width: 283px;
   height: 100%;
@@ -34,19 +31,26 @@ export const Focused = styled.View`
 `;
 
 export const SelectedPlayer = styled.View`
-  height: 125px;
+  height: 70px;
+  width: 100%;
+  margin-top: 40px;
   margin-bottom: 15px;
   flex-direction: row;
+  background-color: ${({ theme }) => theme.colors.light_01};
+  justify-content: space-between;
+  padding-right: 5px;
 `;
 
-export const ImagePlayer = styled.View`
+export const ImagePlayer = styled.Image`
   height: 125px;
   width: 125px;
-  background-color: blueviolet;
+  margin-top: -40px;
+
 `;
 
 export const BioPlayer = styled.View`
  align-items: flex-end;
+ margin-top: -40px;
 `;
 
 export const Name = styled.View`
@@ -74,7 +78,8 @@ export const BioInfo = styled.Text`
 
 
 export const TeamContent = styled.View`
-background-color: rgba(255, 255, 255, .75)
+  background-color: rgba(255, 255, 255, .75);
+  margin-top: 10px;
 /*   background-color:  ${({ theme }) => theme.colors.light_background_main};
   opacity: .75; */
 `;
@@ -116,12 +121,6 @@ export const Score = styled.Text`
   color:  ${({ theme }) => theme.colors.dark_text};
   font-family: ${({ theme }) => theme.fonts.secondary_500};
   font-size: 32px;
-`;
-
-export const PlayersList = styled.ScrollView`
-  padding-left: 12px;
-  padding-right: 12px;
-  height: 450px;
 `;
 
 

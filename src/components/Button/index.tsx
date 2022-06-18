@@ -22,8 +22,8 @@ export function Button({
     <Container
       onPress={onPress}
       enabled={enabled}
-      style={{ opacity: enabled === false  ? .5 : 1}}
       isActive={isActive}
+      style={{ opacity: enabled === false  ? .5 : 1}}
     >
       <Title isActive={isActive}>{title}</Title>
     </Container>

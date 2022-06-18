@@ -1,4 +1,5 @@
 import React from 'react';
+import { RectButtonProps } from 'react-native-gesture-handler';
 
 import {
   Container,
@@ -10,12 +11,13 @@ import {
   Goal,
 } from './styles';
 
-interface Props {
+interface Props extends RectButtonProps{
   position: string;
   name: string;
   yellowCard?: string;
   redCard?: string;
   goal?: string;
+  isActive: boolean;
 }
 
 export function PlayerOnGame({
@@ -23,10 +25,17 @@ export function PlayerOnGame({
   name,
   yellowCard,
   redCard,
-  goal
+  goal,
+  onPress,
+  isActive,
+  enabled = true,
 }: Props){
   return (
-    <Container>
+    <Container
+      onPress={onPress}
+      isActive={isActive}
+      style={{ opacity: enabled === false ? .5 : 1}}
+    >
       <Position>{position}</Position>
       <Name>{name}</Name>
       <GameInfos>

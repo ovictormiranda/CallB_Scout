@@ -1,36 +1,34 @@
 import React from 'react';
-import { useTheme } from 'styled-components';
 import { RectButtonProps } from 'react-native-gesture-handler';
 
 import {
   Container,
   Title
 } from './styles';
-import theme from '../../styles/theme';
+
 
 interface Props extends RectButtonProps {
   title: string;
-  color?: string;
-  textColor?: string;
+  isActive: boolean;
+  isPositive: boolean;
 }
 
 export function ActionButton({
   title,
-  color,
-  textColor,
   onPress,
+  isActive,
+  isPositive,
   enabled = true,
 }: Props){
   return (
     <Container
-      color={color ? color : theme.colors.dark_background}
       onPress={onPress}
       enabled={enabled}
+      isActive={isActive}
+      isPositive={isPositive}
       style={{ opacity: enabled === false  ? .5 : 1}}
     >
-      <Title
-        textColor={textColor ? textColor : theme.colors.light_text}
-      >{title}</Title>
+      <Title isActive={isActive}>{title}</Title>
     </Container>
   );
 }

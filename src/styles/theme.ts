@@ -9,10 +9,15 @@ export default {
     light_text: '#FFFFFF',
     light_background_header: '#EAEAEA',
     light_background_main: '#F5F5F5',
+
     light_background: '#C4C4C4',
 
     dark_background: '#1F212C',
     dark_text: '#000000',
+
+    transparent: 'rgba(255, 255, 255, 0)',
+    light_01: 'rgba(245, 245, 245, .9)',
+    success_transparent: 'rgba(217, 250, 84, .5)'
   },
 
   fonts: {

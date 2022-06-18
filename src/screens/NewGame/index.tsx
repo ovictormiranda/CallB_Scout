@@ -12,6 +12,7 @@ import {
   Content,
   Focused,
   
+  BackgroundPlayer,
   SelectedPlayer,
   ImagePlayer,
   BioPlayer,
@@ -61,21 +62,59 @@ import { PlayerOnGame } from '../../components/PlayerOnGame';
 import { ActionButton } from '../../components/ActionButton';
 import { FlatList } from 'react-native-gesture-handler';
 
+import { positiveActions, negativeActions } from '../../Utils/actions';
+import { basicPlayers } from '../../Utils/basicPlayers';
+
+console.log(basicPlayers.length)
 interface Action {
   id: number;
   xPosition: number;
   yPosition: number;
 }
 
-export function NewGame() {
+interface PosOrNeg {   //positive or negative option
+  key: string;
+  name: string;
+}
 
+interface PlayerProps {
+  id: string;
+  bioInfo: {
+    name: string;
+    firstName: string;
+    lastName: string;
+    height: string;
+    weight: string;
+    nationality: string;
+    birthDate: string;
+    foot: string;
+    picture: string;
+  },
+  team: string;
+  position: [],
+  positionInitials: string;
+}
+
+export function NewGame({ action }: PosOrNeg) {
   const [locationX, setLocationX] = useState(0);
   const [locationY, setLocationY] = useState(0);
+  
+  const [actions, setActions] = useState<Action[]>([]); // to get coordinates on screen
+  const [actionSelected, setActionSelected] = useState({}); // to know if is a positive or negative action
+  
+  const [playerSelected, setPlayerSeleted] = useState<PlayerProps>(basicPlayers[0]);
 
-  const [actions, setActions] = useState<Action[]>([]);
+  function handlePlayerSelected(player: PlayerProps) {
+    console.log(player);
+    setPlayerSeleted(player)
+  }
+
+  function handleActionSelected(action: PosOrNeg) {
+    console.log(action);
+    setActionSelected(action);
+  }
 
   function handleNewAction(locationX: any, locationY: any) {
-    
     const newAction = {
       id: new Date().getTime(),
       xPosition: locationX,
@@ -86,33 +125,6 @@ export function NewGame() {
     console.log(actions);
   }
 
-
-  const columns = 5;
-  const dataPositive = [
-    { id: '00', name: 'SHORT PASS' },
-    { id: '01', name: 'KICK', color: '#D9FA54', textColor:'#1F212C' },
-    { id: '02', name: 'CORNER KICK' },
-    { id: '03', name: 'CROSS' },
-    { id: '04', name: 'FOUL' },
-    { id: '06', name: 'TACKLE' },
-    { id: '07', name: 'STEAL THE BALL' },
-    { id: '08', name: 'PASS BETWEEN LINES' },
-    { id: '09', name: '1st BALL' },
-    { id: '10', name: '2nd BALL' },
-  ]
-
-  const dataNegative = [
-    { id: '00', name: 'SHORT PASS' },
-    { id: '01', name: 'KICK' },
-    { id: '02', name: 'CORNER KICK' },
-    { id: '03', name: 'CROSS' },
-    { id: '04', name: 'FOUL' },
-    { id: '06', name: 'TACKLE' },
-    { id: '07', name: 'LOOSE BALL' },
-    { id: '08', name: 'PASS BETWEEN LINES' },
-    { id: '09', name: '1st BALL' },
-    { id: '10', name: '2nd BALL' },
-  ]
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: (event, gestureState) => true,
@@ -143,18 +155,16 @@ export function NewGame() {
             <Content>
               <Focused>
                 <SelectedPlayer>
-                  <ImagePlayer>
-
-                  </ImagePlayer>
+                    <ImagePlayer source={{ uri: playerSelected.bioInfo.picture }} resizeMode="contain"/>
                   <BioPlayer>
                     <Name>
-                      <FirstName>Karim</FirstName>
-                      <LastName>Benzema</LastName>
+                      <FirstName>{playerSelected.bioInfo.firstName}</FirstName>
+                      <LastName>{playerSelected.bioInfo.lastName}</LastName>
                     </Name>
                     <BioInfo>
                       34 years old{'\n'}
-                      181 cm{'\n'}
-                      Right Foot
+                      {playerSelected.bioInfo.height} cm{'\n'}
+                      {playerSelected.bioInfo.foot} Foot
                     </BioInfo>
                   </BioPlayer>
                 </SelectedPlayer>
@@ -166,22 +176,20 @@ export function NewGame() {
                       <Score>1</Score>
                     </WrapperNameScore>
                   </TeamInfo>
-                  <PlayersList>
-                    <PlayerOnGame position='GK' name='Courtois'/>
-                    <PlayerOnGame position='RB' name='Carvajal'/>
-                    <PlayerOnGame position='DF' name='Eder Militão'/>
-                    <PlayerOnGame position='DF' name='Alaba'/>
-                    <PlayerOnGame position='LB' name='Marcelo'/>
-                    <PlayerOnGame position='MD' name='Casemiro'/>
-                    <PlayerOnGame position='MD' name='Kroos'/>
-                    <PlayerOnGame position='MA' name='Modric'/>
-                    <PlayerOnGame position='DF' name='Rodrygo'/>
-                    <PlayerOnGame position='LW' name='Vini Jr'/>
-                    <PlayerOnGame position='RW' name='Benzema'/>
-                    <PlayerOnGame position='MD' name='Camavinga'/>
-                    <PlayerOnGame position='RW' name='G. Bale'/>
-                    <PlayerOnGame position='RW' name='E. Hazard'/>
-                  </PlayersList>
+                  <FlatList 
+                    style={styles.playerList}
+                    data={basicPlayers}
+                    keyExtractor={( item ) => item.id}
+                    renderItem={({ item }) => (
+                      <PlayerOnGame 
+                        position={item.positionInitials} 
+                        name={item.bioInfo.name}
+                        onPress={() => handlePlayerSelected(item)}
+                        isActive={playerSelected.id == item.id}
+                      />
+                    )}
+                  />
+                  
                 </TeamContent>
               </Focused>
             </Content>
@@ -199,12 +207,17 @@ export function NewGame() {
           <Middle>
             <PositiveActions>
               <FlatList 
-                data={dataPositive} 
-                keyExtractor={item => item.id}
-                numColumns={columns}
+                data={positiveActions} 
+                keyExtractor={item => item.key}
+                numColumns={5}
                 renderItem={({ item }) => {
                   return (
-                    <ActionButton title={item.name} color={item.color} textColor={item.textColor}/>
+                    <ActionButton 
+                      title={item.name} 
+                      onPress={() => handleActionSelected(item)}
+                      isActive={actionSelected.key === item.key}
+                      isPositive
+                    />
                   );
                 }
                 }
@@ -256,12 +269,17 @@ export function NewGame() {
             </FieldWrapper>
             <NegativeActions>
             <FlatList 
-                data={dataNegative} 
-                keyExtractor={item => item.id}
-                numColumns={columns}
+                data={negativeActions} 
+                keyExtractor={item => item.key}
+                numColumns={5}
                 renderItem={({ item }) => {
                   return (
-                    <ActionButton title={item.name} color={item.color} textColor={item.textColor}/>
+                    <ActionButton 
+                      title={item.name}
+                      onPress={() => handleActionSelected(item)}
+                      isActive={actionSelected.key === item.key}
+                      isPositive={false}
+                    />
                   );
                 }
                 }
@@ -291,5 +309,8 @@ const styles = StyleSheet.create({
     //position: 'absolute',
     borderRadius: 5,
     backgroundColor: '#00FF30'
+  },
+  playerList: {
+    height: 450,
   }
 })

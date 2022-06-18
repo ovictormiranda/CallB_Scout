@@ -69,7 +69,6 @@ export function Home({ option }: Props ){
                       title={item.title}
                       onPress={() => handleOptionSelected(item)}
                       isActive={optionSelected.key === item.key} 
-                   /*    isActive={true} */
                     />
                   )}
               />
