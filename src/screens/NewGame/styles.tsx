@@ -171,7 +171,7 @@ export const FourthZone = styled.View`
 export const FourA = styled.View`
   height: 100%;
   width: 132px;
-  background-color: #ffffff11;
+  /* background-color: #37319667; */
   flex-direction: row;
 `;
 
@@ -179,7 +179,7 @@ export const FourB = styled.View`
   height: 100%;
   width: 141px;
   margin-left: 4px;
-  background-color: #ffffff11;
+ /*  background-color: #ffffff11; */
   flex-direction: row;
 `;
 
@@ -187,7 +187,7 @@ export const FourC = styled.View`
   height: 100%;
   width: 130px;
   margin-left: 4px;
-  background-color: #ffffff11;
+/*   background-color: #ffffff11; */
   flex-direction: row;
 `;
 
@@ -201,7 +201,7 @@ export const ThirdZone = styled.View`
   export const ThreeA = styled.View`
   height: 100%;
   width: 132px;
-  background-color: #ffffff11;
+ /*  background-color: #ffffff11; */
   flex-direction: row;
   `;
 
@@ -209,7 +209,7 @@ export const ThirdZone = styled.View`
     height: 100%;
     width: 141px;
     margin-left: 4px;
-    background-color: #ffffff11;
+   /*  background-color: #ffffff11; */
     flex-direction: row;
   `;
 
@@ -217,7 +217,7 @@ export const ThirdZone = styled.View`
     height: 100%;
     width: 130px;
     margin-left: 4px;
-    background-color: #ffffff11;
+ /*    background-color: #ffffff11; */
     flex-direction: row;
   `;
 
@@ -231,7 +231,7 @@ export const ThirdZone = styled.View`
   export const TwoA = styled.View`
     height: 100%;
     width: 132px;
-    background-color: #ffffff11;
+ /*    background-color: #ffffff11; */
     flex-direction: row;
   `;
 
@@ -239,7 +239,7 @@ export const ThirdZone = styled.View`
     height: 100%;
     width: 141px;
     margin-left: 4px;
-    background-color: #ffffff11;
+   /*  background-color: #ffffff11; */
     flex-direction: row;
   `;
 
@@ -247,7 +247,7 @@ export const ThirdZone = styled.View`
     height: 100%;
     width: 130px;
     margin-left: 4px;
-    background-color: #ffffff11;
+    /* background-color: #ffffff11; */
     flex-direction: row;
   `;
 
@@ -261,7 +261,7 @@ export const ThirdZone = styled.View`
   export const OneA = styled.View`
     height: 100%;
     width: 132px;
-    background-color: #ffffff11;
+    /* background-color: #ffffff11; */
     flex-direction: row;
   `;
 
@@ -269,7 +269,7 @@ export const ThirdZone = styled.View`
     height: 100%;
     width: 141px;
     margin-left: 4px;
-    background-color: #ffffff11;
+    /* background-color: #ffffff11; */
     flex-direction: row;
   `;
 
@@ -277,7 +277,7 @@ export const ThirdZone = styled.View`
     height: 100%;
     width: 130px;
     margin-left: 4px;
-    background-color: #ffffff11;
+    /* background-color: #ffffff11; */
     flex-direction: row;
   `;
 

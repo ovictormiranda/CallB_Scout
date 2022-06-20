@@ -3,19 +3,19 @@ export const homeOptions = [
     key: "history",
     title: "HISTORY",
     description: "Here you can find out all,\nmatches you've been done ...",
-    goTo: "NewGame",
+    goTo: "NewGame2",
   },
   { 
     key: "new_game",
     title: "NEW GAME",
     description: "Select teams and lineups,\nadd details to the match and...\n\n\ngo to the game!",
-    goTo: "NewGame2",
+    goTo: "NewGame",
   },
   { 
     key: "analytics",
     title: "ANALYTICS",
     description: "matchs, teams, players,\n numbers...",
-    goTo: "NewGame",
+    goTo: "NewGame2",
   },
   { 
     key: "edit",

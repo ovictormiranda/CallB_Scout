@@ -101,12 +101,12 @@ export function NewGame2(){
     },
   });
 
-  useEffect(() => {
+/*   useEffect(() => {
     const allAction = actions.map(( item ) => {
       <View key={item.id} style={[ styles.pointStyle, { top: item.xPosition, left: item.yPosition } ]}/>
     });
 
-  },[setActions]);
+  },[setActions]); */
 
   return (
     <Container>
@@ -137,7 +137,7 @@ export function NewGame2(){
             {/* <Text style={[{ top: (locationY - 15), left: (locationX)}]}> X: {locationX}, Y: {locationY}  </Text> */}
             {/* <View style={[ styles.pointStyle, { top: 115.98, left: 259.98 } ]}/> */}
 
-            { 
+  {/*           { 
                actions.map(( item ) => {
                 return (
                   <View key={item.id}>
@@ -146,11 +146,9 @@ export function NewGame2(){
                   </View>
                 );
               })
-            }
-
-           {/*  <View style={[ styles.pointStyle, { top: locationY, left: locationX } ]}/> */}
-            
-            
+            } */}
+            <Text style={[{ top: (locationY - 15), left: (locationX)}]}> X: {locationX}, Y: {locationY}  </Text>
+            <View style={[ styles.pointStyle, { top: locationY, left: locationX } ]}/>
             <View style={{ flex: 1, backgroundColor: 'transparent'}} {...panResponder.panHandlers}/>
             
           </LeftSide>

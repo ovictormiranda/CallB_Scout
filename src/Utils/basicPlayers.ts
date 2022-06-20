@@ -15,7 +15,33 @@ export const basicPlayers = [
     },
     team: "Real Madrid",
     position: ["GoalKeeper"],
-    positionInitials: "GK"
+    positionInitials: "GK",
+    scouts: {
+      postive: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        stolenBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      },
+      negatives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        looseBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      }
+    }
   },
   {
     id: "02",
@@ -32,7 +58,33 @@ export const basicPlayers = [
     },
     team: "Real Madrid",
     position: ["Right-back"],
-    positionInitials: "RB"
+    positionInitials: "RB",
+    scouts: {
+      postive: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        stolenBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      },
+      negatives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        looseBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      }
+    }
   },
   {
     id: "03",
@@ -49,7 +101,33 @@ export const basicPlayers = [
     },
     team: "Real Madrid",
     position: ["Defender", "Right-back"],
-    positionInitials: "DF"
+    positionInitials: "DF",
+    scouts: {
+      postive: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        stolenBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      },
+      negatives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        looseBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      }
+    }
   },
   {
     id: "04",
@@ -66,7 +144,33 @@ export const basicPlayers = [
     },
     team: "Real Madrid",
     position: ["Defender", "Left-Back"],
-    positionInitials: "DF"
+    positionInitials: "DF",
+    scouts: {
+      postive: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        stolenBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      },
+      negatives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        looseBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      }
+    }
   },
   {
     id: "05",
@@ -83,7 +187,33 @@ export const basicPlayers = [
     },
     team: "Real Madrid",
     position: ["Defensive Midfilder"],
-    positionInitials: "DM"
+    positionInitials: "DM",
+    scouts: {
+      postive: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        stolenBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      },
+      negatives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        looseBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      }
+    }
   },
   {
     id: "06",
@@ -100,7 +230,33 @@ export const basicPlayers = [
     },
     team: "Real Madrid",
     position: ["Defender", "Defensive Midfilder"],
-    positionInitials: "MD"
+    positionInitials: "MD",
+    scouts: {
+      postive: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        stolenBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      },
+      negatives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        looseBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      }
+    }
   },
   {
     id: "07",
@@ -117,7 +273,33 @@ export const basicPlayers = [
     },
     team: "Real Madrid",
     position: ["Defender", "Defensive Midfilder"],
-    positionInitials: "MD"
+    positionInitials: "MD",
+    scouts: {
+      postive: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        stolenBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      },
+      negatives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        looseBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      }
+    }
   },
   {
     id: "08",
@@ -134,6 +316,70 @@ export const basicPlayers = [
     },
     team: "Real Madrid",
     position: ["Defender", "Defensive Midfilder"],
-    positionInitials: "MD"
+    positionInitials: "MD",
+    scouts: {
+      postive: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        stolenBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      },
+      negatives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        looseBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      }
+    }
   },
 ]
+
+
+          //{
+            //id: uuidv4(),
+            //matchId: "idFromEspecificGame",
+            //positionX: "73.98",
+            //positionY: "28.71"  
+            //foigol? true  
+            //levoucartãoamarelo? false
+            //levoucartaovermelhoe? false
+            //foiassistencia? false
+          //},
+
+
+/*           goalScored: [
+            {
+              machId: "idFromEspecificGame",
+              scoutId: "idFromSomeKickResultingInGoal"
+            }
+          ],
+          assistance: [
+            {
+              machId: "idFromEspecificGame",
+              scoutId: "idFromSomePassResultingInGoal"
+            }
+          ],
+          yellowCard: [
+            {
+              machId: "idFromEspecificGame",
+              scoutId: "idFromSomeActionResultingInGoal"
+            }
+          ],
+          redCard: [
+            {
+              machId: "idFromEspecificGame",
+              scoutId: "idFromSomeActionResultingInGoal"
+            }
+          ], */
