@@ -12,7 +12,7 @@ import {
   Content,
   Focused,
   
-  BackgroundPlayer,
+  ActionPoint,
   SelectedPlayer,
   ImagePlayer,
   BioPlayer,
@@ -27,7 +27,6 @@ import {
   WrapperNameScore,
   TeamName,
   Score,
-  PlayersList,
   Footer,
 
   Middle,
@@ -73,10 +72,20 @@ interface Action {
   yPosition: number;
 }
 
+interface TypeAction {   //positive or negative option
+  key: string;
+  nonId: string;
+  name: string;
+  type: string;
+}
+
 interface PosOrNeg {   //positive or negative option
   key: string;
+  nonId: string;
   name: string;
+  type: string;
 }
+
 
 interface PlayerProps {
   id: string;
@@ -94,10 +103,42 @@ interface PlayerProps {
   team: string;
   position: [],
   positionInitials: string;
+  scouts: {
+    positives: {
+      shortPass: any[],
+      kick: any[],
+      cornerKick: any[],
+      cross: any[],
+      foul: any[],
+      tackle: any[],
+      stolenBall: any[],
+      passBLines: any[],
+      firstBall: any[],
+      secondBall: any[],
+    },
+    negatives: {
+      shortPass: any[],
+      kick: any[],
+      cornerKick: any[],
+      cross: any[],
+      foul: any[],
+      tackle: any[],
+      looseBall: any[],
+      passBLines: any[],
+      firstBall: any[],
+      secondBall: any[],
+    }
+  }
 }
 
 export function NewGame({ action }: PosOrNeg) {
   const theme = useTheme();
+  
+
+  const [actionSelected, setActionSelected] = useState<TypeAction>({key: '', nonId: '', name: '', type: ''}); // to know if is a positive or negative action
+  
+  const [playerSelected, setPlayerSeleted] = useState<PlayerProps>(basicPlayers[0]);
+
   const [locationXFourA, setLocationXFourA] = useState(0); //To plot the actual click on screen
   const [locationYFourA, setLocationYFourA] = useState(0);
 
@@ -151,18 +192,110 @@ export function NewGame({ action }: PosOrNeg) {
   const [actionsOneB, setActionsOneB] = useState<Action[]>([]);
   const [actionsOneC, setActionsOneC] = useState<Action[]>([]);
   
+  const [ actionByPlayer, setActionByPlayer ] = useState('');
+  //CAPUTAR JOGADOR SELECIONADO E A ACÇÃO SELECIONADA E FILTRAR
+  //CLICAR NOS JOGADOR E NA AÇÃO E SÓ APARECER AS BOLINHAS DESSA DETERMINADA AÇÃO DESTE JOGADOR
   
-  function handleNewActionFourA(locationXFourA: any, locationYFourA: any) {
-    const newAction = {
-      id: new Date().getTime(),
-      zone: 'FourA',
-      xPosition: locationXFourA,
-      yPosition: locationYFourA
-    }
-    
-    setActionsFourA([...actionsFourA, newAction]);
-    console.log(actionsFourA);
+
+  
+  function handleActionSelected(action: TypeAction) {
+    console.log(action);
+    setActionSelected(action);
   }
+  
+  function handlePlayerSelected(player: PlayerProps) {
+    
+    setPlayerSeleted(player)
+    console.log(player);
+  }
+
+    function handleNewActionFourA(
+      locationXFourA: any,
+      locationYFourA: any, 
+      playerSelected: PlayerProps,
+      actionSelected: TypeAction 
+      ) {
+        
+      const newAction = {
+        id: new Date().getTime(),
+        zone: 'FourA',
+        xPosition: locationXFourA,
+        yPosition: locationYFourA,
+        type: actionSelected.type,
+        key: actionSelected.key 
+      }    
+      
+      if (newAction.xPosition && newAction.yPosition !== 0 ) {
+        switch (actionSelected.type) {
+          case 'positive':
+            switch (actionSelected.key) {
+              case 'Posi_shortPass':
+                playerSelected.scouts.positives.shortPass.push(newAction)
+                //setActionByPlayer('playerSelected.scouts.positives.shortPass')
+                const player = playerSelected;
+                setPlayerSeleted(player);
+                console.log('ta aqui');
+                console.log(playerSelected);
+                console.log('e aqui');
+                break;
+                
+              case 'Posi_kick':
+                playerSelected.scouts.positives.kick.push(newAction)
+                console.log(playerSelected);
+                break;
+                  
+              case 'Posi_cornerKick':
+                playerSelected.scouts.positives.cornerKick.push(newAction)
+                console.log(playerSelected);
+                break;
+                    
+              case 'Posi_cross':
+                playerSelected.scouts.positives.cross.push(newAction)
+                console.log(playerSelected);
+                break;
+                      
+              case 'Posi_foul':
+                playerSelected.scouts.positives.foul.push(newAction)
+                console.log(playerSelected);
+                break;
+
+              case 'Posi_tackle':
+                playerSelected.scouts.positives.tackle.push(newAction)
+                console.log(playerSelected);
+                break;
+                    
+              case 'Posi_stolenBall':
+                playerSelected.scouts.positives.stolenBall.push(newAction)
+                console.log(playerSelected);
+                break;
+                      
+              case 'Posi_passBetweenLines':
+                playerSelected.scouts.positives.passBLines.push(newAction)
+                console.log(playerSelected);
+                break;
+                        
+              case 'Posi_firstBall':
+                playerSelected.scouts.positives.firstBall.push(newAction)
+                console.log(playerSelected);
+                break;
+                  
+              case 'Posi_secondBall':
+                playerSelected.scouts.positives.secondBall.push(newAction)
+                console.log(playerSelected);
+                break;
+            }
+            break;
+                
+          case 'negative':
+            break;
+        }
+      }
+    }        
+
+  
+
+    
+
 
   function handleNewActionFourB(locationXFourB: any, locationYFourB: any) {
     const newAction = {
@@ -172,7 +305,10 @@ export function NewGame({ action }: PosOrNeg) {
       yPosition: locationYFourB
     }
     
-    setActionsFourB([...actionsFourB, newAction]);
+    newAction.xPosition && newAction.yPosition !== 0 
+    ? setActionsFourB([...actionsFourB, newAction]) 
+    : console.log('esse não');
+
     console.log(actionsFourB);
   }
 
@@ -184,7 +320,10 @@ export function NewGame({ action }: PosOrNeg) {
       yPosition: locationYFourC
     }
     
-    setActionsFourC([...actionsFourC, newAction]);
+    newAction.xPosition && newAction.yPosition !== 0 
+    ? setActionsFourC([...actionsFourC, newAction])
+    : console.log('esse não');
+
     console.log(actionsFourC);
   }
 
@@ -198,7 +337,10 @@ export function NewGame({ action }: PosOrNeg) {
       yPosition: locationYThreeA
     }
     
-    setActionsThreeA([...actionsThreeA, newAction]);
+    newAction.xPosition && newAction.yPosition !== 0 
+    ? setActionsThreeA([...actionsThreeA, newAction])
+    : console.log('esse não');
+
     console.log(actionsThreeA);
   }
 
@@ -210,7 +352,9 @@ export function NewGame({ action }: PosOrNeg) {
       yPosition: locationYThreeB
     }
     
-    setActionsThreeB([...actionsThreeB, newAction]);
+    newAction.xPosition && newAction.yPosition !== 0 
+    ? setActionsThreeB([...actionsThreeB, newAction])
+    : console.log('esse não');
     console.log(actionsThreeB);
   }
 
@@ -222,7 +366,10 @@ export function NewGame({ action }: PosOrNeg) {
       yPosition: locationYThreeC
     }
     
-    setActionsThreeC([...actionsThreeC, newAction]);
+    newAction.xPosition && newAction.yPosition !== 0 
+    ? setActionsThreeC([...actionsThreeC, newAction])
+    : console.log('esse não');
+
     console.log(actionsThreeC);
   }
 
@@ -236,7 +383,10 @@ export function NewGame({ action }: PosOrNeg) {
       yPosition: locationYTwoA
     }
     
-    setActionsTwoA([...actionsTwoA, newAction]);
+    newAction.xPosition && newAction.yPosition !== 0 
+    ? setActionsTwoA([...actionsTwoA, newAction])
+    : console.log('esse não');
+
     console.log(actionsTwoA);
   }
 
@@ -248,7 +398,9 @@ export function NewGame({ action }: PosOrNeg) {
       yPosition: locationYTwoB
     }
     
-    setActionsTwoB([...actionsTwoB, newAction]);
+    newAction.xPosition && newAction.yPosition !== 0 
+    ? setActionsTwoB([...actionsTwoB, newAction])
+    : console.log('esse não');
     console.log(actionsTwoB);
   }
 
@@ -260,7 +412,10 @@ export function NewGame({ action }: PosOrNeg) {
       yPosition: locationYTwoC
     }
     
-    setActionsTwoC([...actionsTwoC, newAction]);
+    newAction.xPosition && newAction.yPosition !== 0 
+    ? setActionsTwoC([...actionsTwoC, newAction])
+    : console.log('esse não');
+
     console.log(actionsTwoC);
   }
 
@@ -274,7 +429,10 @@ export function NewGame({ action }: PosOrNeg) {
       yPosition: locationYOneA
     }
     
-    setActionsOneA([...actionsOneA, newAction]);
+    newAction.xPosition && newAction.yPosition !== 0 
+    ? setActionsOneA([...actionsOneA, newAction])
+    : console.log('esse não');
+
     console.log(actionsOneA);
   }
 
@@ -286,7 +444,10 @@ export function NewGame({ action }: PosOrNeg) {
       yPosition: locationYOneB
     }
     
-    setActionsOneB([...actionsOneB, newAction]);
+    newAction.xPosition && newAction.yPosition !== 0 
+    ? setActionsOneB([...actionsOneB, newAction])
+    : console.log('esse não');
+
     console.log(actionsOneB);
   }
 
@@ -298,7 +459,10 @@ export function NewGame({ action }: PosOrNeg) {
       yPosition: locationYOneC
     }
     
-    setActionsOneC([...actionsOneC, newAction]);
+    newAction.xPosition && newAction.yPosition !== 0 
+    ? setActionsOneC([...actionsOneC, newAction])
+    : console.log('esse não');
+
     console.log(actionsOneC);
   }
 
@@ -316,7 +480,7 @@ export function NewGame({ action }: PosOrNeg) {
     onPanResponderRelease: (event, gestureState) => {
       setLocationXFourA(parseFloat(event.nativeEvent.locationX.toFixed(2)));
       setLocationYFourA(parseFloat(event.nativeEvent.locationY.toFixed(2)));
-      handleNewActionFourA(locationXFourA, locationYFourA)
+      handleNewActionFourA(locationXFourA, locationYFourA, playerSelected, actionSelected)
     },
   });
   
@@ -452,7 +616,6 @@ export function NewGame({ action }: PosOrNeg) {
   });
 
 
-
   const panResponderOneA = PanResponder.create({
     onStartShouldSetPanResponder: (event, gestureState) => true,
     onStartShouldSetPanResponderCapture: (event, gestureState) => true,
@@ -502,21 +665,13 @@ export function NewGame({ action }: PosOrNeg) {
   });
 
 
+  
 
   
-  const [actionSelected, setActionSelected] = useState({}); // to know if is a positive or negative action
-  
-  const [playerSelected, setPlayerSeleted] = useState<PlayerProps>(basicPlayers[0]);
-  
-  function handlePlayerSelected(player: PlayerProps) {
-    console.log(player);
-    setPlayerSeleted(player)
-  }
 
-  function handleActionSelected(action: PosOrNeg) {
-    console.log(action);
-    setActionSelected(action);
-  }
+
+
+
   return (
     <Container>
       <ImageBackground 
@@ -555,7 +710,7 @@ export function NewGame({ action }: PosOrNeg) {
                     style={styles.playerList}
                     data={basicPlayers}
                     keyExtractor={( item ) => item.id}
-                    renderItem={({ item }) => (
+                    renderItem={({ item }) => ( (item.team === 'Real Madrid') &&
                       <PlayerOnGame 
                         position={item.positionInitials} 
                         name={item.bioInfo.name}
@@ -612,23 +767,31 @@ export function NewGame({ action }: PosOrNeg) {
                       <View style={{height: '100%', width: '100%', backgroundColor: 'transparent'}} {...panResponderFourA.panHandlers}>
                         <View style={[ styles.pointStyle, { top: locationYFourA, left: locationXFourA } ]}/> 
                           { 
-                            actionsFourA.map( item  => (
+                            playerSelected.scouts.positives.shortPass.map(item  => (
                               <View key={item.id}>
-                                  <View style={[ styles.pointStyle, { top: item.yPosition, left: item.xPosition } ]}/>
-                                </View>
-                              )
-                            )
+                                <ActionPoint 
+                                  style={{ top: item.yPosition, left: item.xPosition }}
+                                  isPositive={actionSelected.type === 'positive' ? true : false}
+                                />
+                              </View>
+                            ))
                           }
                       </View>
                     </FourA>
 
                     <FourB>
                       <View style={{height: '100%', width: '100%', backgroundColor: 'transparent'}} {...panResponderFourB.panHandlers}>
-                        <View style={[ styles.pointStyle, { top: locationYFourB, left: locationXFourB } ]}/> 
+                          <ActionPoint
+                           style={{ top: locationYFourB, left: locationXFourB }}
+                           isPositive={actionSelected.type === 'positive' ? true : false} 
+                          /> 
                           { 
                             actionsFourB.map( item  => (
                               <View key={item.id}>
-                                  <View style={[ styles.pointStyle, { top: item.yPosition, left: item.xPosition } ]}/>
+                                  <ActionPoint                                   
+                                    style={{ top: item.yPosition, left: item.xPosition }}
+                                    isPositive={actionSelected.type === 'positive' ? true : false}
+                                  />
                                 </View>
                               )
                             )
@@ -654,7 +817,7 @@ export function NewGame({ action }: PosOrNeg) {
                     <ThreeA>
                       <View style={{height: '100%', width: '100%', backgroundColor: 'transparent'}} {...panResponderThreeA.panHandlers}>
                           <View style={[ styles.pointStyle, { top: locationYThreeA, left: locationXThreeA } ]}/> 
-                            { 
+                            {
                               actionsThreeA.map( item  => (
                                 <View key={item.id}>
                                     <View style={[ styles.pointStyle, { top: item.yPosition, left: item.xPosition } ]}/>
@@ -748,12 +911,18 @@ export function NewGame({ action }: PosOrNeg) {
                     </OneA>
                     <OneB>
                       <View style={{height: '100%', width: '100%', backgroundColor: 'transparent'}} {...panResponderOneB.panHandlers}>
-                        <View style={[ styles.pointStyle, { top: locationYOneB, left: locationXOneB } ]}/> 
+                        <ActionPoint 
+                          style={{ top: locationYOneB, left: locationXOneB }}
+                          isPositive={actionSelected.type === 'positive' ? true : false}
+                        /> 
                           { 
                             actionsOneB.map( item  => (
                               <View key={item.id}>
-                                  <View style={[ styles.pointStyle, { top: item.yPosition, left: item.xPosition } ]}/>
-                                </View>
+                                <ActionPoint 
+                                  style={{ top: item.yPosition, left: item.xPosition }}
+                                  isPositive={actionSelected.type === 'positive' ? true : false}
+                                />
+                              </View>
                               )
                             )
                           }

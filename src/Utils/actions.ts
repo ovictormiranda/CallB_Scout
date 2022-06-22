@@ -2,28 +2,28 @@
 // NA_ = negativeAction
 
 export const positiveActions = [
-  { key: 'PA_short_pass', name: 'SHORT PASS' },
-  { key: 'PA_kick', name: 'KICK' },
-  { key: 'PA_corner_kick', name: 'CORNER KICK' },
-  { key: 'PA_cross', name: 'CROSS' },
-  { key: 'PA_foul', name: 'FOUL' },
-  { key: 'PA_tackle', name: 'TACKLE' },
-  { key: 'PA_stolen_ball', name: 'STOLEN BALL' },
-  { key: 'PA_pass_between_lines', name: 'PASS BETWEEN LINES' },
-  { key: 'PA_first_ball', name: '1st BALL' },
-  { key: 'PA_second_ball', name: '2nd BALL' },
+  { key: 'Posi_shortPass', nonId: 'shortPass', name: 'SHORT PASS', type: 'positive' },
+  { key: 'Posi_kick', nonId: 'kick', name: 'KICK', type: 'positive' },
+  { key: 'Posi_cornerKick', nonId: 'cornerKick', name: 'CORNER KICK', type: 'positive' },
+  { key: 'Posi_cross', nonId: 'cross', name: 'CROSS', type: 'positive' },
+  { key: 'Posi_foul', nonId: 'foul', name: 'FOUL', type: 'positive' },
+  { key: 'Posi_tackle', nonId: 'tackle', name: 'TACKLE', type: 'positive' },
+  { key: 'Posi_stolenBall', nonId: 'stolenBall', name: 'STOLEN BALL', type: 'positive' },
+  { key: 'Posi_passBetweenLines', nonId: 'passBlines', name: 'PASS BETWEEN LINES', type: 'positive' },
+  { key: 'Posi_firstBall', nonId: 'firstBall', name: '1st BALL', type: 'positive' },
+  { key: 'Posi_secondBall', nonId: 'secondBall', name: '2nd BALL', type: 'positive' },
 ]
 
 export const negativeActions = [
-  { key: 'NA_short_pass', name: 'SHORT PASS' },
-  { key: 'NA_kick', name: 'KICK' },
-  { key: 'NA_corner_kick', name: 'CORNER KICK' },
-  { key: 'NA_cross', name: 'CROSS' },
-  { key: 'NA_foul', name: 'FOUL' },
-  { key: 'NA_tackle', name: 'TACKLE' },
-  { key: 'NA_loose_ball', name: 'LOOSE BALL' },
-  { key: 'NA_pass_between_lines', name: 'PASS BETWEEN LINES' },
-  { key: 'NA_first_ball', name: '1st BALL' },
-  { key: 'NA_second_ball', name: '2nd BALL' },
+  { key: 'Nega_shortPass', nonId: 'shortPass', name: 'SHORT PASS', type: 'negative' },
+  { key: 'Nega_kick', nonId: 'kick', name: 'KICK', type: 'negative' },
+  { key: 'Nega_cornerKick', nonId: 'cornerKick', name: 'CORNER KICK', type: 'negative' },
+  { key: 'Nega_cross', nonId: 'cross', name: 'CROSS', type: 'negative' },
+  { key: 'Nega_foul', nonId: 'foul', name: 'FOUL', type: 'negative' },
+  { key: 'Nega_tackle', nonId: 'tackle', name: 'TACKLE', type: 'negative' },
+  { key: 'Nega_looseBall', nonId: 'looseBall', name: 'LOOSE BALL', type: 'negative' },
+  { key: 'Nega_passBetweenLines', nonId: 'passBlines', name: 'PASS BETWEEN LINES', type: 'negative' },
+  { key: 'Nega_firstBall', nonId: 'firstBall', name: '1st BALL', type: 'negative' },
+  { key: 'Nega_secondBall', nonId: 'secondBall', name: '2nd BALL', type: 'negative' },
 ]
 

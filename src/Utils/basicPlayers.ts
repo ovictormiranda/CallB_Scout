@@ -1,4 +1,6 @@
-
+interface Props {
+  id: string;
+}
 export const basicPlayers = [
   {
     id: "01",
@@ -146,7 +148,7 @@ export const basicPlayers = [
     position: ["Defender", "Left-Back"],
     positionInitials: "DF",
     scouts: {
-      postive: {
+      postives: {
         shortPass: [],
         kick: [],
         cornerKick: [],
@@ -314,7 +316,7 @@ export const basicPlayers = [
       foot: "Right", // Right, Left or Both
       picture: "link"
     },
-    team: "Real Madrid",
+    team: "Botafogo",
     position: ["Defender", "Defensive Midfilder"],
     positionInitials: "MD",
     scouts: {

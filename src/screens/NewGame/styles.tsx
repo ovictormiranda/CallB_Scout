@@ -1,5 +1,8 @@
 import styled from 'styled-components/native';
 
+interface Props {
+  isPositive: boolean;
+}
 
 export const Container = styled.View`
   flex: 1;
@@ -9,6 +12,15 @@ export const Wrapper = styled.View`
   width: 100%;
   height: 100%;
   flex-direction: row;
+`;
+
+export const ActionPoint = styled.View<Props>`
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  border-radius: 5px;
+  background-color: ${({ isPositive, theme }) => 
+    isPositive ? theme.colors.success : theme.colors.alert };
 `;
 
 export const LeftSide = styled.View`
@@ -308,3 +320,5 @@ export const TestBox = styled.View`
   background-color: orange;
   box-shadow: 100px 5px 5px black;
 `;
+
+
