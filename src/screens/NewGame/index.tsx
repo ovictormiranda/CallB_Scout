@@ -192,7 +192,8 @@ export function NewGame({ action }: PosOrNeg) {
   const [actionsOneB, setActionsOneB] = useState<Action[]>([]);
   const [actionsOneC, setActionsOneC] = useState<Action[]>([]);
   
-  const [ actionByPlayer, setActionByPlayer ] = useState('');
+  const [ actionByPlayer, setActionByPlayer ] = useState<any[]>([]);
+  
   //CAPUTAR JOGADOR SELECIONADO E A ACÇÃO SELECIONADA E FILTRAR
   //CLICAR NOS JOGADOR E NA AÇÃO E SÓ APARECER AS BOLINHAS DESSA DETERMINADA AÇÃO DESTE JOGADOR
   
@@ -201,6 +202,8 @@ export function NewGame({ action }: PosOrNeg) {
   function handleActionSelected(action: TypeAction) {
     console.log(action);
     setActionSelected(action);
+    
+    //handleNewActionFourA(locationXFourA, locationYFourA, playerSelected, actionSelected)
   }
   
   function handlePlayerSelected(player: PlayerProps) {
@@ -231,33 +234,33 @@ export function NewGame({ action }: PosOrNeg) {
             switch (actionSelected.key) {
               case 'Posi_shortPass':
                 playerSelected.scouts.positives.shortPass.push(newAction)
-                //setActionByPlayer('playerSelected.scouts.positives.shortPass')
                 let player = playerSelected;
-              
                 setPlayerSeleted(player);
                 console.log('ta aqui');
+                
                 console.log(playerSelected);
                 console.log('e aqui');
+                const tentei = playerSelected.scouts.positives.shortPass.map(item => item)
+                setActionByPlayer(tentei)
+                console.log(actionByPlayer)
                 break;
                 
               case 'Posi_kick':
                 playerSelected.scouts.positives.kick.push(newAction)
                 let player1 = playerSelected;
-              
                 setPlayerSeleted(player1);
-                console.log('ta aqui');
-                console.log(playerSelected);
-                console.log('e aqui');
+                
+                const tentei1 = playerSelected.scouts.positives.kick.map(item => item)
+                setActionByPlayer(tentei1)
                 break;
                   
               case 'Posi_cornerKick':
                 playerSelected.scouts.positives.cornerKick.push(newAction)
                 let player2 = playerSelected;
-              
                 setPlayerSeleted(player2);
-                console.log('ta aqui');
-                console.log(playerSelected);
-                console.log('e aqui');
+
+                const tentei2 = playerSelected.scouts.positives.cornerKick.map(item => item)
+                setActionByPlayer(tentei2)
                 break;
                     
               case 'Posi_cross':
@@ -265,9 +268,8 @@ export function NewGame({ action }: PosOrNeg) {
                 let player3 = playerSelected;
               
                 setPlayerSeleted(player3);
-                console.log('ta aqui');
-                console.log(playerSelected);
-                console.log('e aqui');
+                const tentei3 = playerSelected.scouts.positives.cross.map(item => item)
+                setActionByPlayer(tentei3)
                 break;
                       
               case 'Posi_foul':
@@ -275,9 +277,8 @@ export function NewGame({ action }: PosOrNeg) {
                 let player4 = playerSelected;
               
                 setPlayerSeleted(player4);
-                console.log('ta aqui');
-                console.log(playerSelected);
-                console.log('e aqui');
+                const tentei4 = playerSelected.scouts.positives.foul.map(item => item)
+                setActionByPlayer(tentei4)
                 break;
 
               case 'Posi_tackle':
@@ -285,9 +286,8 @@ export function NewGame({ action }: PosOrNeg) {
                 let player5 = playerSelected;
               
                 setPlayerSeleted(player5);
-                console.log('ta aqui');
-                console.log(playerSelected);
-                console.log('e aqui');
+                const tentei5 = playerSelected.scouts.positives.tackle.map(item => item)
+                setActionByPlayer(tentei5)
                 break;
                     
               case 'Posi_stolenBall':
@@ -295,9 +295,8 @@ export function NewGame({ action }: PosOrNeg) {
                 let player6 = playerSelected;
               
                 setPlayerSeleted(player6);
-                console.log('ta aqui');
-                console.log(playerSelected);
-                console.log('e aqui');
+                const tentei6 = playerSelected.scouts.positives.stolenBall.map(item => item)
+                setActionByPlayer(tentei6)
                 break;
                       
               case 'Posi_passBetweenLines':
@@ -305,9 +304,8 @@ export function NewGame({ action }: PosOrNeg) {
                 let player7 = playerSelected;
               
                 setPlayerSeleted(player7);
-                console.log('ta aqui');
-                console.log(playerSelected);
-                console.log('e aqui');
+                const tentei7 = playerSelected.scouts.positives.passBLines.map(item => item)
+                setActionByPlayer(tentei7)
                 break;
                         
               case 'Posi_firstBall':
@@ -315,9 +313,8 @@ export function NewGame({ action }: PosOrNeg) {
                 let player8 = playerSelected;
               
                 setPlayerSeleted(player8);
-                console.log('ta aqui');
-                console.log(playerSelected);
-                console.log('e aqui');
+                const tentei8 = playerSelected.scouts.positives.firstBall.map(item => item)
+                setActionByPlayer(tentei8)
                 break;
                   
               case 'Posi_secondBall':
@@ -325,14 +322,108 @@ export function NewGame({ action }: PosOrNeg) {
                 let player9 = playerSelected;
               
                 setPlayerSeleted(player9);
-                console.log('ta aqui');
-                console.log(playerSelected);
-                console.log('e aqui');
+                const tentei9 = playerSelected.scouts.positives.secondBall.map(item => item)
+                setActionByPlayer(tentei9)
                 break;
             }
             break;
                 
           case 'negative':
+            switch (actionSelected.key) {
+              case 'Nega_shortPass':
+                playerSelected.scouts.negatives.shortPass.push(newAction)
+                let player = playerSelected;
+                setPlayerSeleted(player);
+                console.log('ta aqui');
+                
+                console.log(playerSelected);
+                console.log('e aqui');
+                const tentei = playerSelected.scouts.negatives.shortPass.map(item => item)
+                setActionByPlayer(tentei)
+                console.log(actionByPlayer)
+                break;
+                
+              case 'Nega_kick':
+                playerSelected.scouts.negatives.kick.push(newAction)
+                let player1 = playerSelected;
+                setPlayerSeleted(player1);
+                
+                const tentei1 = playerSelected.scouts.negatives.kick.map(item => item)
+                setActionByPlayer(tentei1)
+                break;
+                  
+              case 'Nega_cornerKick':
+                playerSelected.scouts.negatives.cornerKick.push(newAction)
+                let player2 = playerSelected;
+                setPlayerSeleted(player2);
+
+                const tentei2 = playerSelected.scouts.negatives.cornerKick.map(item => item)
+                setActionByPlayer(tentei2)
+                break;
+                    
+              case 'Nega_cross':
+                playerSelected.scouts.negatives.cross.push(newAction)
+                let player3 = playerSelected;
+              
+                setPlayerSeleted(player3);
+                const tentei3 = playerSelected.scouts.negatives.cross.map(item => item)
+                setActionByPlayer(tentei3)
+                break;
+                      
+              case 'Nega_foul':
+                playerSelected.scouts.negatives.foul.push(newAction)
+                let player4 = playerSelected;
+              
+                setPlayerSeleted(player4);
+                const tentei4 = playerSelected.scouts.negatives.foul.map(item => item)
+                setActionByPlayer(tentei4)
+                break;
+
+              case 'Nega_tackle':
+                playerSelected.scouts.negatives.tackle.push(newAction)
+                let player5 = playerSelected;
+              
+                setPlayerSeleted(player5);
+                const tentei5 = playerSelected.scouts.negatives.tackle.map(item => item)
+                setActionByPlayer(tentei5)
+                break;
+                    
+              case 'Nega_looseBall':
+                playerSelected.scouts.negatives.looseBall.push(newAction)
+                let player6 = playerSelected;
+              
+                setPlayerSeleted(player6);
+                const tentei6 = playerSelected.scouts.negatives.looseBall.map(item => item)
+                setActionByPlayer(tentei6)
+                break;
+                      
+              case 'Nega_passBetweenLines':
+                playerSelected.scouts.negatives.passBLines.push(newAction)
+                let player7 = playerSelected;
+              
+                setPlayerSeleted(player7);
+                const tentei7 = playerSelected.scouts.negatives.passBLines.map(item => item)
+                setActionByPlayer(tentei7)
+                break;
+                        
+              case 'Nega_firstBall':
+                playerSelected.scouts.negatives.firstBall.push(newAction)
+                let player8 = playerSelected;
+              
+                setPlayerSeleted(player8);
+                const tentei8 = playerSelected.scouts.negatives.firstBall.map(item => item)
+                setActionByPlayer(tentei8)
+                break;
+                  
+              case 'Nega_secondBall':
+                playerSelected.scouts.negatives.secondBall.push(newAction)
+                let player9 = playerSelected;
+              
+                setPlayerSeleted(player9);
+                const tentei9 = playerSelected.scouts.negatives.secondBall.map(item => item)
+                setActionByPlayer(tentei9)
+                break;
+            }
             break;
         }
       }
@@ -343,173 +434,2388 @@ export function NewGame({ action }: PosOrNeg) {
     
 
 
-  function handleNewActionFourB(locationXFourB: any, locationYFourB: any) {
+  function handleNewActionFourB(
+    locationXFourB: any,
+    locationYFourB: any,
+    playerSelected: PlayerProps,
+    actionSelected: TypeAction, 
+    ) {
     const newAction = {
       id: new Date().getTime(),
       zone: 'FourB',
       xPosition: locationXFourB,
-      yPosition: locationYFourB
+      yPosition: locationYFourB,
+      type: actionSelected.type,
+      key: actionSelected.key 
     }
     
-    newAction.xPosition && newAction.yPosition !== 0 
-    ? setActionsFourB([...actionsFourB, newAction]) 
-    : console.log('esse não');
+    if (newAction.xPosition && newAction.yPosition !== 0 ) {
+      switch (actionSelected.type) {
+        case 'positive':
+          switch (actionSelected.key) {
+            case 'Posi_shortPass':
+              playerSelected.scouts.positives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.positives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              console.log('ta aqui #########################################');
+              console.log(actionByPlayer.map((item) => (item.zone === 'OneC') && (item)))
+              break;
+              
+            case 'Posi_kick':
+              playerSelected.scouts.positives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.positives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Posi_cornerKick':
+              playerSelected.scouts.positives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
 
-    console.log(actionsFourB);
+              const tentei2 = playerSelected.scouts.positives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Posi_cross':
+              playerSelected.scouts.positives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.positives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Posi_foul':
+              playerSelected.scouts.positives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.positives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Posi_tackle':
+              playerSelected.scouts.positives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.positives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Posi_stolenBall':
+              playerSelected.scouts.positives.stolenBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.positives.stolenBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Posi_passBetweenLines':
+              playerSelected.scouts.positives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.positives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Posi_firstBall':
+              playerSelected.scouts.positives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.positives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Posi_secondBall':
+              playerSelected.scouts.positives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.positives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+              
+        case 'negative':
+          switch (actionSelected.key) {
+            case 'Nega_shortPass':
+              playerSelected.scouts.negatives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.negatives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Nega_kick':
+              playerSelected.scouts.negatives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.negatives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Nega_cornerKick':
+              playerSelected.scouts.negatives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
+
+              const tentei2 = playerSelected.scouts.negatives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Nega_cross':
+              playerSelected.scouts.negatives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.negatives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Nega_foul':
+              playerSelected.scouts.negatives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.negatives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Nega_tackle':
+              playerSelected.scouts.negatives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.negatives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Nega_looseBall':
+              playerSelected.scouts.negatives.looseBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.negatives.looseBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Nega_passBetweenLines':
+              playerSelected.scouts.negatives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.negatives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Nega_firstBall':
+              playerSelected.scouts.negatives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.negatives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Nega_secondBall':
+              playerSelected.scouts.negatives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.negatives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+      }
+    }
   }
 
-  function handleNewActionFourC(locationXFourC: any, locationYFourC: any) {
+  function handleNewActionFourC(
+    locationXFourC: any, 
+    locationYFourC: any,
+    playerSelected: PlayerProps,
+    actionSelected: TypeAction 
+    ) {
     const newAction = {
       id: new Date().getTime(),
       zone: 'FourC',
       xPosition: locationXFourC,
-      yPosition: locationYFourC
+      yPosition: locationYFourC,
+      type: actionSelected.type,
+      key: actionSelected.key 
     }
     
-    newAction.xPosition && newAction.yPosition !== 0 
-    ? setActionsFourC([...actionsFourC, newAction])
-    : console.log('esse não');
+    if (newAction.xPosition && newAction.yPosition !== 0 ) {
+      switch (actionSelected.type) {
+        case 'positive':
+          switch (actionSelected.key) {
+            case 'Posi_shortPass':
+              playerSelected.scouts.positives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.positives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Posi_kick':
+              playerSelected.scouts.positives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.positives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Posi_cornerKick':
+              playerSelected.scouts.positives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
 
-    console.log(actionsFourC);
+              const tentei2 = playerSelected.scouts.positives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Posi_cross':
+              playerSelected.scouts.positives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.positives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Posi_foul':
+              playerSelected.scouts.positives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.positives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Posi_tackle':
+              playerSelected.scouts.positives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.positives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Posi_stolenBall':
+              playerSelected.scouts.positives.stolenBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.positives.stolenBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Posi_passBetweenLines':
+              playerSelected.scouts.positives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.positives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Posi_firstBall':
+              playerSelected.scouts.positives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.positives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Posi_secondBall':
+              playerSelected.scouts.positives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.positives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+              
+        case 'negative':
+          switch (actionSelected.key) {
+            case 'Nega_shortPass':
+              playerSelected.scouts.negatives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.negatives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Nega_kick':
+              playerSelected.scouts.negatives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.negatives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Nega_cornerKick':
+              playerSelected.scouts.negatives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
+
+              const tentei2 = playerSelected.scouts.negatives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Nega_cross':
+              playerSelected.scouts.negatives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.negatives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Nega_foul':
+              playerSelected.scouts.negatives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.negatives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Nega_tackle':
+              playerSelected.scouts.negatives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.negatives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Nega_looseBall':
+              playerSelected.scouts.negatives.looseBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.negatives.looseBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Nega_passBetweenLines':
+              playerSelected.scouts.negatives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.negatives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Nega_firstBall':
+              playerSelected.scouts.negatives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.negatives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Nega_secondBall':
+              playerSelected.scouts.negatives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.negatives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+      }
+    }
   }
 
 
 
-  function handleNewActionThreeA(locationXThreeA: any, locationYThreeA: any) {
+  function handleNewActionThreeA(
+    locationXThreeA: any, 
+    locationYThreeA: any,
+    playerSelected: PlayerProps,
+    actionSelected: TypeAction
+    ) {
     const newAction = {
       id: new Date().getTime(),
       zone: 'ThreeA',
       xPosition: locationXThreeA,
-      yPosition: locationYThreeA
+      yPosition: locationYThreeA,
+      type: actionSelected.type,
+      key: actionSelected.key
     }
     
-    newAction.xPosition && newAction.yPosition !== 0 
-    ? setActionsThreeA([...actionsThreeA, newAction])
-    : console.log('esse não');
+    if (newAction.xPosition && newAction.yPosition !== 0 ) {
+      switch (actionSelected.type) {
+        case 'positive':
+          switch (actionSelected.key) {
+            case 'Posi_shortPass':
+              playerSelected.scouts.positives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.positives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Posi_kick':
+              playerSelected.scouts.positives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.positives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Posi_cornerKick':
+              playerSelected.scouts.positives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
 
-    console.log(actionsThreeA);
+              const tentei2 = playerSelected.scouts.positives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Posi_cross':
+              playerSelected.scouts.positives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.positives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Posi_foul':
+              playerSelected.scouts.positives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.positives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Posi_tackle':
+              playerSelected.scouts.positives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.positives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Posi_stolenBall':
+              playerSelected.scouts.positives.stolenBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.positives.stolenBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Posi_passBetweenLines':
+              playerSelected.scouts.positives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.positives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Posi_firstBall':
+              playerSelected.scouts.positives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.positives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Posi_secondBall':
+              playerSelected.scouts.positives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.positives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+              
+        case 'negative':
+          switch (actionSelected.key) {
+            case 'Nega_shortPass':
+              playerSelected.scouts.negatives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.negatives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Nega_kick':
+              playerSelected.scouts.negatives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.negatives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Nega_cornerKick':
+              playerSelected.scouts.negatives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
+
+              const tentei2 = playerSelected.scouts.negatives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Nega_cross':
+              playerSelected.scouts.negatives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.negatives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Nega_foul':
+              playerSelected.scouts.negatives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.negatives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Nega_tackle':
+              playerSelected.scouts.negatives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.negatives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Nega_looseBall':
+              playerSelected.scouts.negatives.looseBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.negatives.looseBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Nega_passBetweenLines':
+              playerSelected.scouts.negatives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.negatives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Nega_firstBall':
+              playerSelected.scouts.negatives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.negatives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Nega_secondBall':
+              playerSelected.scouts.negatives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.negatives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+      }
+    }
   }
 
-  function handleNewActionThreeB(locationXThreeB: any, locationYThreeB: any) {
+  function handleNewActionThreeB(
+    locationXThreeB: any,
+    locationYThreeB: any,
+    playerSelected: PlayerProps,
+    actionSelected: TypeAction 
+    ) {
     const newAction = {
       id: new Date().getTime(),
       zone: 'ThreeB',
       xPosition: locationXThreeB,
-      yPosition: locationYThreeB
+      yPosition: locationYThreeB,
+      type: actionSelected.type,
+      key: actionSelected.key,
     }
     
-    newAction.xPosition && newAction.yPosition !== 0 
-    ? setActionsThreeB([...actionsThreeB, newAction])
-    : console.log('esse não');
-    console.log(actionsThreeB);
+    if (newAction.xPosition && newAction.yPosition !== 0 ) {
+      switch (actionSelected.type) {
+        case 'positive':
+          switch (actionSelected.key) {
+            case 'Posi_shortPass':
+              playerSelected.scouts.positives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.positives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Posi_kick':
+              playerSelected.scouts.positives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.positives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Posi_cornerKick':
+              playerSelected.scouts.positives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
+
+              const tentei2 = playerSelected.scouts.positives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Posi_cross':
+              playerSelected.scouts.positives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.positives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Posi_foul':
+              playerSelected.scouts.positives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.positives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Posi_tackle':
+              playerSelected.scouts.positives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.positives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Posi_stolenBall':
+              playerSelected.scouts.positives.stolenBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.positives.stolenBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Posi_passBetweenLines':
+              playerSelected.scouts.positives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.positives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Posi_firstBall':
+              playerSelected.scouts.positives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.positives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Posi_secondBall':
+              playerSelected.scouts.positives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.positives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+              
+        case 'negative':
+          switch (actionSelected.key) {
+            case 'Nega_shortPass':
+              playerSelected.scouts.negatives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.negatives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Nega_kick':
+              playerSelected.scouts.negatives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.negatives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Nega_cornerKick':
+              playerSelected.scouts.negatives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
+
+              const tentei2 = playerSelected.scouts.negatives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Nega_cross':
+              playerSelected.scouts.negatives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.negatives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Nega_foul':
+              playerSelected.scouts.negatives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.negatives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Nega_tackle':
+              playerSelected.scouts.negatives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.negatives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Nega_looseBall':
+              playerSelected.scouts.negatives.looseBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.negatives.looseBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Nega_passBetweenLines':
+              playerSelected.scouts.negatives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.negatives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Nega_firstBall':
+              playerSelected.scouts.negatives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.negatives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Nega_secondBall':
+              playerSelected.scouts.negatives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.negatives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+      }
+    }
   }
 
-  function handleNewActionThreeC(locationXThreeC: any, locationYThreeC: any) {
+  function handleNewActionThreeC(
+    locationXThreeC: any,
+    locationYThreeC: any,
+    playerSelected: PlayerProps,
+    actionSelected: TypeAction
+    ) {
     const newAction = {
       id: new Date().getTime(),
       zone: 'ThreeC',
       xPosition: locationXThreeC,
-      yPosition: locationYThreeC
+      yPosition: locationYThreeC,
+      type: actionSelected.type,
+      key: actionSelected.key 
     }
     
-    newAction.xPosition && newAction.yPosition !== 0 
-    ? setActionsThreeC([...actionsThreeC, newAction])
-    : console.log('esse não');
+    if (newAction.xPosition && newAction.yPosition !== 0 ) {
+      switch (actionSelected.type) {
+        case 'positive':
+          switch (actionSelected.key) {
+            case 'Posi_shortPass':
+              playerSelected.scouts.positives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.positives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Posi_kick':
+              playerSelected.scouts.positives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.positives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Posi_cornerKick':
+              playerSelected.scouts.positives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
 
-    console.log(actionsThreeC);
+              const tentei2 = playerSelected.scouts.positives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Posi_cross':
+              playerSelected.scouts.positives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.positives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Posi_foul':
+              playerSelected.scouts.positives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.positives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Posi_tackle':
+              playerSelected.scouts.positives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.positives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Posi_stolenBall':
+              playerSelected.scouts.positives.stolenBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.positives.stolenBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Posi_passBetweenLines':
+              playerSelected.scouts.positives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.positives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Posi_firstBall':
+              playerSelected.scouts.positives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.positives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Posi_secondBall':
+              playerSelected.scouts.positives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.positives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+              
+        case 'negative':
+          switch (actionSelected.key) {
+            case 'Nega_shortPass':
+              playerSelected.scouts.negatives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.negatives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Nega_kick':
+              playerSelected.scouts.negatives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.negatives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Nega_cornerKick':
+              playerSelected.scouts.negatives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
+
+              const tentei2 = playerSelected.scouts.negatives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Nega_cross':
+              playerSelected.scouts.negatives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.negatives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Nega_foul':
+              playerSelected.scouts.negatives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.negatives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Nega_tackle':
+              playerSelected.scouts.negatives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.negatives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Nega_looseBall':
+              playerSelected.scouts.negatives.looseBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.negatives.looseBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Nega_passBetweenLines':
+              playerSelected.scouts.negatives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.negatives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Nega_firstBall':
+              playerSelected.scouts.negatives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.negatives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Nega_secondBall':
+              playerSelected.scouts.negatives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.negatives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+      }
+    }
   }
 
 
   
-  function handleNewActionTwoA(locationXTwoA: any, locationYTwoA: any) {
+  function handleNewActionTwoA(
+    locationXTwoA: any, 
+    locationYTwoA: any,
+    playerSelected: PlayerProps,
+    actionSelected: TypeAction 
+    ) {
     const newAction = {
       id: new Date().getTime(),
       zone: 'TwoA',
       xPosition: locationXTwoA,
-      yPosition: locationYTwoA
+      yPosition: locationYTwoA,
+      type: actionSelected.type,
+      key: actionSelected.key
     }
     
-    newAction.xPosition && newAction.yPosition !== 0 
-    ? setActionsTwoA([...actionsTwoA, newAction])
-    : console.log('esse não');
+    if (newAction.xPosition && newAction.yPosition !== 0 ) {
+      switch (actionSelected.type) {
+        case 'positive':
+          switch (actionSelected.key) {
+            case 'Posi_shortPass':
+              playerSelected.scouts.positives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.positives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Posi_kick':
+              playerSelected.scouts.positives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.positives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Posi_cornerKick':
+              playerSelected.scouts.positives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
 
-    console.log(actionsTwoA);
+              const tentei2 = playerSelected.scouts.positives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Posi_cross':
+              playerSelected.scouts.positives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.positives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Posi_foul':
+              playerSelected.scouts.positives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.positives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Posi_tackle':
+              playerSelected.scouts.positives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.positives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Posi_stolenBall':
+              playerSelected.scouts.positives.stolenBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.positives.stolenBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Posi_passBetweenLines':
+              playerSelected.scouts.positives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.positives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Posi_firstBall':
+              playerSelected.scouts.positives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.positives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Posi_secondBall':
+              playerSelected.scouts.positives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.positives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+              
+        case 'negative':
+          switch (actionSelected.key) {
+            case 'Nega_shortPass':
+              playerSelected.scouts.negatives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.negatives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Nega_kick':
+              playerSelected.scouts.negatives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.negatives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Nega_cornerKick':
+              playerSelected.scouts.negatives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
+
+              const tentei2 = playerSelected.scouts.negatives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Nega_cross':
+              playerSelected.scouts.negatives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.negatives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Nega_foul':
+              playerSelected.scouts.negatives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.negatives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Nega_tackle':
+              playerSelected.scouts.negatives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.negatives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Nega_looseBall':
+              playerSelected.scouts.negatives.looseBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.negatives.looseBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Nega_passBetweenLines':
+              playerSelected.scouts.negatives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.negatives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Nega_firstBall':
+              playerSelected.scouts.negatives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.negatives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Nega_secondBall':
+              playerSelected.scouts.negatives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.negatives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+      }
+    }
   }
 
-  function handleNewActionTwoB(locationXTwoB: any, locationYTwoB: any) {
+  function handleNewActionTwoB(
+    locationXTwoB: any,
+    locationYTwoB: any,
+    playerSelected: PlayerProps,
+    actionSelected: TypeAction
+    ) {
     const newAction = {
       id: new Date().getTime(),
       zone: 'TwoB',
       xPosition: locationXTwoB,
-      yPosition: locationYTwoB
+      yPosition: locationYTwoB,
+      type: actionSelected.type,
+      key: actionSelected.key 
     }
     
-    newAction.xPosition && newAction.yPosition !== 0 
-    ? setActionsTwoB([...actionsTwoB, newAction])
-    : console.log('esse não');
-    console.log(actionsTwoB);
+    if (newAction.xPosition && newAction.yPosition !== 0 ) {
+      switch (actionSelected.type) {
+        case 'positive':
+          switch (actionSelected.key) {
+            case 'Posi_shortPass':
+              playerSelected.scouts.positives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.positives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Posi_kick':
+              playerSelected.scouts.positives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.positives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Posi_cornerKick':
+              playerSelected.scouts.positives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
+
+              const tentei2 = playerSelected.scouts.positives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Posi_cross':
+              playerSelected.scouts.positives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.positives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Posi_foul':
+              playerSelected.scouts.positives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.positives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Posi_tackle':
+              playerSelected.scouts.positives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.positives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Posi_stolenBall':
+              playerSelected.scouts.positives.stolenBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.positives.stolenBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Posi_passBetweenLines':
+              playerSelected.scouts.positives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.positives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Posi_firstBall':
+              playerSelected.scouts.positives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.positives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Posi_secondBall':
+              playerSelected.scouts.positives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.positives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+              
+        case 'negative':
+          switch (actionSelected.key) {
+            case 'Nega_shortPass':
+              playerSelected.scouts.negatives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.negatives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Nega_kick':
+              playerSelected.scouts.negatives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.negatives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Nega_cornerKick':
+              playerSelected.scouts.negatives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
+
+              const tentei2 = playerSelected.scouts.negatives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Nega_cross':
+              playerSelected.scouts.negatives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.negatives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Nega_foul':
+              playerSelected.scouts.negatives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.negatives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Nega_tackle':
+              playerSelected.scouts.negatives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.negatives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Nega_looseBall':
+              playerSelected.scouts.negatives.looseBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.negatives.looseBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Nega_passBetweenLines':
+              playerSelected.scouts.negatives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.negatives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Nega_firstBall':
+              playerSelected.scouts.negatives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.negatives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Nega_secondBall':
+              playerSelected.scouts.negatives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.negatives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+      }
+    }
   }
 
-  function handleNewActionTwoC(locationXTwoC: any, locationYTwoC: any) {
+  function handleNewActionTwoC(
+    locationXTwoC: any, 
+    locationYTwoC: any,
+    playerSelected: PlayerProps,
+    actionSelected: TypeAction
+    ) {
     const newAction = {
       id: new Date().getTime(),
       zone: 'TwoC',
       xPosition: locationXTwoC,
-      yPosition: locationYTwoC
+      yPosition: locationYTwoC,
+      type: actionSelected.type,
+      key: actionSelected.key
     }
     
-    newAction.xPosition && newAction.yPosition !== 0 
-    ? setActionsTwoC([...actionsTwoC, newAction])
-    : console.log('esse não');
+    if (newAction.xPosition && newAction.yPosition !== 0 ) {
+      switch (actionSelected.type) {
+        case 'positive':
+          switch (actionSelected.key) {
+            case 'Posi_shortPass':
+              playerSelected.scouts.positives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.positives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Posi_kick':
+              playerSelected.scouts.positives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.positives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Posi_cornerKick':
+              playerSelected.scouts.positives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
 
-    console.log(actionsTwoC);
+              const tentei2 = playerSelected.scouts.positives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Posi_cross':
+              playerSelected.scouts.positives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.positives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Posi_foul':
+              playerSelected.scouts.positives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.positives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Posi_tackle':
+              playerSelected.scouts.positives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.positives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Posi_stolenBall':
+              playerSelected.scouts.positives.stolenBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.positives.stolenBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Posi_passBetweenLines':
+              playerSelected.scouts.positives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.positives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Posi_firstBall':
+              playerSelected.scouts.positives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.positives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Posi_secondBall':
+              playerSelected.scouts.positives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.positives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+              
+        case 'negative':
+          switch (actionSelected.key) {
+            case 'Nega_shortPass':
+              playerSelected.scouts.negatives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.negatives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Nega_kick':
+              playerSelected.scouts.negatives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.negatives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Nega_cornerKick':
+              playerSelected.scouts.negatives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
+
+              const tentei2 = playerSelected.scouts.negatives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Nega_cross':
+              playerSelected.scouts.negatives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.negatives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Nega_foul':
+              playerSelected.scouts.negatives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.negatives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Nega_tackle':
+              playerSelected.scouts.negatives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.negatives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Nega_looseBall':
+              playerSelected.scouts.negatives.looseBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.negatives.looseBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Nega_passBetweenLines':
+              playerSelected.scouts.negatives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.negatives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Nega_firstBall':
+              playerSelected.scouts.negatives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.negatives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Nega_secondBall':
+              playerSelected.scouts.negatives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.negatives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+      }
+    }
   }
 
 
 
-    function handleNewActionOneA(locationXOneA: any, locationYOneA: any) {
+    function handleNewActionOneA(
+      locationXOneA: any,
+      locationYOneA: any,
+      playerSelected: PlayerProps,
+      actionSelected: TypeAction 
+       ) {
     const newAction = {
       id: new Date().getTime(),
       zone: 'OneA',
       xPosition: locationXOneA,
-      yPosition: locationYOneA
+      yPosition: locationYOneA,
+      type: actionSelected.type,
+      key: actionSelected.key 
     }
     
-    newAction.xPosition && newAction.yPosition !== 0 
-    ? setActionsOneA([...actionsOneA, newAction])
-    : console.log('esse não');
+    if (newAction.xPosition && newAction.yPosition !== 0 ) {
+      switch (actionSelected.type) {
+        case 'positive':
+          switch (actionSelected.key) {
+            case 'Posi_shortPass':
+              playerSelected.scouts.positives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.positives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Posi_kick':
+              playerSelected.scouts.positives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.positives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Posi_cornerKick':
+              playerSelected.scouts.positives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
 
-    console.log(actionsOneA);
+              const tentei2 = playerSelected.scouts.positives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Posi_cross':
+              playerSelected.scouts.positives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.positives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Posi_foul':
+              playerSelected.scouts.positives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.positives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Posi_tackle':
+              playerSelected.scouts.positives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.positives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Posi_stolenBall':
+              playerSelected.scouts.positives.stolenBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.positives.stolenBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Posi_passBetweenLines':
+              playerSelected.scouts.positives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.positives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Posi_firstBall':
+              playerSelected.scouts.positives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.positives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Posi_secondBall':
+              playerSelected.scouts.positives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.positives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+              
+        case 'negative':
+          switch (actionSelected.key) {
+            case 'Nega_shortPass':
+              playerSelected.scouts.negatives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.negatives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Nega_kick':
+              playerSelected.scouts.negatives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.negatives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Nega_cornerKick':
+              playerSelected.scouts.negatives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
+
+              const tentei2 = playerSelected.scouts.negatives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Nega_cross':
+              playerSelected.scouts.negatives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.negatives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Nega_foul':
+              playerSelected.scouts.negatives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.negatives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Nega_tackle':
+              playerSelected.scouts.negatives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.negatives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Nega_looseBall':
+              playerSelected.scouts.negatives.looseBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.negatives.looseBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Nega_passBetweenLines':
+              playerSelected.scouts.negatives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.negatives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Nega_firstBall':
+              playerSelected.scouts.negatives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.negatives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Nega_secondBall':
+              playerSelected.scouts.negatives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.negatives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+      }
+    }
   }
 
-  function handleNewActionOneB(locationXOneB: any, locationYOneB: any) {
+  function handleNewActionOneB(
+    locationXOneB: any, 
+    locationYOneB: any,
+    playerSelected: PlayerProps,
+    actionSelected: TypeAction,
+    ) {
     const newAction = {
       id: new Date().getTime(),
       zone: 'OneB',
       xPosition: locationXOneB,
-      yPosition: locationYOneB
+      yPosition: locationYOneB,
+      type: actionSelected.type,
+      key: actionSelected.key 
     }
     
-    newAction.xPosition && newAction.yPosition !== 0 
-    ? setActionsOneB([...actionsOneB, newAction])
-    : console.log('esse não');
+    if (newAction.xPosition && newAction.yPosition !== 0 ) {
+      switch (actionSelected.type) {
+        case 'positive':
+          switch (actionSelected.key) {
+            case 'Posi_shortPass':
+              playerSelected.scouts.positives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.positives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Posi_kick':
+              playerSelected.scouts.positives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.positives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Posi_cornerKick':
+              playerSelected.scouts.positives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
 
-    console.log(actionsOneB);
+              const tentei2 = playerSelected.scouts.positives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Posi_cross':
+              playerSelected.scouts.positives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.positives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Posi_foul':
+              playerSelected.scouts.positives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.positives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Posi_tackle':
+              playerSelected.scouts.positives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.positives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Posi_stolenBall':
+              playerSelected.scouts.positives.stolenBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.positives.stolenBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Posi_passBetweenLines':
+              playerSelected.scouts.positives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.positives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Posi_firstBall':
+              playerSelected.scouts.positives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.positives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Posi_secondBall':
+              playerSelected.scouts.positives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.positives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+              
+        case 'negative':
+          switch (actionSelected.key) {
+            case 'Nega_shortPass':
+              playerSelected.scouts.negatives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.negatives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Nega_kick':
+              playerSelected.scouts.negatives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.negatives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Nega_cornerKick':
+              playerSelected.scouts.negatives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
+
+              const tentei2 = playerSelected.scouts.negatives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Nega_cross':
+              playerSelected.scouts.negatives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.negatives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Nega_foul':
+              playerSelected.scouts.negatives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.negatives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Nega_tackle':
+              playerSelected.scouts.negatives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.negatives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Nega_looseBall':
+              playerSelected.scouts.negatives.looseBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.negatives.looseBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Nega_passBetweenLines':
+              playerSelected.scouts.negatives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.negatives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Nega_firstBall':
+              playerSelected.scouts.negatives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.negatives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Nega_secondBall':
+              playerSelected.scouts.negatives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.negatives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+      }
+    }
   }
 
-  function handleNewActionOneC(locationXOneC: any, locationYOneC: any) {
+  function handleNewActionOneC(
+    locationXOneC: any, 
+    locationYOneC: any,
+    playerSelected: PlayerProps,
+    actionSelected: TypeAction 
+    ) {
     const newAction = {
       id: new Date().getTime(),
       zone: 'OneC',
       xPosition: locationXOneC,
-      yPosition: locationYOneC
+      yPosition: locationYOneC,
+      type: actionSelected.type,
+      key: actionSelected.key 
     }
     
-    newAction.xPosition && newAction.yPosition !== 0 
-    ? setActionsOneC([...actionsOneC, newAction])
-    : console.log('esse não');
+    if (newAction.xPosition && newAction.yPosition !== 0 ) {
+      switch (actionSelected.type) {
+        case 'positive':
+          switch (actionSelected.key) {
+            case 'Posi_shortPass':
+              playerSelected.scouts.positives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.positives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Posi_kick':
+              playerSelected.scouts.positives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.positives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Posi_cornerKick':
+              playerSelected.scouts.positives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
 
-    console.log(actionsOneC);
+              const tentei2 = playerSelected.scouts.positives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Posi_cross':
+              playerSelected.scouts.positives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.positives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Posi_foul':
+              playerSelected.scouts.positives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.positives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Posi_tackle':
+              playerSelected.scouts.positives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.positives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Posi_stolenBall':
+              playerSelected.scouts.positives.stolenBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.positives.stolenBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Posi_passBetweenLines':
+              playerSelected.scouts.positives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.positives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Posi_firstBall':
+              playerSelected.scouts.positives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.positives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Posi_secondBall':
+              playerSelected.scouts.positives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.positives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+              
+        case 'negative':
+          switch (actionSelected.key) {
+            case 'Nega_shortPass':
+              playerSelected.scouts.negatives.shortPass.push(newAction)
+              let player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.negatives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Nega_kick':
+              playerSelected.scouts.negatives.kick.push(newAction)
+              let player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.negatives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Nega_cornerKick':
+              playerSelected.scouts.negatives.cornerKick.push(newAction)
+              let player2 = playerSelected;
+              setPlayerSeleted(player2);
+
+              const tentei2 = playerSelected.scouts.negatives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Nega_cross':
+              playerSelected.scouts.negatives.cross.push(newAction)
+              let player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.negatives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Nega_foul':
+              playerSelected.scouts.negatives.foul.push(newAction)
+              let player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.negatives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Nega_tackle':
+              playerSelected.scouts.negatives.tackle.push(newAction)
+              let player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.negatives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Nega_looseBall':
+              playerSelected.scouts.negatives.looseBall.push(newAction)
+              let player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.negatives.looseBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Nega_passBetweenLines':
+              playerSelected.scouts.negatives.passBLines.push(newAction)
+              let player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.negatives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Nega_firstBall':
+              playerSelected.scouts.negatives.firstBall.push(newAction)
+              let player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.negatives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Nega_secondBall':
+              playerSelected.scouts.negatives.secondBall.push(newAction)
+              let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.negatives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+      }
+    }
   }
 
   
@@ -542,7 +2848,7 @@ export function NewGame({ action }: PosOrNeg) {
     onPanResponderRelease: (event, gestureState) => {
       setLocationXFourB(parseFloat(event.nativeEvent.locationX.toFixed(2)));
       setLocationYFourB(parseFloat(event.nativeEvent.locationY.toFixed(2)));
-      handleNewActionFourB(locationXFourB, locationYFourB)
+      handleNewActionFourB(locationXFourB, locationYFourB, playerSelected, actionSelected)
     },
   });
 
@@ -558,7 +2864,7 @@ export function NewGame({ action }: PosOrNeg) {
     onPanResponderRelease: (event, gestureState) => {
       setLocationXFourC(parseFloat(event.nativeEvent.locationX.toFixed(2)));
       setLocationYFourC(parseFloat(event.nativeEvent.locationY.toFixed(2)));
-      handleNewActionFourC(locationXFourC, locationYFourC)
+      handleNewActionFourC(locationXFourC, locationYFourC, playerSelected, actionSelected)
     },
   });
 
@@ -576,7 +2882,7 @@ export function NewGame({ action }: PosOrNeg) {
     onPanResponderRelease: (event, gestureState) => {
       setLocationXThreeA(parseFloat(event.nativeEvent.locationX.toFixed(2)));
       setLocationYThreeA(parseFloat(event.nativeEvent.locationY.toFixed(2)));
-      handleNewActionThreeA(locationXThreeA, locationYThreeA)
+      handleNewActionThreeA(locationXThreeA, locationYThreeA, playerSelected, actionSelected)
     },
   });
   
@@ -592,7 +2898,7 @@ export function NewGame({ action }: PosOrNeg) {
     onPanResponderRelease: (event, gestureState) => {
       setLocationXThreeB(parseFloat(event.nativeEvent.locationX.toFixed(2)));
       setLocationYThreeB(parseFloat(event.nativeEvent.locationY.toFixed(2)));
-      handleNewActionThreeB(locationXThreeB, locationYThreeB)
+      handleNewActionThreeB(locationXThreeB, locationYThreeB, playerSelected, actionSelected)
     },
   });
 
@@ -608,7 +2914,7 @@ export function NewGame({ action }: PosOrNeg) {
     onPanResponderRelease: (event, gestureState) => {
       setLocationXThreeC(parseFloat(event.nativeEvent.locationX.toFixed(2)));
       setLocationYThreeC(parseFloat(event.nativeEvent.locationY.toFixed(2)));
-      handleNewActionThreeC(locationXThreeC, locationYThreeC)
+      handleNewActionThreeC(locationXThreeC, locationYThreeC, playerSelected, actionSelected)
     },
   });
   
@@ -625,7 +2931,7 @@ export function NewGame({ action }: PosOrNeg) {
     onPanResponderRelease: (event, gestureState) => {
       setLocationXTwoA(parseFloat(event.nativeEvent.locationX.toFixed(2)));
       setLocationYTwoA(parseFloat(event.nativeEvent.locationY.toFixed(2)));
-      handleNewActionTwoA(locationXTwoA, locationYTwoA)
+      handleNewActionTwoA(locationXTwoA, locationYTwoA, playerSelected, actionSelected)
     },
   });
   
@@ -641,7 +2947,7 @@ export function NewGame({ action }: PosOrNeg) {
     onPanResponderRelease: (event, gestureState) => {
       setLocationXTwoB(parseFloat(event.nativeEvent.locationX.toFixed(2)));
       setLocationYTwoB(parseFloat(event.nativeEvent.locationY.toFixed(2)));
-      handleNewActionTwoB(locationXTwoB, locationYTwoB)
+      handleNewActionTwoB(locationXTwoB, locationYTwoB, playerSelected, actionSelected)
     },
   });
 
@@ -657,7 +2963,7 @@ export function NewGame({ action }: PosOrNeg) {
     onPanResponderRelease: (event, gestureState) => {
       setLocationXTwoC(parseFloat(event.nativeEvent.locationX.toFixed(2)));
       setLocationYTwoC(parseFloat(event.nativeEvent.locationY.toFixed(2)));
-      handleNewActionTwoC(locationXTwoC, locationYTwoC)
+      handleNewActionTwoC(locationXTwoC, locationYTwoC, playerSelected, actionSelected)
     },
   });
 
@@ -674,7 +2980,7 @@ export function NewGame({ action }: PosOrNeg) {
     onPanResponderRelease: (event, gestureState) => {
       setLocationXOneA(parseFloat(event.nativeEvent.locationX.toFixed(2)));
       setLocationYOneA(parseFloat(event.nativeEvent.locationY.toFixed(2)));
-      handleNewActionOneA(locationXOneA, locationYOneA)
+      handleNewActionOneA(locationXOneA, locationYOneA, playerSelected, actionSelected)
     },
   });
   
@@ -690,7 +2996,7 @@ export function NewGame({ action }: PosOrNeg) {
     onPanResponderRelease: (event, gestureState) => {
       setLocationXOneB(parseFloat(event.nativeEvent.locationX.toFixed(2)));
       setLocationYOneB(parseFloat(event.nativeEvent.locationY.toFixed(2)));
-      handleNewActionOneB(locationXOneB, locationYOneB)
+      handleNewActionOneB(locationXOneB, locationYOneB, playerSelected, actionSelected)
     },
   });
 
@@ -706,7 +3012,7 @@ export function NewGame({ action }: PosOrNeg) {
     onPanResponderRelease: (event, gestureState) => {
       setLocationXOneC(parseFloat(event.nativeEvent.locationX.toFixed(2)));
       setLocationYOneC(parseFloat(event.nativeEvent.locationY.toFixed(2)));
-      handleNewActionOneC(locationXOneC, locationYOneC)
+      handleNewActionOneC(locationXOneC, locationYOneC, playerSelected, actionSelected)
     },
   });
 
@@ -808,191 +3114,167 @@ export function NewGame({ action }: PosOrNeg) {
                 style={styles.image}
               >
                 <Field>
-                  <FourthZone>
-                    <FourA>
-                      <View style={{height: '100%', width: '100%', backgroundColor: 'transparent'}} {...panResponderFourA.panHandlers}>
-                        <ActionPoint 
-                          style={{ top: locationYFourA, left: locationXFourA }}
-                          isPositive={actionSelected.type === 'positive' ? true : false}
-                        /> 
+                  {
+                    (playerSelected && actionSelected) && 
+                  
+                  <><FourthZone>
+                      <FourA>
+                        <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderFourA.panHandlers}>
+                          <ActionPoint
+                            style={{ top: locationYFourA, left: locationXFourA }}
+                            isPositive={actionSelected.type === 'positive' ? true : false} />
+                          
 
-                          { 
-                            playerSelected.scouts.positives.shortPass.map(item  => (
+                          {
+                              actionByPlayer.map(item => ( 
                               <View key={item.id}>
-                                <ActionPoint 
+                                <ActionPoint
                                   style={{ top: item.yPosition, left: item.xPosition }}
-                                  isPositive={actionSelected.type === 'positive' ? true : false}
-                                  />
+                                  isPositive={actionSelected.type === 'positive' ? true : false} />
                               </View>
                             ))
                           }
-                        
-                      </View>
-                    </FourA>
-
-                    <FourB>
-                      <View style={{height: '100%', width: '100%', backgroundColor: 'transparent'}} {...panResponderFourB.panHandlers}>
-                          <ActionPoint
-                           style={{ top: locationYFourB, left: locationXFourB }}
-                           isPositive={actionSelected.type === 'positive' ? true : false} 
-                          /> 
-                          { 
-                            actionsFourB.map( item  => (
-                              <View key={item.id}>
-                                  <ActionPoint                                   
-                                    style={{ top: item.yPosition, left: item.xPosition }}
-                                    isPositive={actionSelected.type === 'positive' ? true : false}
-                                  />
-                                </View>
-                              )
-                            )
-                          }
-                      </View>
-                    </FourB>
-
-                    <FourC>
-                      <View style={{height: '100%', width: '100%', backgroundColor: 'transparent'}} {...panResponderFourC.panHandlers}>
-                        <View style={[ styles.pointStyle, { top: locationYFourC, left: locationXFourC } ]}/> 
-                          { 
-                            actionsFourC.map( item  => (
-                              <View key={item.id}>
-                                  <View style={[ styles.pointStyle, { top: item.yPosition, left: item.xPosition } ]}/>
-                                </View>
-                              )
-                            )
-                          }
-                      </View>
-                    </FourC>
-                  </FourthZone>
-                  <ThirdZone>
-                    <ThreeA>
-                      <View style={{height: '100%', width: '100%', backgroundColor: 'transparent'}} {...panResponderThreeA.panHandlers}>
-                          <View style={[ styles.pointStyle, { top: locationYThreeA, left: locationXThreeA } ]}/> 
-                            {
-                              actionsThreeA.map( item  => (
-                                <View key={item.id}>
-                                    <View style={[ styles.pointStyle, { top: item.yPosition, left: item.xPosition } ]}/>
-                                  </View>
-                                )
-                              )
-                            }
                         </View>
-                    </ThreeA>
-                    <ThreeB>
-                      <View style={{height: '100%', width: '100%', backgroundColor: 'transparent'}} {...panResponderThreeB.panHandlers}>
-                        <View style={[ styles.pointStyle, { top: locationYThreeB, left: locationXThreeB } ]}/> 
-                          { 
-                            actionsThreeB.map( item  => (
+                      </FourA>
+
+                      <FourB>
+                        <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderFourB.panHandlers}>
+                          <ActionPoint
+                            style={{ top: locationYFourB, left: locationXFourB }}
+                            isPositive={actionSelected.type === 'positive' ? true : false} />
+                          
+                          {actionByPlayer.map(item => (
+                            <View key={item.id}>
+                              <ActionPoint
+                                style={{ top: item.yPosition, left: item.xPosition }}
+                                isPositive={actionSelected.type === 'positive' ? true : false} />
+                            </View>
+                          )
+                          )}
+                        </View>
+                      </FourB>
+
+                      <FourC>
+                        <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderFourC.panHandlers}>
+                          <View style={[styles.pointStyle, { top: locationYFourC, left: locationXFourC }]} />
+                          {actionByPlayer.map(item => (
+                            <View key={item.id}>
+                              <View style={[styles.pointStyle, { top: item.yPosition, left: item.xPosition }]} />
+                            </View>
+                          )
+                          )}
+                        </View>
+                      </FourC>
+                    </FourthZone><ThirdZone>
+                        <ThreeA>
+                          <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderThreeA.panHandlers}>
+                            <View style={[styles.pointStyle, { top: locationYThreeA, left: locationXThreeA }]} />
+                            {actionByPlayer.map(item => (
                               <View key={item.id}>
-                                  <View style={[ styles.pointStyle, { top: item.yPosition, left: item.xPosition } ]}/>
-                                </View>
-                              )
-                            )
-                          }
-                      </View>
-                    </ThreeB>
-                    <ThreeC>
-                      <View style={{height: '100%', width: '100%', backgroundColor: 'transparent'}} {...panResponderThreeC.panHandlers}>
-                        <View style={[ styles.pointStyle, { top: locationYThreeC, left: locationXThreeC } ]}/> 
-                          { 
-                            actionsThreeC.map( item  => (
-                              <View key={item.id}>
-                                  <View style={[ styles.pointStyle, { top: item.yPosition, left: item.xPosition } ]}/>
-                                </View>
-                              )
-                            )
-                          }
-                      </View>
-                    </ThreeC>
-                  </ThirdZone>
-                  <SecondZone>
-                    <TwoA>
-                      <View style={{height: '100%', width: '100%', backgroundColor: 'transparent'}} {...panResponderTwoA.panHandlers}>
-                        <View style={[ styles.pointStyle, { top: locationYTwoA, left: locationXTwoA } ]}/> 
-                          { 
-                            actionsTwoA.map( item  => (
-                              <View key={item.id}>
-                                  <View style={[ styles.pointStyle, { top: item.yPosition, left: item.xPosition } ]}/>
-                                </View>
-                              )
-                            )
-                          }
-                      </View>
-                    </TwoA>
-                    <TwoB>
-                      <View style={{height: '100%', width: '100%', backgroundColor: 'transparent'}} {...panResponderTwoB.panHandlers}>
-                        <View style={[ styles.pointStyle, { top: locationYTwoB, left: locationXTwoB } ]}/> 
-                          { 
-                            actionsTwoB.map( item  => (
-                              <View key={item.id}>
-                                  <View style={[ styles.pointStyle, { top: item.yPosition, left: item.xPosition } ]}/>
-                                </View>
-                              )
-                            )
-                          }
-                      </View>
-                    </TwoB>
-                    <TwoC>
-                      <View style={{height: '100%', width: '100%', backgroundColor: 'transparent'}} {...panResponderTwoC.panHandlers}>
-                        <View style={[ styles.pointStyle, { top: locationYTwoC, left: locationXTwoC } ]}/> 
-                          { 
-                            actionsTwoC.map( item  => (
-                              <View key={item.id}>
-                                  <View style={[ styles.pointStyle, { top: item.yPosition, left: item.xPosition } ]}/>
-                                </View>
-                              )
-                            )
-                          }
-                      </View>
-                    </TwoC>
-                  </SecondZone>
-                  <FirstZone>
-                    <OneA>
-                      <View style={{height: '100%', width: '100%', backgroundColor: 'transparent'}} {...panResponderOneA.panHandlers}>
-                        <View style={[ styles.pointStyle, { top: locationYOneA, left: locationXOneA } ]}/> 
-                          { 
-                            actionsOneA.map( item  => (
-                              <View key={item.id}>
-                                  <View style={[ styles.pointStyle, { top: item.yPosition, left: item.xPosition } ]}/>
-                                </View>
-                              )
-                            )
-                          }
-                      </View>
-                    </OneA>
-                    <OneB>
-                      <View style={{height: '100%', width: '100%', backgroundColor: 'transparent'}} {...panResponderOneB.panHandlers}>
-                        <ActionPoint 
-                          style={{ top: locationYOneB, left: locationXOneB }}
-                          isPositive={actionSelected.type === 'positive' ? true : false}
-                        /> 
-                          { 
-                            actionsOneB.map( item  => (
-                              <View key={item.id}>
-                                <ActionPoint 
-                                  style={{ top: item.yPosition, left: item.xPosition }}
-                                  isPositive={actionSelected.type === 'positive' ? true : false}
-                                />
+                                <View style={[styles.pointStyle, { top: item.yPosition, left: item.xPosition }]} />
                               </View>
-                              )
                             )
-                          }
-                      </View>
-                    </OneB>
-                    <OneC>
-                      <View style={{height: '100%', width: '100%', backgroundColor: 'transparent'}} {...panResponderOneC.panHandlers}>
-                        <View style={[ styles.pointStyle, { top: locationYOneC, left: locationXOneC } ]}/> 
-                          { 
-                            actionsOneC.map( item  => (
+                            )}
+                          </View>
+                        </ThreeA>
+                        <ThreeB>
+                          <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderThreeB.panHandlers}>
+                            <View style={[styles.pointStyle, { top: locationYThreeB, left: locationXThreeB }]} />
+                            {actionByPlayer.map(item => (
                               <View key={item.id}>
-                                  <View style={[ styles.pointStyle, { top: item.yPosition, left: item.xPosition } ]}/>
-                                </View>
-                              )
+                                <View style={[styles.pointStyle, { top: item.yPosition, left: item.xPosition }]} />
+                              </View>
                             )
-                          }
-                      </View>
-                    </OneC>
-                  </FirstZone>
+                            )}
+                          </View>
+                        </ThreeB>
+                        <ThreeC>
+                          <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderThreeC.panHandlers}>
+                            <View style={[styles.pointStyle, { top: locationYThreeC, left: locationXThreeC }]} />
+                            {actionByPlayer.map(item => (
+                              <View key={item.id}>
+                                <View style={[styles.pointStyle, { top: item.yPosition, left: item.xPosition }]} />
+                              </View>
+                            )
+                            )}
+                          </View>
+                        </ThreeC>
+                      </ThirdZone><SecondZone>
+                        <TwoA>
+                          <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderTwoA.panHandlers}>
+                            <View style={[styles.pointStyle, { top: locationYTwoA, left: locationXTwoA }]} />
+                            {actionByPlayer.map(item => (
+                              <View key={item.id}>
+                                <View style={[styles.pointStyle, { top: item.yPosition, left: item.xPosition }]} />
+                              </View>
+                            )
+                            )}
+                          </View>
+                        </TwoA>
+                        <TwoB>
+                          <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderTwoB.panHandlers}>
+                            <View style={[styles.pointStyle, { top: locationYTwoB, left: locationXTwoB }]} />
+                            {actionByPlayer.map(item => (
+                              <View key={item.id}>
+                                <View style={[styles.pointStyle, { top: item.yPosition, left: item.xPosition }]} />
+                              </View>
+                            )
+                            )}
+                          </View>
+                        </TwoB>
+                        <TwoC>
+                          <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderTwoC.panHandlers}>
+                            <View style={[styles.pointStyle, { top: locationYTwoC, left: locationXTwoC }]} />
+                            {actionByPlayer.map(item => (
+                              <View key={item.id}>
+                                <View style={[styles.pointStyle, { top: item.yPosition, left: item.xPosition }]} />
+                              </View>
+                            )
+                            )}
+                          </View>
+                        </TwoC>
+                      </SecondZone><FirstZone>
+                        <OneA>
+                          <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderOneA.panHandlers}>
+                            <View style={[styles.pointStyle, { top: locationYOneA, left: locationXOneA }]} />
+                            {actionByPlayer.map(item => (
+                              <View key={item.id}>
+                                <View style={[styles.pointStyle, { top: item.yPosition, left: item.xPosition }]} />
+                              </View>
+                            )
+                            )}
+                          </View>
+                        </OneA>
+                        <OneB>
+                          <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderOneB.panHandlers}>
+                            <ActionPoint
+                              style={{ top: locationYOneB, left: locationXOneB }}
+                              isPositive={actionSelected.type === 'positive' ? true : false} />
+                            {actionByPlayer.map(item => (
+                              <View key={item.id}>
+                                <ActionPoint
+                                  style={{ top: item.yPosition, left: item.xPosition }}
+                                  isPositive={actionSelected.type === 'positive' ? true : false} />
+                              </View>
+                            )
+                            )}
+                          </View>
+                        </OneB>
+                        <OneC>
+                          <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderOneC.panHandlers}>
+                            <View style={[styles.pointStyle, { top: locationYOneC, left: locationXOneC }]} />
+                            
+                            {actionByPlayer.map((item) => (item.zone === 'OneC') && (
+                              <View key={item.id}>
+                                <View style={[styles.pointStyle, { top: item.yPosition, left: item.xPosition }]} />
+                              </View>
+                            )
+                            )}
+                          </View>
+                        </OneC>
+                      </FirstZone></>
+
+                  }
                 </Field>
               </ImageBackground> 
             </FieldWrapper>
