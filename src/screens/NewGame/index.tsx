@@ -232,7 +232,8 @@ export function NewGame({ action }: PosOrNeg) {
               case 'Posi_shortPass':
                 playerSelected.scouts.positives.shortPass.push(newAction)
                 //setActionByPlayer('playerSelected.scouts.positives.shortPass')
-                const player = playerSelected;
+                let player = playerSelected;
+              
                 setPlayerSeleted(player);
                 console.log('ta aqui');
                 console.log(playerSelected);
@@ -241,47 +242,92 @@ export function NewGame({ action }: PosOrNeg) {
                 
               case 'Posi_kick':
                 playerSelected.scouts.positives.kick.push(newAction)
+                let player1 = playerSelected;
+              
+                setPlayerSeleted(player1);
+                console.log('ta aqui');
                 console.log(playerSelected);
+                console.log('e aqui');
                 break;
                   
               case 'Posi_cornerKick':
                 playerSelected.scouts.positives.cornerKick.push(newAction)
+                let player2 = playerSelected;
+              
+                setPlayerSeleted(player2);
+                console.log('ta aqui');
                 console.log(playerSelected);
+                console.log('e aqui');
                 break;
                     
               case 'Posi_cross':
                 playerSelected.scouts.positives.cross.push(newAction)
+                let player3 = playerSelected;
+              
+                setPlayerSeleted(player3);
+                console.log('ta aqui');
                 console.log(playerSelected);
+                console.log('e aqui');
                 break;
                       
               case 'Posi_foul':
                 playerSelected.scouts.positives.foul.push(newAction)
+                let player4 = playerSelected;
+              
+                setPlayerSeleted(player4);
+                console.log('ta aqui');
                 console.log(playerSelected);
+                console.log('e aqui');
                 break;
 
               case 'Posi_tackle':
                 playerSelected.scouts.positives.tackle.push(newAction)
+                let player5 = playerSelected;
+              
+                setPlayerSeleted(player5);
+                console.log('ta aqui');
                 console.log(playerSelected);
+                console.log('e aqui');
                 break;
                     
               case 'Posi_stolenBall':
                 playerSelected.scouts.positives.stolenBall.push(newAction)
+                let player6 = playerSelected;
+              
+                setPlayerSeleted(player6);
+                console.log('ta aqui');
                 console.log(playerSelected);
+                console.log('e aqui');
                 break;
                       
               case 'Posi_passBetweenLines':
                 playerSelected.scouts.positives.passBLines.push(newAction)
+                let player7 = playerSelected;
+              
+                setPlayerSeleted(player7);
+                console.log('ta aqui');
                 console.log(playerSelected);
+                console.log('e aqui');
                 break;
                         
               case 'Posi_firstBall':
                 playerSelected.scouts.positives.firstBall.push(newAction)
+                let player8 = playerSelected;
+              
+                setPlayerSeleted(player8);
+                console.log('ta aqui');
                 console.log(playerSelected);
+                console.log('e aqui');
                 break;
                   
               case 'Posi_secondBall':
                 playerSelected.scouts.positives.secondBall.push(newAction)
+                let player9 = playerSelected;
+              
+                setPlayerSeleted(player9);
+                console.log('ta aqui');
                 console.log(playerSelected);
+                console.log('e aqui');
                 break;
             }
             break;
@@ -765,17 +811,22 @@ export function NewGame({ action }: PosOrNeg) {
                   <FourthZone>
                     <FourA>
                       <View style={{height: '100%', width: '100%', backgroundColor: 'transparent'}} {...panResponderFourA.panHandlers}>
-                        <View style={[ styles.pointStyle, { top: locationYFourA, left: locationXFourA } ]}/> 
+                        <ActionPoint 
+                          style={{ top: locationYFourA, left: locationXFourA }}
+                          isPositive={actionSelected.type === 'positive' ? true : false}
+                        /> 
+
                           { 
                             playerSelected.scouts.positives.shortPass.map(item  => (
                               <View key={item.id}>
                                 <ActionPoint 
                                   style={{ top: item.yPosition, left: item.xPosition }}
                                   isPositive={actionSelected.type === 'positive' ? true : false}
-                                />
+                                  />
                               </View>
                             ))
                           }
+                        
                       </View>
                     </FourA>
 

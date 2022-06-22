@@ -19,7 +19,7 @@ export const basicPlayers = [
     position: ["GoalKeeper"],
     positionInitials: "GK",
     scouts: {
-      postive: {
+      positives: {
         shortPass: [],
         kick: [],
         cornerKick: [],
@@ -62,7 +62,7 @@ export const basicPlayers = [
     position: ["Right-back"],
     positionInitials: "RB",
     scouts: {
-      postive: {
+      positives: {
         shortPass: [],
         kick: [],
         cornerKick: [],
@@ -105,7 +105,7 @@ export const basicPlayers = [
     position: ["Defender", "Right-back"],
     positionInitials: "DF",
     scouts: {
-      postive: {
+      positives: {
         shortPass: [],
         kick: [],
         cornerKick: [],
@@ -148,7 +148,7 @@ export const basicPlayers = [
     position: ["Defender", "Left-Back"],
     positionInitials: "DF",
     scouts: {
-      postives: {
+      positives: {
         shortPass: [],
         kick: [],
         cornerKick: [],
@@ -191,7 +191,7 @@ export const basicPlayers = [
     position: ["Defensive Midfilder"],
     positionInitials: "DM",
     scouts: {
-      postive: {
+      positives: {
         shortPass: [],
         kick: [],
         cornerKick: [],
@@ -234,7 +234,7 @@ export const basicPlayers = [
     position: ["Defender", "Defensive Midfilder"],
     positionInitials: "MD",
     scouts: {
-      postive: {
+      positives: {
         shortPass: [],
         kick: [],
         cornerKick: [],
@@ -277,7 +277,7 @@ export const basicPlayers = [
     position: ["Defender", "Defensive Midfilder"],
     positionInitials: "MD",
     scouts: {
-      postive: {
+      positives: {
         shortPass: [],
         kick: [],
         cornerKick: [],
@@ -320,7 +320,7 @@ export const basicPlayers = [
     position: ["Defender", "Defensive Midfilder"],
     positionInitials: "MD",
     scouts: {
-      postive: {
+      positives: {
         shortPass: [],
         kick: [],
         cornerKick: [],
