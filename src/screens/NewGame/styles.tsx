@@ -4,6 +4,10 @@ interface Props {
   isPositive: boolean;
 }
 
+interface FocusedProps {
+  isActive: boolean;
+}
+
 export const Container = styled.View`
   flex: 1;
   flex-direction: row;
@@ -29,15 +33,17 @@ export const LeftSide = styled.View`
   padding-left: 30px;
 `;
 
-export const Content = styled.View`
+export const Content = styled.View<FocusedProps>`
   width: 100%;
   height: 662px;
   margin-bottom: 15px;
+  opacity:  ${({ isActive }) => 
+  isActive ? 1 : 0.5 };
 `;
 
-export const Focused = styled.View`
-/*   background-color:  ${({ theme }) => theme.colors.dark_background};
-  opacity: .5; */
+export const Focused = styled.View<FocusedProps>`
+  background-color:  ${({ isActive, theme }) => 
+  isActive ? theme.colors.transparent : theme.colors.semi_transparent };
   width: 100%;
   height: 100%;
 `;
@@ -65,6 +71,11 @@ export const BioPlayer = styled.View`
  margin-top: -40px;
 `;
 
+export const BioPlayerVisitant = styled.View`
+ align-items: flex-start;
+ margin-top: -40px;
+`;
+
 export const Name = styled.View`
   flex-direction: row;
   margin-top: 15px;
@@ -85,6 +96,13 @@ export const BioInfo = styled.Text`
   margin-top: 8px;
   text-align: right;
 `;
+
+export const BioInfoVisitant = styled.Text`
+  margin-top: 8px;
+  text-align: left;
+  padding-left: 5px;
+`;
+
 
 
 
@@ -113,6 +131,13 @@ export const Shield = styled.View`
   width:  52px;
   background-color: red;
   margin-right: 15px;
+`;
+
+export const ShieldVisitant = styled.View`
+  height: 52px;
+  width:  52px;
+  background-color: red;
+  margin-left: 15px;
 `;
 
 export const WrapperNameScore = styled.View`
@@ -308,7 +333,6 @@ export const RightSide = styled.View`
   width: 283px;
   height: 100%;
   padding-right: 30px;
-  background-color: blue;
   justify-content: center;
   align-items: center;
 `;

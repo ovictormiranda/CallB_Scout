@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ImageBackground, PanResponder, StyleSheet, View, Text } from 'react-native';
 import bg from '../../assets/game_bg.png';
 import field from '../../assets/FIELD.png';
@@ -16,14 +16,17 @@ import {
   SelectedPlayer,
   ImagePlayer,
   BioPlayer,
+  BioPlayerVisitant,
   Name,
   FirstName,
   LastName,
   BioInfo,
+  BioInfoVisitant,
   
   TeamContent,
   TeamInfo,
   Shield,
+  ShieldVisitant,
   WrapperNameScore,
   TeamName,
   Score,
@@ -52,8 +55,6 @@ import {
   NegativeActions,
 
   RightSide,
-
-  TestBox,
 
 } from './styles';
 
@@ -138,6 +139,7 @@ export function NewGame({ action }: PosOrNeg) {
   const [actionSelected, setActionSelected] = useState<TypeAction>({key: '', nonId: '', name: '', type: ''}); // to know if is a positive or negative action
   
   const [playerSelected, setPlayerSeleted] = useState<PlayerProps>(basicPlayers[0]);
+  const [visitantPlayerSelected, setVisitantPlayerSeleted] = useState<PlayerProps>(basicPlayers[0]);
 
   const [locationXFourA, setLocationXFourA] = useState(0); //To plot the actual click on screen
   const [locationYFourA, setLocationYFourA] = useState(0);
@@ -199,255 +201,272 @@ export function NewGame({ action }: PosOrNeg) {
   
 
   
-  function handleActionSelected(action: TypeAction) {
-    console.log(action);
-    setActionSelected(action);
+  function handleActionSelected(action: TypeAction, player: PlayerProps) {
+    setLocationXFourA(0)
+    setLocationYFourA(0)
+    const actionAtual = action;
+    setActionSelected(actionAtual);
+
+    switch (action.type) {
+      case 'positive':
+        switch (action.key) {
+          case 'Posi_shortPass':
+            const tentei = playerSelected.scouts.positives.shortPass.map(item => item)
+            setActionByPlayer(tentei)
+            break;
+            
+          case 'Posi_kick':
+            const tentei1 = playerSelected.scouts.positives.kick.map(item => item)
+            setActionByPlayer(tentei1)
+            break;
+              
+          case 'Posi_cornerKick':
+            const tentei2 = playerSelected.scouts.positives.cornerKick.map(item => item)
+            setActionByPlayer(tentei2)
+            break;
+                
+          case 'Posi_cross':
+            const tentei3 = playerSelected.scouts.positives.cross.map(item => item)
+            setActionByPlayer(tentei3)
+            break;
+                  
+          case 'Posi_foul':
+            const tentei4 = playerSelected.scouts.positives.foul.map(item => item)
+            setActionByPlayer(tentei4)
+            break;
+
+          case 'Posi_tackle':
+            const tentei5 = playerSelected.scouts.positives.tackle.map(item => item)
+            setActionByPlayer(tentei5)
+            break;
+                
+          case 'Posi_stolenBall':
+            const tentei6 = playerSelected.scouts.positives.stolenBall.map(item => item)
+            setActionByPlayer(tentei6)
+            break;
+                  
+          case 'Posi_passBetweenLines':
+            const tentei7 = playerSelected.scouts.positives.passBLines.map(item => item)
+            setActionByPlayer(tentei7)
+            break;
+                    
+          case 'Posi_firstBall':
+            const tentei8 = playerSelected.scouts.positives.firstBall.map(item => item)
+            setActionByPlayer(tentei8)
+            break;
+              
+          case 'Posi_secondBall':
+            const tentei9 = playerSelected.scouts.positives.secondBall.map(item => item)
+            setActionByPlayer(tentei9)
+            break;
+        }
+        break;
+            
+      case 'negative':
+        switch (action.key) {
+          case 'Nega_shortPass':
+            const tentei = playerSelected.scouts.negatives.shortPass.map(item => item)
+            setActionByPlayer(tentei)
+            break;
+            
+          case 'Nega_kick':
+            const tentei1 = playerSelected.scouts.negatives.kick.map(item => item)
+            setActionByPlayer(tentei1)
+            break;
+              
+          case 'Nega_cornerKick':
+            const tentei2 = playerSelected.scouts.negatives.cornerKick.map(item => item)
+            setActionByPlayer(tentei2)
+            break;
+                
+          case 'Nega_cross':
+            const tentei3 = playerSelected.scouts.negatives.cross.map(item => item)
+            setActionByPlayer(tentei3)
+            break;
+                  
+          case 'Nega_foul':
+            const tentei4 = playerSelected.scouts.negatives.foul.map(item => item)
+            setActionByPlayer(tentei4)
+            break;
+
+          case 'Nega_tackle':
+            const tentei5 = playerSelected.scouts.negatives.tackle.map(item => item)
+            setActionByPlayer(tentei5)
+            break;
+                
+          case 'Nega_looseBall':
+            const tentei6 = playerSelected.scouts.negatives.looseBall.map(item => item)
+            setActionByPlayer(tentei6)
+            break;
+                  
+          case 'Nega_passBetweenLines':
+            const tentei7 = playerSelected.scouts.negatives.passBLines.map(item => item)
+            setActionByPlayer(tentei7)
+            break;
+                    
+          case 'Nega_firstBall':
+            const tentei8 = playerSelected.scouts.negatives.firstBall.map(item => item)
+            setActionByPlayer(tentei8)
+            break;
+              
+          case 'Nega_secondBall':
+            const tentei9 = playerSelected.scouts.negatives.secondBall.map(item => item)
+            setActionByPlayer(tentei9)
+            break;
+        }
+        break;
+    }
     
     //handleNewActionFourA(locationXFourA, locationYFourA, playerSelected, actionSelected)
   }
   
+  
   function handlePlayerSelected(player: PlayerProps) {
+    console.log('comecou ###############################')
+    console.log(player)
+
+    const playerAtual = player; //esta const foi criada para que o state receba o valor atual do setState
+    console.log(playerAtual)
+    player.team === 'Botafogo' && setVisitantPlayerSeleted(playerAtual)
     
-    setPlayerSeleted(player)
-    console.log(player);
-  }
+    setPlayerSeleted(playerAtual)
 
-    function handleNewActionFourA(
-      locationXFourA: any,
-      locationYFourA: any, 
-      playerSelected: PlayerProps,
-      actionSelected: TypeAction 
-      ) {
-        
-      const newAction = {
-        id: new Date().getTime(),
-        zone: 'FourA',
-        xPosition: locationXFourA,
-        yPosition: locationYFourA,
-        type: actionSelected.type,
-        key: actionSelected.key 
-      }    
-      
-      if (newAction.xPosition && newAction.yPosition !== 0 ) {
-        switch (actionSelected.type) {
-          case 'positive':
-            switch (actionSelected.key) {
-              case 'Posi_shortPass':
-                playerSelected.scouts.positives.shortPass.push(newAction)
-                let player = playerSelected;
-                setPlayerSeleted(player);
-                console.log('ta aqui');
-                
-                console.log(playerSelected);
-                console.log('e aqui');
-                const tentei = playerSelected.scouts.positives.shortPass.map(item => item)
-                setActionByPlayer(tentei)
-                console.log(actionByPlayer)
-                break;
-                
-              case 'Posi_kick':
-                playerSelected.scouts.positives.kick.push(newAction)
-                let player1 = playerSelected;
-                setPlayerSeleted(player1);
-                
-                const tentei1 = playerSelected.scouts.positives.kick.map(item => item)
-                setActionByPlayer(tentei1)
-                break;
-                  
-              case 'Posi_cornerKick':
-                playerSelected.scouts.positives.cornerKick.push(newAction)
-                let player2 = playerSelected;
-                setPlayerSeleted(player2);
-
-                const tentei2 = playerSelected.scouts.positives.cornerKick.map(item => item)
-                setActionByPlayer(tentei2)
-                break;
-                    
-              case 'Posi_cross':
-                playerSelected.scouts.positives.cross.push(newAction)
-                let player3 = playerSelected;
+    console.log(playerSelected)
+    console.log('terminou ###############################')
+    
+    switch (actionSelected.type) {
+      case 'positive':
+        switch (actionSelected.key) {
+          case 'Posi_shortPass':
+            console.log(playerSelected)
+            console.log(player)
+            const tentei = player.scouts.positives.shortPass.map(item => item)
+            setActionByPlayer(tentei)
+            break;
+            
+          case 'Posi_kick':
+            const tentei1 = player.scouts.positives.kick.map(item => item)
+            setActionByPlayer(tentei1)
+            break;
               
-                setPlayerSeleted(player3);
-                const tentei3 = playerSelected.scouts.positives.cross.map(item => item)
-                setActionByPlayer(tentei3)
-                break;
-                      
-              case 'Posi_foul':
-                playerSelected.scouts.positives.foul.push(newAction)
-                let player4 = playerSelected;
-              
-                setPlayerSeleted(player4);
-                const tentei4 = playerSelected.scouts.positives.foul.map(item => item)
-                setActionByPlayer(tentei4)
-                break;
-
-              case 'Posi_tackle':
-                playerSelected.scouts.positives.tackle.push(newAction)
-                let player5 = playerSelected;
-              
-                setPlayerSeleted(player5);
-                const tentei5 = playerSelected.scouts.positives.tackle.map(item => item)
-                setActionByPlayer(tentei5)
-                break;
-                    
-              case 'Posi_stolenBall':
-                playerSelected.scouts.positives.stolenBall.push(newAction)
-                let player6 = playerSelected;
-              
-                setPlayerSeleted(player6);
-                const tentei6 = playerSelected.scouts.positives.stolenBall.map(item => item)
-                setActionByPlayer(tentei6)
-                break;
-                      
-              case 'Posi_passBetweenLines':
-                playerSelected.scouts.positives.passBLines.push(newAction)
-                let player7 = playerSelected;
-              
-                setPlayerSeleted(player7);
-                const tentei7 = playerSelected.scouts.positives.passBLines.map(item => item)
-                setActionByPlayer(tentei7)
-                break;
-                        
-              case 'Posi_firstBall':
-                playerSelected.scouts.positives.firstBall.push(newAction)
-                let player8 = playerSelected;
-              
-                setPlayerSeleted(player8);
-                const tentei8 = playerSelected.scouts.positives.firstBall.map(item => item)
-                setActionByPlayer(tentei8)
-                break;
-                  
-              case 'Posi_secondBall':
-                playerSelected.scouts.positives.secondBall.push(newAction)
-                let player9 = playerSelected;
-              
-                setPlayerSeleted(player9);
-                const tentei9 = playerSelected.scouts.positives.secondBall.map(item => item)
-                setActionByPlayer(tentei9)
-                break;
-            }
+          case 'Posi_cornerKick':
+            const tentei2 = player.scouts.positives.cornerKick.map(item => item)
+            setActionByPlayer(tentei2)
             break;
                 
-          case 'negative':
-            switch (actionSelected.key) {
-              case 'Nega_shortPass':
-                playerSelected.scouts.negatives.shortPass.push(newAction)
-                let player = playerSelected;
-                setPlayerSeleted(player);
-                console.log('ta aqui');
-                
-                console.log(playerSelected);
-                console.log('e aqui');
-                const tentei = playerSelected.scouts.negatives.shortPass.map(item => item)
-                setActionByPlayer(tentei)
-                console.log(actionByPlayer)
-                break;
-                
-              case 'Nega_kick':
-                playerSelected.scouts.negatives.kick.push(newAction)
-                let player1 = playerSelected;
-                setPlayerSeleted(player1);
-                
-                const tentei1 = playerSelected.scouts.negatives.kick.map(item => item)
-                setActionByPlayer(tentei1)
-                break;
+          case 'Posi_cross':
+            const tentei3 = player.scouts.positives.cross.map(item => item)
+            setActionByPlayer(tentei3)
+            break;
                   
-              case 'Nega_cornerKick':
-                playerSelected.scouts.negatives.cornerKick.push(newAction)
-                let player2 = playerSelected;
-                setPlayerSeleted(player2);
+          case 'Posi_foul':
+            const tentei4 = player.scouts.positives.foul.map(item => item)
+            setActionByPlayer(tentei4)
+            break;
 
-                const tentei2 = playerSelected.scouts.negatives.cornerKick.map(item => item)
-                setActionByPlayer(tentei2)
-                break;
-                    
-              case 'Nega_cross':
-                playerSelected.scouts.negatives.cross.push(newAction)
-                let player3 = playerSelected;
-              
-                setPlayerSeleted(player3);
-                const tentei3 = playerSelected.scouts.negatives.cross.map(item => item)
-                setActionByPlayer(tentei3)
-                break;
-                      
-              case 'Nega_foul':
-                playerSelected.scouts.negatives.foul.push(newAction)
-                let player4 = playerSelected;
-              
-                setPlayerSeleted(player4);
-                const tentei4 = playerSelected.scouts.negatives.foul.map(item => item)
-                setActionByPlayer(tentei4)
-                break;
-
-              case 'Nega_tackle':
-                playerSelected.scouts.negatives.tackle.push(newAction)
-                let player5 = playerSelected;
-              
-                setPlayerSeleted(player5);
-                const tentei5 = playerSelected.scouts.negatives.tackle.map(item => item)
-                setActionByPlayer(tentei5)
-                break;
-                    
-              case 'Nega_looseBall':
-                playerSelected.scouts.negatives.looseBall.push(newAction)
-                let player6 = playerSelected;
-              
-                setPlayerSeleted(player6);
-                const tentei6 = playerSelected.scouts.negatives.looseBall.map(item => item)
-                setActionByPlayer(tentei6)
-                break;
-                      
-              case 'Nega_passBetweenLines':
-                playerSelected.scouts.negatives.passBLines.push(newAction)
-                let player7 = playerSelected;
-              
-                setPlayerSeleted(player7);
-                const tentei7 = playerSelected.scouts.negatives.passBLines.map(item => item)
-                setActionByPlayer(tentei7)
-                break;
-                        
-              case 'Nega_firstBall':
-                playerSelected.scouts.negatives.firstBall.push(newAction)
-                let player8 = playerSelected;
-              
-                setPlayerSeleted(player8);
-                const tentei8 = playerSelected.scouts.negatives.firstBall.map(item => item)
-                setActionByPlayer(tentei8)
-                break;
+          case 'Posi_tackle':
+            const tentei5 = player.scouts.positives.tackle.map(item => item)
+            setActionByPlayer(tentei5)
+            break;
+                
+          case 'Posi_stolenBall':
+            const tentei6 = player.scouts.positives.stolenBall.map(item => item)
+            setActionByPlayer(tentei6)
+            break;
                   
-              case 'Nega_secondBall':
-                playerSelected.scouts.negatives.secondBall.push(newAction)
-                let player9 = playerSelected;
+          case 'Posi_passBetweenLines':
+            const tentei7 = player.scouts.positives.passBLines.map(item => item)
+            setActionByPlayer(tentei7)
+            break;
+                    
+          case 'Posi_firstBall':
+            const tentei8 = player.scouts.positives.firstBall.map(item => item)
+            setActionByPlayer(tentei8)
+            break;
               
-                setPlayerSeleted(player9);
-                const tentei9 = playerSelected.scouts.negatives.secondBall.map(item => item)
-                setActionByPlayer(tentei9)
-                break;
-            }
+          case 'Posi_secondBall':
+            const tentei9 = player.scouts.positives.secondBall.map(item => item)
+            setActionByPlayer(tentei9)
             break;
         }
-      }
-    }        
+        break;
+            
+      case 'negative':
+        switch (actionSelected.key) {
+          case 'Nega_shortPass':
+            const tentei = player.scouts.negatives.shortPass.map(item => item)
+            setActionByPlayer(tentei)
+            break;
+            
+          case 'Nega_kick':
+            const tentei1 = player.scouts.negatives.kick.map(item => item)
+            setActionByPlayer(tentei1)
+            break;
+              
+          case 'Nega_cornerKick':
+            const tentei2 = player.scouts.negatives.cornerKick.map(item => item)
+            setActionByPlayer(tentei2)
+            break;
+                
+          case 'Nega_cross':
+            const tentei3 = player.scouts.negatives.cross.map(item => item)
+            setActionByPlayer(tentei3)
+            break;
+                  
+          case 'Nega_foul':
+            const tentei4 = player.scouts.negatives.foul.map(item => item)
+            setActionByPlayer(tentei4)
+            break;
+
+          case 'Nega_tackle':
+            const tentei5 = player.scouts.negatives.tackle.map(item => item)
+            setActionByPlayer(tentei5)
+            break;
+                
+          case 'Nega_looseBall':
+            const tentei6 = player.scouts.negatives.looseBall.map(item => item)
+            setActionByPlayer(tentei6)
+            break;
+                  
+          case 'Nega_passBetweenLines':
+            const tentei7 = player.scouts.negatives.passBLines.map(item => item)
+            setActionByPlayer(tentei7)
+            break;
+                    
+          case 'Nega_firstBall':
+            const tentei8 = player.scouts.negatives.firstBall.map(item => item)
+            setActionByPlayer(tentei8)
+            break;
+              
+          case 'Nega_secondBall':
+            const tentei9 = player.scouts.negatives.secondBall.map(item => item)
+            setActionByPlayer(tentei9)
+            break;
+        }
+        break;
+    }
+  }
 
   
 
-    
 
 
-  function handleNewActionFourB(
-    locationXFourB: any,
-    locationYFourB: any,
+
+  function handleNewActionFourA(
+    locationXFourA: any,
+    locationYFourA: any, 
     playerSelected: PlayerProps,
     actionSelected: TypeAction, 
     ) {
+      
     const newAction = {
       id: new Date().getTime(),
-      zone: 'FourB',
-      xPosition: locationXFourB,
-      yPosition: locationYFourB,
+      zone: 'FourA',
+      xPosition: locationXFourA,
+      yPosition: locationYFourA,
       type: actionSelected.type,
       key: actionSelected.key 
-    }
+    }    
     
     if (newAction.xPosition && newAction.yPosition !== 0 ) {
       switch (actionSelected.type) {
@@ -463,18 +482,21 @@ export function NewGame({ action }: PosOrNeg) {
               console.log('e aqui');
               const tentei = playerSelected.scouts.positives.shortPass.map(item => item)
               setActionByPlayer(tentei)
-              console.log(actionByPlayer)
-              console.log('ta aqui #########################################');
-              console.log(actionByPlayer.map((item) => (item.zone === 'OneC') && (item)))
+
               break;
               
             case 'Posi_kick':
               playerSelected.scouts.positives.kick.push(newAction)
               let player1 = playerSelected;
               setPlayerSeleted(player1);
-              
+
+
               const tentei1 = playerSelected.scouts.positives.kick.map(item => item)
               setActionByPlayer(tentei1)
+              setActionByPlayer(tentei1)
+              console.log('action by player ##################')
+              console.log(tentei1)
+              console.log(actionByPlayer)
               break;
                 
             case 'Posi_cornerKick':
@@ -641,6 +663,222 @@ export function NewGame({ action }: PosOrNeg) {
             case 'Nega_secondBall':
               playerSelected.scouts.negatives.secondBall.push(newAction)
               let player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.negatives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+      }
+    }
+  }        
+
+  
+
+
+
+  function handleNewActionFourB(
+    locationXFourB: any,
+    locationYFourB: any,
+    playerSelected: PlayerProps,
+    actionSelected: TypeAction, 
+    ) {
+    const newAction = {
+      id: new Date().getTime(),
+      zone: 'FourB',
+      xPosition: locationXFourB,
+      yPosition: locationYFourB,
+      type: actionSelected.type,
+      key: actionSelected.key 
+    }
+    
+    if (newAction.xPosition && newAction.yPosition !== 0 ) {
+      switch (actionSelected.type) {
+        case 'positive':
+          switch (actionSelected.key) {
+            case 'Posi_shortPass':
+              playerSelected.scouts.positives.shortPass.push(newAction)
+              const player = playerSelected;
+              setPlayerSeleted(player);
+
+              const tentei = playerSelected.scouts.positives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              break;
+              
+            case 'Posi_kick':
+              playerSelected.scouts.positives.kick.push(newAction)
+              const player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.positives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Posi_cornerKick':
+              playerSelected.scouts.positives.cornerKick.push(newAction)
+              const player2 = playerSelected;
+              setPlayerSeleted(player2);
+
+              const tentei2 = playerSelected.scouts.positives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Posi_cross':
+              playerSelected.scouts.positives.cross.push(newAction)
+              const player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.positives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Posi_foul':
+              playerSelected.scouts.positives.foul.push(newAction)
+              const player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.positives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Posi_tackle':
+              playerSelected.scouts.positives.tackle.push(newAction)
+              const player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.positives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Posi_stolenBall':
+              playerSelected.scouts.positives.stolenBall.push(newAction)
+              const player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.positives.stolenBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Posi_passBetweenLines':
+              playerSelected.scouts.positives.passBLines.push(newAction)
+              const player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.positives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Posi_firstBall':
+              playerSelected.scouts.positives.firstBall.push(newAction)
+              const player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.positives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Posi_secondBall':
+              playerSelected.scouts.positives.secondBall.push(newAction)
+              const player9 = playerSelected;
+            
+              setPlayerSeleted(player9);
+              const tentei9 = playerSelected.scouts.positives.secondBall.map(item => item)
+              setActionByPlayer(tentei9)
+              break;
+          }
+          break;
+              
+        case 'negative':
+          switch (actionSelected.key) {
+            case 'Nega_shortPass':
+              playerSelected.scouts.negatives.shortPass.push(newAction)
+              const player = playerSelected;
+              setPlayerSeleted(player);
+              console.log('ta aqui');
+              
+              console.log(playerSelected);
+              console.log('e aqui');
+              const tentei = playerSelected.scouts.negatives.shortPass.map(item => item)
+              setActionByPlayer(tentei)
+              console.log(actionByPlayer)
+              break;
+              
+            case 'Nega_kick':
+              playerSelected.scouts.negatives.kick.push(newAction)
+              const player1 = playerSelected;
+              setPlayerSeleted(player1);
+              
+              const tentei1 = playerSelected.scouts.negatives.kick.map(item => item)
+              setActionByPlayer(tentei1)
+              break;
+                
+            case 'Nega_cornerKick':
+              playerSelected.scouts.negatives.cornerKick.push(newAction)
+              const player2 = playerSelected;
+              setPlayerSeleted(player2);
+
+              const tentei2 = playerSelected.scouts.negatives.cornerKick.map(item => item)
+              setActionByPlayer(tentei2)
+              break;
+                  
+            case 'Nega_cross':
+              playerSelected.scouts.negatives.cross.push(newAction)
+              const player3 = playerSelected;
+            
+              setPlayerSeleted(player3);
+              const tentei3 = playerSelected.scouts.negatives.cross.map(item => item)
+              setActionByPlayer(tentei3)
+              break;
+                    
+            case 'Nega_foul':
+              playerSelected.scouts.negatives.foul.push(newAction)
+              const player4 = playerSelected;
+            
+              setPlayerSeleted(player4);
+              const tentei4 = playerSelected.scouts.negatives.foul.map(item => item)
+              setActionByPlayer(tentei4)
+              break;
+
+            case 'Nega_tackle':
+              playerSelected.scouts.negatives.tackle.push(newAction)
+              const player5 = playerSelected;
+            
+              setPlayerSeleted(player5);
+              const tentei5 = playerSelected.scouts.negatives.tackle.map(item => item)
+              setActionByPlayer(tentei5)
+              break;
+                  
+            case 'Nega_looseBall':
+              playerSelected.scouts.negatives.looseBall.push(newAction)
+              const player6 = playerSelected;
+            
+              setPlayerSeleted(player6);
+              const tentei6 = playerSelected.scouts.negatives.looseBall.map(item => item)
+              setActionByPlayer(tentei6)
+              break;
+                    
+            case 'Nega_passBetweenLines':
+              playerSelected.scouts.negatives.passBLines.push(newAction)
+              const player7 = playerSelected;
+            
+              setPlayerSeleted(player7);
+              const tentei7 = playerSelected.scouts.negatives.passBLines.map(item => item)
+              setActionByPlayer(tentei7)
+              break;
+                      
+            case 'Nega_firstBall':
+              playerSelected.scouts.negatives.firstBall.push(newAction)
+              const player8 = playerSelected;
+            
+              setPlayerSeleted(player8);
+              const tentei8 = playerSelected.scouts.negatives.firstBall.map(item => item)
+              setActionByPlayer(tentei8)
+              break;
+                
+            case 'Nega_secondBall':
+              playerSelected.scouts.negatives.secondBall.push(newAction)
+              const player9 = playerSelected;
             
               setPlayerSeleted(player9);
               const tentei9 = playerSelected.scouts.negatives.secondBall.map(item => item)
@@ -2835,6 +3073,7 @@ export function NewGame({ action }: PosOrNeg) {
       handleNewActionFourA(locationXFourA, locationYFourA, playerSelected, actionSelected)
     },
   });
+
   
   const panResponderFourB = PanResponder.create({
     onStartShouldSetPanResponder: (event, gestureState) => true,
@@ -2867,7 +3106,6 @@ export function NewGame({ action }: PosOrNeg) {
       handleNewActionFourC(locationXFourC, locationYFourC, playerSelected, actionSelected)
     },
   });
-
 
 
   const panResponderThreeA = PanResponder.create({
@@ -3034,8 +3272,12 @@ export function NewGame({ action }: PosOrNeg) {
         >
         <Wrapper>
           <LeftSide>
-            <Content>
-              <Focused>
+            <Content
+              isActive={playerSelected.team !== 'Botafogo'}
+            >
+              <Focused
+                isActive={playerSelected.team !== 'Botafogo'}
+              >
                 <SelectedPlayer>
                     <ImagePlayer source={{ uri: playerSelected.bioInfo.picture }} resizeMode="contain"/>
                   <BioPlayer>
@@ -3096,7 +3338,7 @@ export function NewGame({ action }: PosOrNeg) {
                   return (
                     <ActionButton 
                       title={item.name} 
-                      onPress={() => handleActionSelected(item)}
+                      onPress={() => handleActionSelected(item, playerSelected)}
                       isActive={actionSelected.key === item.key}
                       isPositive
                     />
@@ -3120,17 +3362,18 @@ export function NewGame({ action }: PosOrNeg) {
                   <><FourthZone>
                       <FourA>
                         <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderFourA.panHandlers}>
-                          <ActionPoint
+{/*                           <ActionPoint
                             style={{ top: locationYFourA, left: locationXFourA }}
-                            isPositive={actionSelected.type === 'positive' ? true : false} />
-                          
+                            isPositive={actionSelected.type === 'positive' ? true : false} 
+                          /> */}
 
                           {
-                              actionByPlayer.map(item => ( 
+                              actionByPlayer.map((item) => (item.zone === 'FourA') && (
                               <View key={item.id}>
                                 <ActionPoint
                                   style={{ top: item.yPosition, left: item.xPosition }}
-                                  isPositive={actionSelected.type === 'positive' ? true : false} />
+                                  isPositive={item.type === 'positive' ? true : false} 
+                                />
                               </View>
                             ))
                           }
@@ -3139,15 +3382,17 @@ export function NewGame({ action }: PosOrNeg) {
 
                       <FourB>
                         <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderFourB.panHandlers}>
-                          <ActionPoint
+{/*                           <ActionPoint
                             style={{ top: locationYFourB, left: locationXFourB }}
-                            isPositive={actionSelected.type === 'positive' ? true : false} />
+                            isPositive={actionSelected.type === 'positive' ? true : false} 
+                          /> */}
                           
-                          {actionByPlayer.map(item => (
+                          {actionByPlayer.map((item) => (item.zone === 'FourB') && (
                             <View key={item.id}>
-                              <ActionPoint
-                                style={{ top: item.yPosition, left: item.xPosition }}
-                                isPositive={actionSelected.type === 'positive' ? true : false} />
+                                <ActionPoint
+                                  style={{ top: item.yPosition, left: item.xPosition }}
+                                  isPositive={item.type === 'positive' ? true : false} 
+                                />
                             </View>
                           )
                           )}
@@ -3156,10 +3401,17 @@ export function NewGame({ action }: PosOrNeg) {
 
                       <FourC>
                         <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderFourC.panHandlers}>
-                          <View style={[styles.pointStyle, { top: locationYFourC, left: locationXFourC }]} />
-                          {actionByPlayer.map(item => (
+{/*                           <ActionPoint 
+                            style={{ top: locationYFourC, left: locationXFourC }} 
+                            isPositive={actionSelected.type === 'positive' ? true : false} 
+                          /> */}
+
+                          {actionByPlayer.map((item) => (item.zone === 'FourC') && (
                             <View key={item.id}>
-                              <View style={[styles.pointStyle, { top: item.yPosition, left: item.xPosition }]} />
+                              <ActionPoint 
+                                style={{ top: item.yPosition, left: item.xPosition }} 
+                                isPositive={item.type === 'positive' ? true : false} 
+                              />
                             </View>
                           )
                           )}
@@ -3168,10 +3420,17 @@ export function NewGame({ action }: PosOrNeg) {
                     </FourthZone><ThirdZone>
                         <ThreeA>
                           <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderThreeA.panHandlers}>
-                            <View style={[styles.pointStyle, { top: locationYThreeA, left: locationXThreeA }]} />
-                            {actionByPlayer.map(item => (
+{/*                             <ActionPoint 
+                              style={{ top: locationYThreeA, left: locationXThreeA }} 
+                              isPositive={actionSelected.type === 'positive' ? true : false} 
+                            />
+ */}
+                            {actionByPlayer.map((item) => (item.zone === 'ThreeA') && (
                               <View key={item.id}>
-                                <View style={[styles.pointStyle, { top: item.yPosition, left: item.xPosition }]} />
+                                <ActionPoint
+                                  style={{ top: item.yPosition, left: item.xPosition }}
+                                  isPositive={item.type === 'positive' ? true : false} 
+                                />
                               </View>
                             )
                             )}
@@ -3179,10 +3438,17 @@ export function NewGame({ action }: PosOrNeg) {
                         </ThreeA>
                         <ThreeB>
                           <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderThreeB.panHandlers}>
-                            <View style={[styles.pointStyle, { top: locationYThreeB, left: locationXThreeB }]} />
-                            {actionByPlayer.map(item => (
+{/*                             <ActionPoint 
+                              style={{ top: locationYThreeB, left: locationXThreeB }} 
+                              isPositive={actionSelected.type === 'positive' ? true : false}
+                            /> */}
+
+                            {actionByPlayer.map((item) => (item.zone === 'ThreeB') && (
                               <View key={item.id}>
-                                <View style={[styles.pointStyle, { top: item.yPosition, left: item.xPosition }]} />
+                                <ActionPoint
+                                  style={{ top: item.yPosition, left: item.xPosition }}
+                                  isPositive={item.type === 'positive' ? true : false} 
+                                />
                               </View>
                             )
                             )}
@@ -3190,10 +3456,16 @@ export function NewGame({ action }: PosOrNeg) {
                         </ThreeB>
                         <ThreeC>
                           <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderThreeC.panHandlers}>
-                            <View style={[styles.pointStyle, { top: locationYThreeC, left: locationXThreeC }]} />
-                            {actionByPlayer.map(item => (
+{/*                             <ActionPoint 
+                              style={{ top: locationYThreeC, left: locationXThreeC }} 
+                              isPositive={actionSelected.type === 'positive' ? true : false} 
+                            /> */}
+                            {actionByPlayer.map((item) => (item.zone === 'ThreeC') && (
                               <View key={item.id}>
-                                <View style={[styles.pointStyle, { top: item.yPosition, left: item.xPosition }]} />
+                                <ActionPoint
+                                  style={{ top: item.yPosition, left: item.xPosition }}
+                                  isPositive={item.type === 'positive' ? true : false} 
+                                />
                               </View>
                             )
                             )}
@@ -3202,10 +3474,16 @@ export function NewGame({ action }: PosOrNeg) {
                       </ThirdZone><SecondZone>
                         <TwoA>
                           <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderTwoA.panHandlers}>
-                            <View style={[styles.pointStyle, { top: locationYTwoA, left: locationXTwoA }]} />
-                            {actionByPlayer.map(item => (
+{/*                             <ActionPoint 
+                              style={{ top: locationYTwoA, left: locationXTwoA }} 
+                              isPositive={actionSelected.type === 'positive' ? true : false} 
+                            /> */}
+                            {actionByPlayer.map((item) => (item.zone === 'TwoA') && (
                               <View key={item.id}>
-                                <View style={[styles.pointStyle, { top: item.yPosition, left: item.xPosition }]} />
+                                <ActionPoint
+                                  style={{ top: item.yPosition, left: item.xPosition }}
+                                  isPositive={item.type === 'positive' ? true : false} 
+                                />
                               </View>
                             )
                             )}
@@ -3213,10 +3491,17 @@ export function NewGame({ action }: PosOrNeg) {
                         </TwoA>
                         <TwoB>
                           <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderTwoB.panHandlers}>
-                            <View style={[styles.pointStyle, { top: locationYTwoB, left: locationXTwoB }]} />
-                            {actionByPlayer.map(item => (
+{/*                             <ActionPoint
+                             style={{ top: locationYTwoB, left: locationXTwoB }} 
+                             isPositive={actionSelected.type === 'positive' ? true : false} 
+                            /> */}
+
+                            {actionByPlayer.map((item) => (item.zone === 'TwoB') && (
                               <View key={item.id}>
-                                <View style={[styles.pointStyle, { top: item.yPosition, left: item.xPosition }]} />
+                                <ActionPoint
+                                  style={{ top: item.yPosition, left: item.xPosition }}
+                                  isPositive={item.type === 'positive' ? true : false} 
+                                />
                               </View>
                             )
                             )}
@@ -3224,22 +3509,35 @@ export function NewGame({ action }: PosOrNeg) {
                         </TwoB>
                         <TwoC>
                           <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderTwoC.panHandlers}>
-                            <View style={[styles.pointStyle, { top: locationYTwoC, left: locationXTwoC }]} />
-                            {actionByPlayer.map(item => (
+{/*                             <ActionPoint 
+                              style={{ top: locationYTwoC, left: locationXTwoC }}
+                              isPositive={actionSelected.type === 'positive' ? true : false}   
+                            /> */}
+                            {actionByPlayer.map((item) => (item.zone === 'TwoC') && (
                               <View key={item.id}>
-                                <View style={[styles.pointStyle, { top: item.yPosition, left: item.xPosition }]} />
+                                <ActionPoint
+                                  style={{ top: item.yPosition, left: item.xPosition }}
+                                  isPositive={item.type === 'positive' ? true : false} 
+                                />
                               </View>
                             )
                             )}
                           </View>
                         </TwoC>
-                      </SecondZone><FirstZone>
+                      </SecondZone>
+                      <FirstZone>
                         <OneA>
                           <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderOneA.panHandlers}>
-                            <View style={[styles.pointStyle, { top: locationYOneA, left: locationXOneA }]} />
-                            {actionByPlayer.map(item => (
+{/*                             <ActionPoint 
+                              style={{ top: locationYOneA, left: locationXOneA }} 
+                              isPositive={actionSelected.type === 'positive' ? true : false}   
+                            /> */}
+                            {actionByPlayer.map((item) => (item.zone === 'OneA') && (
                               <View key={item.id}>
-                                <View style={[styles.pointStyle, { top: item.yPosition, left: item.xPosition }]} />
+                                <ActionPoint
+                                  style={{ top: item.yPosition, left: item.xPosition }}
+                                  isPositive={item.type === 'positive' ? true : false} 
+                                />
                               </View>
                             )
                             )}
@@ -3247,14 +3545,16 @@ export function NewGame({ action }: PosOrNeg) {
                         </OneA>
                         <OneB>
                           <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderOneB.panHandlers}>
-                            <ActionPoint
+{/*                             <ActionPoint
                               style={{ top: locationYOneB, left: locationXOneB }}
-                              isPositive={actionSelected.type === 'positive' ? true : false} />
-                            {actionByPlayer.map(item => (
+                              isPositive={actionSelected.type === 'positive' ? true : false} 
+                            /> */}
+                            {actionByPlayer.map((item) => (item.zone === 'OneB') && (
                               <View key={item.id}>
                                 <ActionPoint
                                   style={{ top: item.yPosition, left: item.xPosition }}
-                                  isPositive={actionSelected.type === 'positive' ? true : false} />
+                                  isPositive={item.type === 'positive' ? true : false} 
+                                />
                               </View>
                             )
                             )}
@@ -3262,11 +3562,17 @@ export function NewGame({ action }: PosOrNeg) {
                         </OneB>
                         <OneC>
                           <View style={{ height: '100%', width: '100%', backgroundColor: 'transparent' }} {...panResponderOneC.panHandlers}>
-                            <View style={[styles.pointStyle, { top: locationYOneC, left: locationXOneC }]} />
+{/*                             <ActionPoint 
+                              style={{ top: locationYOneC, left: locationXOneC }} 
+                              isPositive={actionSelected.type === 'positive' ? true : false} 
+                            /> */}
                             
                             {actionByPlayer.map((item) => (item.zone === 'OneC') && (
                               <View key={item.id}>
-                                <View style={[styles.pointStyle, { top: item.yPosition, left: item.xPosition }]} />
+                                <ActionPoint
+                                  style={{ top: item.yPosition, left: item.xPosition }}
+                                  isPositive={item.type === 'positive' ? true : false} 
+                                />
                               </View>
                             )
                             )}
@@ -3299,9 +3605,64 @@ export function NewGame({ action }: PosOrNeg) {
           </Middle>
           
           <RightSide>
-                <TestBox>
+          <Content
+            isActive={playerSelected.team === 'Botafogo'}
+          >
+              <Focused
+                isActive={playerSelected.team === 'Botafogo'}
+              >
+                <SelectedPlayer>
+                  <BioPlayerVisitant>
+                    <Name>
+                      <FirstName>{visitantPlayerSelected.bioInfo.firstName}</FirstName>
+                      <LastName>{visitantPlayerSelected.bioInfo.lastName}</LastName>
+                    </Name>
+                    <BioInfoVisitant>
+                      34 years old{'\n'}
+                      {visitantPlayerSelected.bioInfo.height} cm{'\n'}
+                      {visitantPlayerSelected.bioInfo.foot} Foot
+                    </BioInfoVisitant>
+                  </BioPlayerVisitant>
+                  <ImagePlayer 
+                    source={{ uri: visitantPlayerSelected.bioInfo.picture }} 
+                    resizeMode="contain"
+                  />
 
-                </TestBox>
+                </SelectedPlayer>
+                <TeamContent>
+                  <TeamInfo>
+                    <WrapperNameScore>
+                      <Score>1</Score>
+                      <TeamName>Real Madrid</TeamName>
+                    </WrapperNameScore>
+                    <ShieldVisitant></ShieldVisitant>
+                  </TeamInfo>
+                  <FlatList 
+                    style={styles.playerList}
+                    data={basicPlayers}
+                    keyExtractor={( item ) => item.id}
+                    renderItem={({ item }) => ( (item.team === 'Botafogo') &&
+                      <PlayerOnGame 
+                        position={item.positionInitials} 
+                        name={item.bioInfo.name}
+                        onPress={() => handlePlayerSelected(item)}
+                        isActive={playerSelected.id == item.id}
+                      />
+                    )}
+                  />
+                  
+                </TeamContent>
+              </Focused>
+            </Content>
+            <Footer>
+              <ButtonMenu 
+                title='LOCKER ROOM'
+                />
+              <ButtonMenu 
+                title='END GAME'
+                color='#FF5464'
+                />
+            </Footer>
           </RightSide>
         </Wrapper>
       </ImageBackground>

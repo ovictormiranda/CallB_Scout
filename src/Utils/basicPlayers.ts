@@ -346,6 +346,49 @@ export const basicPlayers = [
       }
     }
   },
+  {
+    id: "09",
+    bioInfo: {
+      name: "Victor Miranda",
+      firstName: "Victor",
+      lastName: "Miranda",
+      height:"181",
+      weight: "84",
+      nationality: "Brazilian",
+      birthDate: "27/08/1996",
+      foot: "Right", // Right, Left or Both
+      picture: "link"
+    },
+    team: "Botafogo",
+    position: ["Defender", "Defensive Midfilder"],
+    positionInitials: "MD",
+    scouts: {
+      positives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        stolenBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      },
+      negatives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        looseBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      }
+    }
+  },
 ]
 
 

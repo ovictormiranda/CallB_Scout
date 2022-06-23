@@ -16,6 +16,7 @@ export default {
     dark_text: '#000000',
 
     transparent: 'rgba(255, 255, 255, 0)',
+    semi_transparent: 'rgba(0, 0, 0, .5)',
     light_01: 'rgba(245, 245, 245, .9)',
     success_transparent: 'rgba(217, 250, 84, .5)'
   },
