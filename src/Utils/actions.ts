@@ -27,3 +27,14 @@ export const negativeActions = [
   { key: 'Nega_secondBall', nonId: 'secondBall', name: '2nd BALL', type: 'negative' },
 ]
 
+export const time = [
+  { key: 'firstHalf', name: '1° T'},
+  { key: 'secondHalf', name: '2° T'}
+]
+
+export const timeInMinutes = [
+  { key: 'zeroToFifteen', name: '0 - 15'},
+  { key: 'sixteenToThirty', name: '16 - 30'},
+  { key: 'thirtyOneToFortyFive', name: '31 - 45'},
+  { key: 'injuryTime', name: '45+'}
+]

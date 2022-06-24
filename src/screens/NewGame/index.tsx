@@ -55,6 +55,9 @@ import {
   NegativeActions,
 
   RightSide,
+  TimeSection,
+  TimeInMinutesSection,
+  FooterVisitantSide,
 
 } from './styles';
 
@@ -62,10 +65,11 @@ import { PlayerOnGame } from '../../components/PlayerOnGame';
 import { ActionButton } from '../../components/ActionButton';
 import { FlatList } from 'react-native-gesture-handler';
 
-import { positiveActions, negativeActions } from '../../Utils/actions';
+import { positiveActions, negativeActions, time, timeInMinutes } from '../../Utils/actions';
 import { basicPlayers } from '../../Utils/basicPlayers';
 import { useTheme } from 'styled-components';
 import theme from '../../styles/theme';
+import { TimeButton } from '../../components/TimeButton';
 
 interface Action {
   id: number;
@@ -3606,10 +3610,10 @@ export function NewGame({ action }: PosOrNeg) {
           
           <RightSide>
           <Content
-            isActive={playerSelected.team === 'Botafogo'}
+            isActive={visitantPlayerSelected.team === 'Botafogo'}
           >
               <Focused
-                isActive={playerSelected.team === 'Botafogo'}
+                isActive={visitantPlayerSelected.team === 'Botafogo'}
               >
                 <SelectedPlayer>
                   <BioPlayerVisitant>
@@ -3654,15 +3658,44 @@ export function NewGame({ action }: PosOrNeg) {
                 </TeamContent>
               </Focused>
             </Content>
-            <Footer>
-              <ButtonMenu 
-                title='LOCKER ROOM'
+            <FooterVisitantSide>
+              <TimeSection>
+                <FlatList 
+                  data={time} 
+                  keyExtractor={item => item.key}
+                  horizontal
+                  renderItem={({ item }) => {
+                    return (
+                      <TimeButton 
+                        title={item.name}
+                        onPress={() => {}}
+                        isActive={actionSelected.key === item.key}
+                        isPositive={false}
+                      />
+                    );
+                  }
+                  }
                 />
-              <ButtonMenu 
-                title='END GAME'
-                color='#FF5464'
-                />
-            </Footer>
+              </TimeSection>
+              <TimeInMinutesSection>
+                <FlatList 
+                    data={timeInMinutes} 
+                    keyExtractor={item => item.key}
+                    horizontal
+                    renderItem={({ item }) => {
+                      return (
+                        <TimeButton 
+                          title={item.name}
+                          onPress={() => {}}
+                          isActive={actionSelected.key === item.key}
+                          isPositive={false}
+                        />
+                      );
+                    }
+                    }
+                  />
+              </TimeInMinutesSection>
+            </FooterVisitantSide>
           </RightSide>
         </Wrapper>
       </ImageBackground>

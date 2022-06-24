@@ -167,6 +167,12 @@ export const Footer = styled.View`
   justify-content: space-between;
 `;
 
+export const FooterVisitantSide = styled.View`
+  height: 75px;
+  justify-content: space-between;
+  padding-bottom: 15px;
+`;
+
 export const Middle = styled.View`
   width: 627px;
   height: 100%;
@@ -338,11 +344,12 @@ export const RightSide = styled.View`
 `;
 
 
-export const TestBox = styled.View`
-  width: 100px;
-  height: 100px;
-  background-color: orange;
-  box-shadow: 100px 5px 5px black;
-`;
+  export const TimeSection = styled.View`
+    width: 100%;
+  `;
+
+  export const TimeInMinutesSection = styled.View`
+    width: 100%;
+  `;
 
 
