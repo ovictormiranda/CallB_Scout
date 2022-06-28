@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ImageBackground, PanResponder, StyleSheet, View, FlatList } from 'react-native';
+import { ImageBackground, PanResponder, StyleSheet, View, FlatList, ScrollView } from 'react-native';
 import bg from '../../assets/game_bg.png';
 import field from '../../assets/FIELD.png';
 import { ButtonMenu } from '../../components/ButtonMenu';
@@ -144,6 +144,7 @@ console.log(visitantPlayersFiltered)
 export function NewGame({ action }: PosOrNeg) {
   const theme = useTheme();
 
+
   console.log('STARTING PLAYERS LIST ############################')
   //console.log(basicPlayers.filter(item => item.team === 'Botafogo'))
   //console.log(visitantPlayersFiltered)
@@ -151,6 +152,8 @@ export function NewGame({ action }: PosOrNeg) {
 
   const [actionSelected, setActionSelected] = useState<TypeAction>({key: '', nonId: '', name: '', type: ''}); // to know if is a positive or negative action
   
+  const [testando, setTestando] = useState<PlayerProps[]>();
+
   const [playerSelected, setPlayerSeleted] = useState<PlayerProps>(basicPlayers[0]);
   const [homePlayerSelected, setHomePlayerSeleted] = useState<PlayerProps>(basicPlayers[0]);
   const [visitantPlayerSelected, setVisitantPlayerSeleted] = useState<PlayerProps>(basicPlayers[0]);
@@ -191,6 +194,14 @@ export function NewGame({ action }: PosOrNeg) {
   const [locationXOneC, setLocationXOneC] = useState(0);
   const [locationYOneC, setLocationYOneC] = useState(0);
   
+
+  useEffect( () => {
+    const data = basicPlayers.filter(item => item.team === 'Botafogo');
+    setTestando(data);
+
+    console.log('whyyyyyyyyyyyyyy nooooooooooooooot ????????')
+    console.log(data)
+  },[])
 
   const [actionsFourA, setActionsFourA] = useState<Action[]>([]); // to get coordinates on screen
   const [actionsFourB, setActionsFourB] = useState<Action[]>([]);
@@ -3329,7 +3340,7 @@ export function NewGame({ action }: PosOrNeg) {
                     */}
 
                   <View style={styles.playerList}>
-                    <FlatList 
+{/*                     <FlatList 
                       data={homePlayersFiltered}
                       keyExtractor={ item  => item.id}
                       renderItem={({ item }) => (
@@ -3340,7 +3351,21 @@ export function NewGame({ action }: PosOrNeg) {
                         isActive={playerSelected.id == item.id}
                         />
                       )}
-                    />
+                    /> */}
+
+                    <ScrollView>
+                      {
+                        homePlayersFiltered.map((item) => (
+                          <PlayerOnGame 
+                            key={item.id}
+                            position={item.positionInitials} 
+                            name={item.bioInfo.name}
+                            onPress={() => handlePlayerSelected(item)}
+                            isActive={playerSelected.id == item.id}
+                            />
+                        ))
+                      }
+                    </ScrollView>
                   </View>
                   
                 </TeamContent>
@@ -3667,8 +3692,8 @@ export function NewGame({ action }: PosOrNeg) {
                     <ShieldVisitant></ShieldVisitant>
                   </TeamInfo>
                   <View style={styles.playerList}>
-                    <FlatList 
-                      data={visitantPlayersFiltered}
+{/*                     <FlatList 
+                      data={testando}
                       keyExtractor={ item  => item.id}
                       renderItem={({ item }) => (
                         <PlayerOnGame 
@@ -3678,7 +3703,21 @@ export function NewGame({ action }: PosOrNeg) {
                         isActive={playerSelected.id == item.id}
                         />
                       )}
-                    />
+                    /> */}
+                    <ScrollView>
+                      {
+                        testando?.map((item) => (
+                          <PlayerOnGame
+                          key={item.id}
+                          position={item.positionInitials} 
+                          name={item.bioInfo.name}
+                          onPress={() => handlePlayerSelected(item)}
+                          isActive={playerSelected.id == item.id}
+                        />
+                        )
+                        )
+                      }
+                    </ScrollView>
                 </View>
                   
                 </TeamContent>
