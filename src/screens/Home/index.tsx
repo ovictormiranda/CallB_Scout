@@ -60,18 +60,18 @@ export function Home({ option }: Props ){
           </MainCard>
           
           <Footer>
-          <FlatList
-                data={homeOptions} 
-                keyExtractor={(item) => item.key}
-                horizontal
-                renderItem={({ item }) => (
-                    <Button
-                      title={item.title}
-                      onPress={() => handleOptionSelected(item)}
-                      isActive={optionSelected.key === item.key} 
-                    />
-                  )}
-              />
+            <FlatList
+              data={homeOptions} 
+              keyExtractor={(item) => item.key}
+              horizontal
+              renderItem={({ item }) => (
+                  <Button
+                    title={item.title}
+                    onPress={() => handleOptionSelected(item)}
+                    isActive={optionSelected.key === item.key} 
+                  />
+                )}
+            />
           </Footer>
         </Content>
       </ImageBackground>

@@ -349,9 +349,9 @@ export const basicPlayers = [
   {
     id: "09",
     bioInfo: {
-      name: "Victor Miranda",
+      name: "Victor Miranda 1",
       firstName: "Victor",
-      lastName: "Miranda",
+      lastName: "Miranda 1",
       height:"181",
       weight: "84",
       nationality: "Brazilian",
@@ -392,9 +392,9 @@ export const basicPlayers = [
   {
     id: "10",
     bioInfo: {
-      name: "Victor Miranda",
+      name: "Victor Miranda 2",
       firstName: "Victor",
-      lastName: "Miranda",
+      lastName: "Miranda 2",
       height:"181",
       weight: "84",
       nationality: "Brazilian",
@@ -435,9 +435,9 @@ export const basicPlayers = [
   {
     id: "11",
     bioInfo: {
-      name: "Victor Miranda",
+      name: "Victor Miranda 3",
       firstName: "Victor",
-      lastName: "Miranda",
+      lastName: "Miranda 3",
       height:"181",
       weight: "84",
       nationality: "Brazilian",
@@ -478,9 +478,9 @@ export const basicPlayers = [
   {
     id: "12",
     bioInfo: {
-      name: "Victor Miranda",
+      name: "Victor Miranda 4",
       firstName: "Victor",
-      lastName: "Miranda",
+      lastName: "Miranda 4",
       height:"181",
       weight: "84",
       nationality: "Brazilian",
@@ -521,9 +521,9 @@ export const basicPlayers = [
   {
     id: "13",
     bioInfo: {
-      name: "Victor Miranda",
+      name: "Victor Miranda 5",
       firstName: "Victor",
-      lastName: "Miranda",
+      lastName: "Miranda 5",
       height:"181",
       weight: "84",
       nationality: "Brazilian",
@@ -564,9 +564,9 @@ export const basicPlayers = [
   {
     id: "14",
     bioInfo: {
-      name: "Victor Miranda",
+      name: "Victor Miranda 6",
       firstName: "Victor",
-      lastName: "Miranda",
+      lastName: "Miranda 6",
       height:"181",
       weight: "84",
       nationality: "Brazilian",
@@ -607,9 +607,9 @@ export const basicPlayers = [
   {
     id: "15",
     bioInfo: {
-      name: "Victor Miranda",
+      name: "Victor Miranda 7",
       firstName: "Victor",
-      lastName: "Miranda",
+      lastName: "Miranda 7",
       height:"181",
       weight: "84",
       nationality: "Brazilian",
@@ -650,9 +650,9 @@ export const basicPlayers = [
   {
     id: "16",
     bioInfo: {
-      name: "Victor Miranda",
+      name: "Victor Miranda 8",
       firstName: "Victor",
-      lastName: "Miranda",
+      lastName: "Miranda 8",
       height:"181",
       weight: "84",
       nationality: "Brazilian",
@@ -693,9 +693,9 @@ export const basicPlayers = [
   {
     id: "17",
     bioInfo: {
-      name: "Victor Miranda",
+      name: "Victor Miranda 9",
       firstName: "Victor",
-      lastName: "Miranda",
+      lastName: "Miranda 9",
       height:"181",
       weight: "84",
       nationality: "Brazilian",
@@ -736,9 +736,9 @@ export const basicPlayers = [
   {
     id: "18",
     bioInfo: {
-      name: "Victor Miranda",
+      name: "Victor Miranda 10",
       firstName: "Victor",
-      lastName: "Miranda",
+      lastName: "Miranda 10",
       height:"181",
       weight: "84",
       nationality: "Brazilian",
@@ -779,9 +779,9 @@ export const basicPlayers = [
   {
     id: "19",
     bioInfo: {
-      name: "Victor Miranda",
+      name: "Victor Miranda 11",
       firstName: "Victor",
-      lastName: "Miranda",
+      lastName: "Miranda 11",
       height:"181",
       weight: "84",
       nationality: "Brazilian",
@@ -822,9 +822,9 @@ export const basicPlayers = [
   {
     id: "20",
     bioInfo: {
-      name: "Victor Miranda",
+      name: "Victor Miranda 12",
       firstName: "Victor",
-      lastName: "Miranda",
+      lastName: "Miranda 12",
       height:"181",
       weight: "84",
       nationality: "Brazilian",
@@ -865,9 +865,9 @@ export const basicPlayers = [
   {
     id: "21",
     bioInfo: {
-      name: "Victor Miranda",
+      name: "Victor Miranda 13",
       firstName: "Victor",
-      lastName: "Miranda",
+      lastName: "Miranda 13",
       height:"181",
       weight: "84",
       nationality: "Brazilian",
@@ -908,9 +908,9 @@ export const basicPlayers = [
   {
     id: "22",
     bioInfo: {
-      name: "Victor Miranda",
+      name: "Victor Miranda 14",
       firstName: "Victor",
-      lastName: "Miranda",
+      lastName: "Miranda 14",
       height:"181",
       weight: "84",
       nationality: "Brazilian",
@@ -951,9 +951,9 @@ export const basicPlayers = [
   {
     id: "23",
     bioInfo: {
-      name: "Victor Miranda",
+      name: "Victor Miranda 15",
       firstName: "Victor",
-      lastName: "Miranda",
+      lastName: "Miranda 15",
       height:"181",
       weight: "84",
       nationality: "Brazilian",
@@ -994,9 +994,9 @@ export const basicPlayers = [
   {
     id: "24",
     bioInfo: {
-      name: "Victor Miranda",
+      name: "Victor Miranda 16",
       firstName: "Victor",
-      lastName: "Miranda",
+      lastName: "Miranda 16",
       height:"181",
       weight: "84",
       nationality: "Brazilian",
@@ -1037,9 +1037,9 @@ export const basicPlayers = [
   {
     id: "25",
     bioInfo: {
-      name: "Victor Miranda",
+      name: "Victor Miranda 100",
       firstName: "Victor",
-      lastName: "Miranda",
+      lastName: "Miranda 100",
       height:"181",
       weight: "84",
       nationality: "Brazilian",
@@ -1047,7 +1047,308 @@ export const basicPlayers = [
       foot: "Right", // Right, Left or Both
       picture: "link"
     },
-    team: "Botafogo",
+    team: "Real Madrid",
+    position: ["Defender", "Defensive Midfilder"],
+    positionInitials: "MD",
+    scouts: {
+      positives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        stolenBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      },
+      negatives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        looseBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      }
+    }
+  },
+  {
+    id: "26",
+    bioInfo: {
+      name: "Victor Miranda 101",
+      firstName: "Victor",
+      lastName: "Miranda 101",
+      height:"181",
+      weight: "84",
+      nationality: "Brazilian",
+      birthDate: "27/08/1996",
+      foot: "Right", // Right, Left or Both
+      picture: "link"
+    },
+    team: "Real Madrid",
+    position: ["Defender", "Defensive Midfilder"],
+    positionInitials: "MD",
+    scouts: {
+      positives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        stolenBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      },
+      negatives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        looseBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      }
+    }
+  },
+  {
+    id: "27",
+    bioInfo: {
+      name: "Victor Miranda 102",
+      firstName: "Victor",
+      lastName: "Miranda 102",
+      height:"181",
+      weight: "84",
+      nationality: "Brazilian",
+      birthDate: "27/08/1996",
+      foot: "Right", // Right, Left or Both
+      picture: "link"
+    },
+    team: "Real Madrid",
+    position: ["Defender", "Defensive Midfilder"],
+    positionInitials: "MD",
+    scouts: {
+      positives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        stolenBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      },
+      negatives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        looseBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      }
+    }
+  },
+  {
+    id: "28",
+    bioInfo: {
+      name: "Victor Miranda 103",
+      firstName: "Victor",
+      lastName: "Miranda 103",
+      height:"181",
+      weight: "84",
+      nationality: "Brazilian",
+      birthDate: "27/08/1996",
+      foot: "Right", // Right, Left or Both
+      picture: "link"
+    },
+    team: "Real Madrid",
+    position: ["Defender", "Defensive Midfilder"],
+    positionInitials: "MD",
+    scouts: {
+      positives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        stolenBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      },
+      negatives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        looseBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      }
+    }
+  },
+  {
+    id: "29",
+    bioInfo: {
+      name: "Victor Miranda 104",
+      firstName: "Victor",
+      lastName: "Miranda 104",
+      height:"181",
+      weight: "84",
+      nationality: "Brazilian",
+      birthDate: "27/08/1996",
+      foot: "Right", // Right, Left or Both
+      picture: "link"
+    },
+    team: "Real Madrid",
+    position: ["Defender", "Defensive Midfilder"],
+    positionInitials: "MD",
+    scouts: {
+      positives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        stolenBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      },
+      negatives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        looseBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      }
+    }
+  },
+  {
+    id: "30",
+    bioInfo: {
+      name: "Victor Miranda 105",
+      firstName: "Victor",
+      lastName: "Miranda 105",
+      height:"181",
+      weight: "84",
+      nationality: "Brazilian",
+      birthDate: "27/08/1996",
+      foot: "Right", // Right, Left or Both
+      picture: "link"
+    },
+    team: "Real Madrid",
+    position: ["Defender", "Defensive Midfilder"],
+    positionInitials: "MD",
+    scouts: {
+      positives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        stolenBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      },
+      negatives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        looseBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      }
+    }
+  },
+  {
+    id: "31",
+    bioInfo: {
+      name: "Victor Miranda 106",
+      firstName: "Victor",
+      lastName: "Miranda 106",
+      height:"181",
+      weight: "84",
+      nationality: "Brazilian",
+      birthDate: "27/08/1996",
+      foot: "Right", // Right, Left or Both
+      picture: "link"
+    },
+    team: "Real Madrid",
+    position: ["Defender", "Defensive Midfilder"],
+    positionInitials: "MD",
+    scouts: {
+      positives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        stolenBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      },
+      negatives: {
+        shortPass: [],
+        kick: [],
+        cornerKick: [],
+        cross: [],
+        foul: [],
+        tackle: [],
+        looseBall: [],
+        passBLines: [],
+        firstBall: [],
+        secondBall: [],
+      }
+    }
+  },
+  {
+    id: "32",
+    bioInfo: {
+      name: "Victor Miranda 107",
+      firstName: "Victor",
+      lastName: "Miranda 107",
+      height:"181",
+      weight: "84",
+      nationality: "Brazilian",
+      birthDate: "27/08/1996",
+      foot: "Right", // Right, Left or Both
+      picture: "link"
+    },
+    team: "Real Madrid",
     position: ["Defender", "Defensive Midfilder"],
     positionInitials: "MD",
     scouts: {

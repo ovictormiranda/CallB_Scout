@@ -22,5 +22,5 @@ export const homeOptions = [
     title: "EDIT",
     description: "Create or Edit teams and players,\n",
     goTo: "NewGame2",
-  }
+  },
 ];

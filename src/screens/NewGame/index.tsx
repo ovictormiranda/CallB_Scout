@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ImageBackground, PanResponder, StyleSheet, View, Text } from 'react-native';
+import { ImageBackground, PanResponder, StyleSheet, View, FlatList } from 'react-native';
 import bg from '../../assets/game_bg.png';
 import field from '../../assets/FIELD.png';
 import { ButtonMenu } from '../../components/ButtonMenu';
@@ -63,7 +63,6 @@ import {
 
 import { PlayerOnGame } from '../../components/PlayerOnGame';
 import { ActionButton } from '../../components/ActionButton';
-import { FlatList } from 'react-native-gesture-handler';
 
 import { positiveActions, negativeActions, time, timeInMinutes } from '../../Utils/actions';
 import { basicPlayers } from '../../Utils/basicPlayers';
@@ -136,13 +135,24 @@ interface PlayerProps {
   }
 }
 
+const visitantPlayersFiltered = basicPlayers.filter(item => item.team === 'Botafogo');
+const homePlayersFiltered = basicPlayers.filter(item => item.team === 'Real Madrid');
+
+console.log('AQUIIIIT ############################')
+console.log(visitantPlayersFiltered)
+
 export function NewGame({ action }: PosOrNeg) {
   const theme = useTheme();
-  
+
+  console.log('STARTING PLAYERS LIST ############################')
+  //console.log(basicPlayers.filter(item => item.team === 'Botafogo'))
+  //console.log(visitantPlayersFiltered)
+  console.log('############# ENDING PLAYERS LIST ############################')
 
   const [actionSelected, setActionSelected] = useState<TypeAction>({key: '', nonId: '', name: '', type: ''}); // to know if is a positive or negative action
   
   const [playerSelected, setPlayerSeleted] = useState<PlayerProps>(basicPlayers[0]);
+  const [homePlayerSelected, setHomePlayerSeleted] = useState<PlayerProps>(basicPlayers[0]);
   const [visitantPlayerSelected, setVisitantPlayerSeleted] = useState<PlayerProps>(basicPlayers[0]);
 
   const [locationXFourA, setLocationXFourA] = useState(0); //To plot the actual click on screen
@@ -326,17 +336,15 @@ export function NewGame({ action }: PosOrNeg) {
   
   
   function handlePlayerSelected(player: PlayerProps) {
-    console.log('comecou ###############################')
-    console.log(player)
+
 
     const playerAtual = player; //esta const foi criada para que o state receba o valor atual do setState
-    console.log(playerAtual)
+
     player.team === 'Botafogo' && setVisitantPlayerSeleted(playerAtual)
+    player.team === 'Real Madrid' && setHomePlayerSeleted(playerAtual)
     
     setPlayerSeleted(playerAtual)
 
-    console.log(playerSelected)
-    console.log('terminou ###############################')
     
     switch (actionSelected.type) {
       case 'positive':
@@ -452,7 +460,8 @@ export function NewGame({ action }: PosOrNeg) {
   }
 
   
-
+  console.log(playerSelected)
+  console.log('############# ENDING PLAYERS LIST ############################')
 
 
 
@@ -3283,16 +3292,16 @@ export function NewGame({ action }: PosOrNeg) {
                 isActive={playerSelected.team !== 'Botafogo'}
               >
                 <SelectedPlayer>
-                    <ImagePlayer source={{ uri: playerSelected.bioInfo.picture }} resizeMode="contain"/>
+                    <ImagePlayer source={{  uri: homePlayerSelected.bioInfo.picture }} resizeMode="contain"/>
                   <BioPlayer>
                     <Name>
-                      <FirstName>{playerSelected.bioInfo.firstName}</FirstName>
-                      <LastName>{playerSelected.bioInfo.lastName}</LastName>
+                      <FirstName>{homePlayerSelected.bioInfo.firstName}</FirstName>
+                      <LastName>{homePlayerSelected.bioInfo.lastName}</LastName>
                     </Name>
                     <BioInfo>
                       34 years old{'\n'}
-                      {playerSelected.bioInfo.height} cm{'\n'}
-                      {playerSelected.bioInfo.foot} Foot
+                      {homePlayerSelected.bioInfo.height} cm{'\n'}
+                      {homePlayerSelected.bioInfo.foot} Foot
                     </BioInfo>
                   </BioPlayer>
                 </SelectedPlayer>
@@ -3304,19 +3313,35 @@ export function NewGame({ action }: PosOrNeg) {
                       <Score>1</Score>
                     </WrapperNameScore>
                   </TeamInfo>
-                  <FlatList 
+{/*                   <FlatList
                     style={styles.playerList}
-                    data={basicPlayers}
-                    keyExtractor={( item ) => item.id}
-                    renderItem={({ item }) => ( (item.team === 'Real Madrid') &&
+                    data={homePlayersFiltered}
+                    keyExtractor={ item  => item.id}
+                    renderItem={({ item }) => (
                       <PlayerOnGame 
                         position={item.positionInitials} 
                         name={item.bioInfo.name}
                         onPress={() => handlePlayerSelected(item)}
                         isActive={playerSelected.id == item.id}
                       />
-                    )}
-                  />
+                    )} 
+                    />
+                    */}
+
+                  <View style={styles.playerList}>
+                    <FlatList 
+                      data={homePlayersFiltered}
+                      keyExtractor={ item  => item.id}
+                      renderItem={({ item }) => (
+                        <PlayerOnGame 
+                        position={item.positionInitials} 
+                        name={item.bioInfo.name}
+                        onPress={() => handlePlayerSelected(item)}
+                        isActive={playerSelected.id == item.id}
+                        />
+                      )}
+                    />
+                  </View>
                   
                 </TeamContent>
               </Focused>
@@ -3610,10 +3635,10 @@ export function NewGame({ action }: PosOrNeg) {
           
           <RightSide>
           <Content
-            isActive={visitantPlayerSelected.team === 'Botafogo'}
+            isActive={playerSelected.team === 'Botafogo'}
           >
               <Focused
-                isActive={visitantPlayerSelected.team === 'Botafogo'}
+                isActive={playerSelected.team === 'Botafogo'}
               >
                 <SelectedPlayer>
                   <BioPlayerVisitant>
@@ -3641,19 +3666,20 @@ export function NewGame({ action }: PosOrNeg) {
                     </WrapperNameScore>
                     <ShieldVisitant></ShieldVisitant>
                   </TeamInfo>
-                  <FlatList 
-                    style={styles.playerList}
-                    data={basicPlayers}
-                    keyExtractor={( item ) => item.id}
-                    renderItem={({ item }) => ( (item.team === 'Botafogo') &&
-                      <PlayerOnGame 
+                  <View style={styles.playerList}>
+                    <FlatList 
+                      data={visitantPlayersFiltered}
+                      keyExtractor={ item  => item.id}
+                      renderItem={({ item }) => (
+                        <PlayerOnGame 
                         position={item.positionInitials} 
                         name={item.bioInfo.name}
                         onPress={() => handlePlayerSelected(item)}
                         isActive={playerSelected.id == item.id}
-                      />
-                    )}
-                  />
+                        />
+                      )}
+                    />
+                </View>
                   
                 </TeamContent>
               </Focused>

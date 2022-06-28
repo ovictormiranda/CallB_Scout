@@ -26,3 +26,4 @@ export const Title = styled.Text<ButtonProps>`
 
   color: ${({ textColor }) => textColor};
 `
+

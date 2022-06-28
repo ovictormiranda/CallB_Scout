@@ -1,10 +1,9 @@
 import React from 'react';
-import { useTheme } from 'styled-components';
 import { RectButtonProps } from 'react-native-gesture-handler';
 
 import {
   Container,
-  Title
+  Title,
 } from './styles';
 import theme from '../../styles/theme';
 
