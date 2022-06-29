@@ -5,7 +5,6 @@ import theme from '../../styles/theme';
 
 interface ButtonProps {
   isActive: boolean;
-  isPositive: boolean;
 }
 
 export const Container = styled(RectButton)<ButtonProps>`

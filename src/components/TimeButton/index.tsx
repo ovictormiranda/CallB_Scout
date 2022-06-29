@@ -10,14 +10,12 @@ import {
 interface Props extends RectButtonProps {
   title: string;
   isActive: boolean;
-  isPositive: boolean;
 }
 
 export function TimeButton({
   title,
   onPress,
   isActive,
-  isPositive,
   enabled = true,
 }: Props){
   return (
@@ -25,7 +23,6 @@ export function TimeButton({
       onPress={onPress}
       enabled={enabled}
       isActive={isActive}
-      isPositive={isPositive}
       style={{ opacity: enabled === false  ? .5 : 1}}
     >
       <Title>{title}</Title>

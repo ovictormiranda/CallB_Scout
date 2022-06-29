@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ImageBackground, PanResponder, StyleSheet, View, FlatList, ScrollView } from 'react-native';
 import bg from '../../assets/game_bg.png';
 import field from '../../assets/FIELD.png';
@@ -140,12 +140,15 @@ interface PlayerProps {
 }
 
 
+
 export function NewGame({ action }: PosOrNeg) {
+
   const navigation = useNavigation<any>();
 
   function handleLockerRoom() {
     navigation.navigate('LockerRoom')
   }
+  
   const visitantPlayersFiltered = basicPlayers.filter(item => item.team === 'Botafogo');
   const homePlayersFiltered = basicPlayers.filter(item => item.team === 'Real Madrid');
   
@@ -3411,8 +3414,8 @@ export function NewGame({ action }: PosOrNeg) {
             <Footer>
               <ButtonMenu 
                 title='LOCKER ROOM'
-                onPress={handleLockerRoom}
-                />
+                onPress={() => {}}
+              />
               <ButtonMenu 
                 title='END GAME'
                 color='#FF5464'

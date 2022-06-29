@@ -20,7 +20,56 @@ export const basicPlayers = [
     positionInitials: "GK",
     scouts: {
       positives: {
-        shortPass: [],
+        shortPass: [
+           {
+            id: 1656461447107,
+            key: "Posi_shortPass",
+            time: {
+              actionPeriodInMinutes: "0 - 15",
+              actionTime: "1° T",
+            },
+            type: "positive",
+            xPosition: 70.95,
+            yPosition: 81.99,
+            zone: "FourB",
+          },
+          {
+            id: 1656461447972,
+            key: "Posi_shortPass",
+            time: {
+              actionPeriodInMinutes: "0 - 15",
+              actionTime: "1° T",
+            },
+            type: "positive",
+            xPosition: 51.95,
+            yPosition: 78.99,
+            zone: "FourB",
+          },
+          {
+            id: 1656461448639,
+            key: "Posi_shortPass",
+            time: {
+              actionPeriodInMinutes: "0 - 15",
+              actionTime: "1° T",
+            },
+            type: "positive",
+            xPosition: 83.95,
+            yPosition: 109.97,
+            zone: "FourB",
+          },
+           {
+            id: 1656461451672,
+            key: "Posi_shortPass",
+            time:  {
+              actionPeriodInMinutes: "0 - 15",
+              actionTime: "1° T",
+            },
+            type: "positive",
+            xPosition: 43.95,
+            yPosition: 45.99,
+            zone: "ThreeB",
+          },
+        ],
         kick: [],
         cornerKick: [],
         cross: [],
