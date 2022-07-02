@@ -98,6 +98,19 @@ interface TimeProps {
   name: string;
 }
 
+interface filterTimeProps {
+    id: number,
+    key: string,
+    time: {
+      actionPeriodInMinutes: string,
+      actionTime: string,
+    },
+    type: string,
+    xPosition: number,
+    yPosition: number,
+    zone: string,
+}
+
 interface PlayerProps {
   id: string;
   bioInfo: {
@@ -116,7 +129,7 @@ interface PlayerProps {
   positionInitials: string;
   scouts: {
     positives: {
-      shortPass: any[],
+      shortPass: filterTimeProps[],
       kick: any[],
       cornerKick: any[],
       cross: any[],
@@ -128,7 +141,7 @@ interface PlayerProps {
       secondBall: any[],
     },
     negatives: {
-      shortPass: any[],
+      shortPass: filterTimeProps[],
       kick: any[],
       cornerKick: any[],
       cross: any[],
@@ -152,15 +165,14 @@ export function LockerRoom({ action }: PosOrNeg) {
   const [actionSelected, setActionSelected] = useState<TypeAction>({key: '', nonId: '', name: '', type: ''}); // to know if is a positive or negative action
   
   const [timeSelected, setTimeSelected] = useState<TimeProps>({key: 'firstHalf', name: '1° T'});
-  const [periodInMinutesSelected, setPeriodInMinutesSelected] = useState<TimeProps>({key: 'zeroToFifteen', name: '0 - 15'});
+  const [timeGroupSelected, setTimeGroupSelected] = useState<any[]>([]);
 
+  const [periodInMinutesSelected, setPeriodInMinutesSelected] = useState<TimeProps>({key: 'zeroToFifteen', name: '0 - 15'});
  
   const [playerSelected, setPlayerSeleted] = useState<PlayerProps>(basicPlayers[0]);
   const [homePlayerSelected, setHomePlayerSeleted] = useState<PlayerProps>(basicPlayers[0]);
   const [visitantPlayerSelected, setVisitantPlayerSeleted] = useState<PlayerProps>(basicPlayers[0]);
 
-  const [locationXFourA, setLocationXFourA] = useState(0); //To plot the actual click on screen
-  const [locationYFourA, setLocationYFourA] = useState(0);
   
   
   //CAPUTAR JOGADOR SELECIONADO E A ACÇÃO SELECIONADA E FILTRAR
@@ -169,6 +181,7 @@ export function LockerRoom({ action }: PosOrNeg) {
   function handleTimeSelected(time: TimeProps) {
     const currentTime = time;
     setTimeSelected(currentTime);
+    handleTimeGroupSelected(time);
   }
 
   function handlePeriodInMinutesSelected(inMinutes: TimeProps) {
@@ -176,9 +189,7 @@ export function LockerRoom({ action }: PosOrNeg) {
     setPeriodInMinutesSelected(currentPeriodInMinutes);
   }
   
-  function handleActionSelected(action: TypeAction, player: PlayerProps) {
-    setLocationXFourA(0)
-    setLocationYFourA(0)
+  function handleActionSelected(action: TypeAction, player: PlayerProps ) {
     const actionAtual = action;
     setActionSelected(actionAtual);
 
@@ -187,6 +198,29 @@ export function LockerRoom({ action }: PosOrNeg) {
         switch (action.key) {
           case 'Posi_shortPass':
             const tentei = playerSelected.scouts.positives.shortPass.map(item => item)
+            //console.log(tentei)
+            console.log('0#########################')
+            const result = tentei.filter(item => {
+              return item.time.actionTime === '1° T'
+            })
+            
+            const result2 = tentei.filter((item) => 
+              //item.time.actionTime.indexOf(timeGroupSelected.) === -1
+              console.log(timeGroupSelected)
+             // timeGroupSelected.indexOf(item.time.actionTime) === -1
+              
+            )
+
+           // timeGroupSelected.includes(item.key) ? true : false
+
+            console.log('1#########################')
+            //console.log(result)
+            //console.log(playerSelected.scouts.positives.shortPass)
+            console.log('2#########################')
+            console.log(result2)
+
+            
+            /* tentei.filter(item.time.actionTime.includes(item.id) === timeGroupSelected(item)) */
             setActionByPlayer(tentei)
             break;
             
@@ -420,6 +454,21 @@ export function LockerRoom({ action }: PosOrNeg) {
     }
   }
 
+  function handleTimeGroupSelected(time: TimeProps) {
+    const alreadySelected = timeGroupSelected.findIndex(item => item === time.key);
+
+    if (alreadySelected >= 0) {
+      const filteredTimeGroup = timeGroupSelected.filter(item => item !== time.key);
+
+      setTimeGroupSelected(filteredTimeGroup);
+      console.log(1)
+      console.log(timeGroupSelected)
+    } else {
+      setTimeGroupSelected([...timeGroupSelected, time]);
+      console.log(2)
+      console.log(timeGroupSelected)
+    }
+  }
 
 
   return (
@@ -728,12 +777,15 @@ export function LockerRoom({ action }: PosOrNeg) {
                       <TimeButton 
                         title={item.name}
                         onPress={() => handleTimeSelected(item)}
-                        isActive={timeSelected.key === item.key}
+                       /*  isActive={timeSelected.key === item.key} */
+                        isActive={timeGroupSelected.includes(item.key) ? true : false}
                       />
                     );
                   }
                   }
                 />
+
+
               </TimeSection>
               <TimeInMinutesSection>
                 <FlatList 
