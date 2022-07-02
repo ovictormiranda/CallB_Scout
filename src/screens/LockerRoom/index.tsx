@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ImageBackground, PanResponder, StyleSheet, View, FlatList, ScrollView } from 'react-native';
+import { ImageBackground, PanResponder, StyleSheet, View, FlatList, ScrollView, NativeModules } from 'react-native';
 import bg from '../../assets/backgroundVestiario.png';
 import field from '../../assets/FIELD.png';
 import { ButtonMenu } from '../../components/ButtonMenu';
@@ -189,7 +189,7 @@ export function LockerRoom({ action }: PosOrNeg) {
     setPeriodInMinutesSelected(currentPeriodInMinutes);
   }
   
-  function handleActionSelected(action: TypeAction, player: PlayerProps ) {
+  function handleActionSelected(action: TypeAction, player: PlayerProps, time: TimeProps ) {
     const actionAtual = action;
     setActionSelected(actionAtual);
 
@@ -198,29 +198,33 @@ export function LockerRoom({ action }: PosOrNeg) {
         switch (action.key) {
           case 'Posi_shortPass':
             const tentei = playerSelected.scouts.positives.shortPass.map(item => item)
-            //console.log(tentei)
-            console.log('0#########################')
-            const result = tentei.filter(item => {
-              return item.time.actionTime === '1° T'
-            })
             
-            const result2 = tentei.filter((item) => 
-              //item.time.actionTime.indexOf(timeGroupSelected.) === -1
-              console.log(timeGroupSelected)
-             // timeGroupSelected.indexOf(item.time.actionTime) === -1
+            for(let i = 0; i < timeGroupSelected.length; i = i + 1) {
               
-            )
-
-           // timeGroupSelected.includes(item.key) ? true : false
-
-            console.log('1#########################')
-            //console.log(result)
-            //console.log(playerSelected.scouts.positives.shortPass)
-            console.log('2#########################')
-            console.log(result2)
+              switch (time.name) {
+                case '1° T':
+                  const filterado = tentei.filter(action => (action.time.actionTime === '1° T'));
+                  console.log(filterado)
+                  break;
+                case '2° T':
+                  const filterado2 = tentei.filter(action => (action.time.actionTime === '2° T'));
+                  console.log(filterado2)
+                  break;
+              }
+            }
 
             
-            /* tentei.filter(item.time.actionTime.includes(item.id) === timeGroupSelected(item)) */
+            console.log('bora que bora')
+            let filteredTimeActions = []
+
+            for(let i = 0; i < tentei.length; i = i + 1) {
+              if (tentei[i].time.actionTime === '1° T') {
+                console.log('dentro do for', tentei[i].time.actionTime)
+
+              }
+              console.log('esse não')
+            }
+
             setActionByPlayer(tentei)
             break;
             
@@ -464,7 +468,7 @@ export function LockerRoom({ action }: PosOrNeg) {
       console.log(1)
       console.log(timeGroupSelected)
     } else {
-      setTimeGroupSelected([...timeGroupSelected, time]);
+      setTimeGroupSelected([...timeGroupSelected, time.key]);
       console.log(2)
       console.log(timeGroupSelected)
     }
